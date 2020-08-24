@@ -1,6 +1,7 @@
 import React from "react";
 import { PageTemplate } from "../common/PageTemplate";
 import './bread.css'
+import UserPayment from "../user/UserPayment";
 
 export const BreadItem = () =>
      <PageTemplate> <section className="Bread01">
@@ -115,12 +116,13 @@ export const BreadItem = () =>
 
 
 	                    <div id="sit_ov_btn">
-	                        <button type="button" onClick="location.href='order" className="sit_btn_buy">
-	                                바로구매
-	                        </button>
-	                        <a href="order" rel="next_page">바로구매</a>
-	                        <button onclick="location.href='BreadOrder.js'" type="button">text</button>
-	                        <input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>
+							<UserPayment/>
+	                        {/*<button type="button" onClick="location.href='order" className="sit_btn_buy">*/}
+	                        {/*        바로구매*/}
+	                        {/*</button>*/}
+	                        {/*<a href="order" rel="next_page">바로구매</a>*/}
+	                        {/*<button onclick="location.href='BreadOrder.js'" type="button">text</button>*/}
+	                        {/*<input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>*/}
 
 
 	                    </div>

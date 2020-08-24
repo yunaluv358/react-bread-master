@@ -3,6 +3,7 @@ import { PageTemplate } from "../common/PageTemplate";
 import { useHistory, Link } from 'react-router-dom';
 import './user-register.css'
 import axios from 'axios'
+import UserPostcode from "./UserPostcode";
 
 const UserRegisterTypes = {REQUEST: 'UserRegister/REQUEST', SUCCESS: 'UserRegister/SUCCESS', FAIL: 'UserRegister/FAIL'}
 const UserRegisterRequest = action => ({types: UserRegisterTypes.REQUEST, payload: action.payload})
@@ -35,6 +36,7 @@ export const UserRegister = () => {
     const [userName, setUserName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
+    const [addr, setAddr] = useState("")
 
     const history = useHistory();
 
@@ -91,6 +93,12 @@ export const UserRegister = () => {
 
                         <div className="form-group">
                             <label>이메일</label>
+                            <input type="password" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
+                        </div>
+
+                        <div className="form-group">
+                            <label>주소</label>
+                            <UserPostcode/>
                             <input type="password" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
                         </div>
 
