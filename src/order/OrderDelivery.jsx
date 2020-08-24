@@ -74,7 +74,15 @@ export const OrderDelivery = () => {
                                 title={"배송"}
                                 data={data}
                                 columns={columns}
-                                editable={editable} />
+                                editable={editable} options={{
+                                headerStyle: {
+                                    backgroundColor: '#01579b',
+                                    color: '#FFF'
+                                },
+                                rowStyle: {
+                                    // backgroundColor: '#EEE',
+                                }
+                            }}/>
                         </div>
                     </div>
                 </div>

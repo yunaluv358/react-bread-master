@@ -15,12 +15,16 @@ const ChartBar = props => {
                 alert("성공" + res.data)
                 const keyContainer =[];
                 const valueContainer  = [];
+
                 console.log(res.data)
                 Object.entries(res.data).forEach(([key,value])=>{
                     console.log("밸류값"+value)
                     keyContainer.push(key)
                     valueContainer.push(value)
+
                 })
+                valueContainer.push(200)
+                // 푸쉬성공 예시
                     setTotalKey(keyContainer);
                     setTotalValue(valueContainer);
             })
@@ -29,9 +33,12 @@ const ChartBar = props => {
                 throw err;
             })
     }
+
+
     console.log(totalValue)
     const chartData = {
-        labels: totalKey,
+        // labels: totalKey,
+        labels:[1,2,3,5,5,6,7,8,9],
         datasets: [
             {
                 label:'주문수',

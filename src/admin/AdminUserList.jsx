@@ -76,7 +76,7 @@ export const AdminUserList = () => {
                             color: '#FFF'
                         },
                         rowStyle: {
-                            backgroundColor: '#EEE',
+                            // backgroundColor: '#EEE',
                         }
                     }}/>
               </div>
