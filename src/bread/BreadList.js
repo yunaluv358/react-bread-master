@@ -1,9 +1,17 @@
 import React, { useEffect, useState} from "react";
+import  { Pagination, Paginate } from '../common/Pagination';
 import axios from "axios";
 import './bread.css'
 import {Navigation} from "../common/HomeMain";
+
+
 export const BreadList = () => {
+
+    const [pageSize, setPageSize] = useState(5)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [count, setCount] = useState(1)
     const [data,setData] = useState([])
+
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
@@ -14,7 +22,24 @@ export const BreadList = () => {
                 throw (error)
             }
         ))
+        setPageSize(6)
+        setCurrentPage(1)
     },[])
+
+
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page); // 페이지 수 클릭 시 현재 페이지 변경
+    }
+
+    const countHandler = e => {
+        if (count === 0)
+            return <p>There are no movies in the database.</p>
+    }
+
+    const subdata = Paginate(data, currentPage, pageSize);
+
+
     return (
         <>
             <Navigation/>
@@ -28,15 +53,29 @@ export const BreadList = () => {
                 </div>
                 <div grid-col="8" grid-pad="1.5" className="">
                     <div className="image-gallery" gid="6">
-                        {data.map((i, index) => (
+                        {subdata.map((i, index) => (
                             <span key={index}>
                                 <a rel="history" href="Bread01" className="image-link">
                                     <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
                             </span>
                         ))}
+
+                        <Pagination
+                            pageSize={pageSize}
+                            itemsCount={data.length}
+                            currentPage={currentPage}
+                            onPageChange={handlePageChange}
+                        />
+
                     </div>
+
+
+
                     {/*<br/><br/><a href="Page-Index" rel="history">︎ Index</a>*/}
                 </div>
+
+
+
             </div>
         </>
     )
