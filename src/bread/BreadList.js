@@ -15,6 +15,7 @@ export const BreadList = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
+                alert('성공')
                     setData(response.data)
                 }
             ).catch((error => {
