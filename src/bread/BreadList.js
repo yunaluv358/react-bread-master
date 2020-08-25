@@ -74,8 +74,6 @@ export const BreadList = () => {
                     {/*<br/><br/><a href="Page-Index" rel="history">︎ Index</a>*/}
                 </div>
 
-
-
             </div>
         </>
     )

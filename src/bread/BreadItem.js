@@ -133,9 +133,6 @@ export const BreadItem = () =>
 	        </div>
 
 
-
-
-
 	              <div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="">
 	                  <div grid-col="4" grid-pad="1.5"></div>
 	                  <div grid-col="8" grid-pad="1.5" className=""><a href="breads" rel="next_page">prev ︎</a> &nbsp; &nbsp; &nbsp;&nbsp;

@@ -1,0 +1,54 @@
+.userDiv{   }
+.find{  background-color: #f2f2f2; padding:20px 0px 40px 0px; }
+.find img.logo{max-width: 140px;}
+.find img.check{ max-width: 32px; }
+.find p.title{  text-align: center; margin: 10px 0px; }
+.find p.stitle { color: #059fe7; font-size: 24px; margin-bottom: 0px; text-align: center; }
+.find p.stitle2{ color: #000; font-size: 18px;  text-align: center; margin: 15px 0px;}
+.find p.desc{ color: #666666; text-align: center; font-size: 18px; word-break: keep-all}
+.mobile_br{ display: none}
+.userDiv .find ul#chart1  { text-align: center;  margin: 0 auto; padding: 0px; margin: 0px; }
+.userDiv .find ul#chart1 li { display: inline-block; width: 120px; height: 140px; border:1px solid #cccccc; margin: 10px;color:#059fe7; position: relative; background-color: #fff; cursor: pointer}
+.userDiv .find ul#chart1 li.active { border: 1px solid #cccccc;  background-color: #059fe7;  }
+.userDiv .find ul#chart1 li.active p{  color:#fff; }
+.userDiv .find ul#chart1 li.active div.circle{  border: 1px solid #fff; background: url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/on_check.png') no-repeat center center; background-size: 12px; }
+
+.userDiv .find ul#chart1 li p  { margin: 30px 0px 20px 0px; font-size:16px; box-sizing: border-box}
+.userDiv .find ul#chart1 li div.circle{ width: 30px; height: 30px; border-radius: 50% !important;  border:1px solid #bcbcbc;  margin: 0 auto; bottom: 10px;  background: url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/off.png') no-repeat center center; background-size: 12px; }
+.userDiv .find ul#chart1 input[type="radio"]{  display:none; -webkit-appearance:radio; }
+
+.userDiv .find ul#chart2 { text-align: center;  margin: 0 auto !important; max-width: 860px; padding: 0px; margin: 0px; }
+.userDiv .find ul#chart2 li { display: inline-block; width: 120px; height: 140px; border:1px solid #cccccc; margin: 10px;color:#059fe7; position: relative; background-color: #fff; cursor: pointer;}
+
+
+
+.userDiv .find ul#chart2 li p  { margin: 10px 0px 0px 0px; font-size:16px; box-sizing: border-box}
+.userDiv .find ul#chart2 li div.circle{background-color: #cccccc;width: 75px;height: 75px;border-radius: 50% !important;border:1px solid #bcbcbc;margin: 0 auto;margin-top:20px;background-position: center center;background-size:45px;background-repeat: no-repeat;}
+.userDiv .find ul#chart2 input[type="checkbox"]{   display:none; -webkit-appearance:checkbox; }
+
+.userDiv .find ul#chart2 li.active { border: 1px solid #ccc; background-color: #059fe7 }
+.userDiv .find ul#chart2 li.active p{  color:#fff; }
+.userDiv .find ul#chart2 li.active div.circle{  background-color: #fff; }
+
+.userDiv div#buttonArea{ margin-top:50px; text-align: center;}
+.userDiv div#buttonArea button{ width: 170px; height: 60px; margin: 4px; background-color: #666; font-size:16px; color:#fff; border: 1px solid #666; }
+.userDiv div#buttonArea button#confirm  {  background-color: #009edb; border:1px solid #009edb;  }
+
+#result { display: none; }
+
+#result ul { width: 100%; padding: 0; text-align: center; }
+#result ul li{ display: inline-block; width: 240px;  margin: 10px;  margin-bottom: 40px; text-align: left;  }
+
+#result ul li img { width: 100%; }
+#result ul li p { margin: 0; margin-top: 5px; font-size:14px; }
+#result ul li p.price { color: #428bca }
+@media (max-width:767px){
+    .userDiv .find ul#chart1 li { margin: 6px 4px; }
+    .userDiv .find ul#chart2 li {display: inline-block;width: 30%;margin: 6px 4px;height: 120px;}
+    .userDiv .find ul#chart2 li div.circle {width: 50px;height: 50px;background-size:35px;}
+    .userDiv div#buttonArea button{ max-width: 40%; }
+    #result ul li p{ font-size: 12px;  margin-top:0px;}
+    #result ul li{display: inline-block; width: 30%; margin: 6px 4px; height: 120px; }
+    #result ul li p.price{ margin: 0px; margin-top:-5px; }
+    .mobile_br{ display: block !important}
+}
