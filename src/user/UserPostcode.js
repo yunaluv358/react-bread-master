@@ -1,7 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import DaumPostcode from 'react-daum-postcode';
+import Modal from "react-bootstrap/Modal";
+// var Modal = require('react-bootstrap-modal')
+const UserPostcode = ({setAddress}) => {
+    console.log("포스트코드받은값" + setAddress)
+    const [show,setShow] = useState(false)
 
-const UserPostcode = () => {
+    const handleClosed = () =>{
+        setShow(false)
+    }
+    const handleAddr = (e) => {
+        e.preventDefault()
+        setShow(true)
+    }
+
+
     const handleComplete = (data) => {
         let fullAddress = data.address;
         let extraAddress = '';
@@ -15,14 +28,24 @@ const UserPostcode = () => {
             }
             fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-
-        console.log(fullAddress);  // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+        setAddress(fullAddress)
+        setShow(false)
+        console.log("풀어드레스값?"+fullAddress);
     }
 
     return (
-        <DaumPostcode
-            onComplete={handleComplete}
-        />
+        <>
+            <button type="submit" onClick={handleAddr} className="btn btn-solid">주소찾기</button>
+            <Modal  animation={false} show={show} onHide={handleClosed}>
+                <Modal.Header closeButton>
+                    <Modal.Title>주소검색</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <DaumPostcode onComplete={handleComplete}/>
+                </Modal.Body>
+            </Modal>
+
+        </>
     );
 }
 export default UserPostcode

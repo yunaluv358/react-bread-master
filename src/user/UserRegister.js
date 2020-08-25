@@ -5,29 +5,29 @@ import './user-register.css'
 import axios from 'axios'
 import UserPostcode from "./UserPostcode";
 
-const UserRegisterTypes = {REQUEST: 'UserRegister/REQUEST', SUCCESS: 'UserRegister/SUCCESS', FAIL: 'UserRegister/FAIL'}
-const UserRegisterRequest = action => ({types: UserRegisterTypes.REQUEST, payload: action.payload})
-const UserRegisterSuccess = action => ({types: UserRegisterTypes.SUCCESS, payload: action.payload})
-const UserRegisterFail = action => ({types: UserRegisterTypes.FAIL, payload: action.payload})
-
-export const UserRegisterReducer = (state, action) => {
-    switch (action.type) {
-        case UserRegisterTypes.REQUEST:
-            return {
-                ...state, payload: action.payload
-            }
-        case UserRegisterTypes.SUCCESS:
-            return {
-                ...state, payload: action.payload
-            }
-        case UserRegisterTypes.FAIL:
-            return {
-                ...state, payload: action.payload
-            }
-        default:
-            return state
-    }
-}
+// const UserRegisterTypes = {REQUEST: 'UserRegister/REQUEST', SUCCESS: 'UserRegister/SUCCESS', FAIL: 'UserRegister/FAIL'}
+// const UserRegisterRequest = action => ({types: UserRegisterTypes.REQUEST, payload: action.payload})
+// const UserRegisterSuccess = action => ({types: UserRegisterTypes.SUCCESS, payload: action.payload})
+// const UserRegisterFail = action => ({types: UserRegisterTypes.FAIL, payload: action.payload})
+//
+// export const UserRegisterReducer = (state, action) => {
+//     switch (action.type) {
+//         case UserRegisterTypes.REQUEST:
+//             return {
+//                 ...state, payload: action.payload
+//             }
+//         case UserRegisterTypes.SUCCESS:
+//             return {
+//                 ...state, payload: action.payload
+//             }
+//         case UserRegisterTypes.FAIL:
+//             return {
+//                 ...state, payload: action.payload
+//             }
+//         default:
+//             return state
+//     }
+// }
 
 export const UserRegister = () => {
     // const classes = useStyles();
@@ -37,6 +37,7 @@ export const UserRegister = () => {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [email, setEmail] = useState("")
     const [addr, setAddr] = useState("")
+    const [detailAddr, setDetailAddr] = useState("")
 
     const history = useHistory();
 
@@ -49,7 +50,9 @@ export const UserRegister = () => {
             password: password,
             name: userName,
             phone: phoneNumber,
-            email: email
+            email: email,
+            addr:addr,
+            detailAddr:detailAddr
         }
         axios.post(`http://localhost:8080/user/register`, userData)
             .then((res) => {
@@ -68,8 +71,9 @@ export const UserRegister = () => {
         <PageTemplate>
             <section className="signup">
                 <div className="main">
-                    <div className="h3-bread">&nbsp;</div>
-                    <form>
+                    {/*<div className="h3-bread">&nbsp;</div>*/}
+                    <div className="h3-bread"></div>
+                    <form className="theme-form">
                         <center><h2>회원가입</h2></center>
                         <div className="form-group">
                             <label>아이디</label>
@@ -96,12 +100,20 @@ export const UserRegister = () => {
                             <input type="password" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-row">
+                            <div className="col-md-6">
                             <label>주소</label>
-                            <UserPostcode/>
-                            <input type="password" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
+                            <UserPostcode setAddress={(addr)=>(setAddr(addr))}/>
+                            <br/>
+                            <input type="text" className="form-control" value={addr} onChange={e => setEmail(e.target.value)}
+                                   placeholder="addr" required="" readOnly=""/>
+                            </div>
                         </div>
-
+                        <div className="form-group">
+                            <label>나머지 주소</label>
+                            <input type="text" className="form-control"
+                                   onChange={e => setDetailAddr(e.target.value)} placeholder="나머지 주소는 직접입력해 주세요." required=""/>
+                        </div>
                         <button type="submit" className="btn btn-primary btn-block" onClick={onSignCheck}>Sign Up</button>
                         <p className="forgot-password text-right">
                             Already registered <a href="#">sign in?</a>

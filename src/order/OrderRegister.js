@@ -3,6 +3,7 @@ import './order-register.css'
 import { PageTemplate } from '../common/PageTemplate'
 import styled from "styled-components";
 import {Pagination} from "semantic-ui-react";
+import UserPayment from "../user/UserPayment";
 const OrderRegisterTypes= {REQUEST: 'OrderRegister/REQUEST', SUCCESS: 'OrderRegister/SUCCESS', FAIL: 'OrderRegister/FAIL'}
 const OrderRegisterRequest = action => ({types: OrderRegisterTypes.REQUEST, payload: action.payload})
 const OrderRegisterSuccess = action => ({types: OrderRegisterTypes.SUCCESS, payload: action.payload})
@@ -92,9 +93,10 @@ export const OrderRegister = () =>
 		                </div>
 		            </form>
 		        </article>
-		        <div className="sc-hrWEMg SVQWq">
-		            <button className="sc-eTuwsz fzBQRY">결제하기</button>
-		        </div>
+				<UserPayment></UserPayment>
+		        {/*<div className="sc-hrWEMg SVQWq">*/}
+		        {/*    <button className="sc-eTuwsz fzBQRY">결제하기</button>*/}
+		        {/*</div>*/}
 		    </div>
 		</section>
 	</PageTemplate>
