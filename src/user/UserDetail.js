@@ -1,10 +1,11 @@
 import React from "react";
-import { PageTemplate } from "../common/PageTemplate";
 import styled from "styled-components";
 import Route from "react-router-dom/es/Route";
 import { OrderDetail } from "../order/OrderDetail";
 import { Link } from "react-router-dom"
 import { OrderUpdate } from "../order/OrderUpdate";
+import {Navigation} from "../common/HomeMain";
+import {Router} from "react-router-dom"
 
 const UserDetailNavigation = styled.div`
     
@@ -54,12 +55,12 @@ const UserDetailReducer = (state, action) => {
 
 
 export const UserDetail = () => {
-    return <>
-    <PageTemplate>
-        <section className="signin">
+    return (<>
 
-            <h1 className="h3-bread"></h1>
-            <div className="gaukuF"><h2 className="sc-jTzLTM btRZwy">My Page</h2>
+            <Navigation/>
+
+            <h1 className="h3-bread" style={{"padding-top":"120px"}}></h1>
+            <div className="gaukuF"><h2 className="sc-jTzLTM btRZwy" >My Page</h2>
                 <button type="button" className="sc-dnqmqq qrXFy">LogOut</button>
             </div>
 
@@ -69,10 +70,12 @@ export const UserDetail = () => {
             </UserDetailNavigation>
 
             {/* 이중 라우팅 */}
+
             <Route path="/MyPage/OrderDetail" component={OrderDetail}/>
             <Route path="/MyPage/EditProfile" component={OrderUpdate}/>
-    </section></PageTemplate>
-    </>
+
+
+    </>)
 
 }
 

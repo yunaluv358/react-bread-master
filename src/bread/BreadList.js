@@ -40,7 +40,10 @@ export const BreadList = () => {
 
     const subdata = Paginate(data, currentPage, pageSize);
 
-
+    const passDetail = bread => {
+        alert('소비자 선택 후 ...'+bread.breadName)
+        localStorage.setItem('selectedBread', JSON.stringify(bread))
+    }
     return (
         <>
             <Navigation/>
@@ -56,8 +59,8 @@ export const BreadList = () => {
                     <div className="image-gallery" gid="6">
                         {subdata.map((i, index) => (
                             <span key={index}>
-                                <a rel="history" href="Bread01" className="image-link">
-                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
+                                <a rel="history" href="Bread01" className="image-link" onClick={()=>passDetail(i)}>
+                                    <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
                             </span>
                         ))}
 

@@ -10,6 +10,8 @@ import axios from "axios";
     export const BreadSearch = () => {
         const [chart1Select, setChart1Select] = useState("")
         const [breadAll, setBreadAll] = useState([])
+        const [select1result, setSelect1result] = useState([])
+        const [select2result, setSelect2result] = useState([])
         useEffect(() => {
             axios.get(`http://localhost:8080/bread/findAll`)
                 .then((response) => {
@@ -30,6 +32,8 @@ import axios from "axios";
              }
          },[chart1Select])*/
 
+        const subbreadAll = breadAll
+
         const init = (e) => {
             $(window).scrollTop($('div.find').offset().top - $('div.navbar').height());
 
@@ -46,34 +50,56 @@ import axios from "axios";
 
         const select1 = (e, value, breadAll) => {
             let temp = []
-            for (let i = 0; i < breadAll.length; i++) {
+            console.log("넘어온 조건값: "+value)
+            for (let i of breadAll) {
+                if(value === i.option){
+                    temp.push(i)
+                }
 
-                switch (value) {
+               /* switch (value) {
                     case "식사대용":
-                        temp.push(breadAll[i])
+
+                        console.log(temp[i].breadName)
+                    // case "호두": case "땅콩": case "피스타치오": case "캐슈넛": case "마카다미아": case "밀가루": case "콩(대두)": case "설탕": case "토마토": case "건포도": case "복숭아":
+
+                        // alert(temp[i].breadName + temp[i].option)
                         break
                     case "간식대용" :
-                        temp.push(breadAll[i])
                         break
                     case "다이어트" :
-                        temp.push(breadAll[i])
                         break
                     case "선물" :
-                        temp.push(breadAll[i])
                         break
-                }
+                } */
+
             }
+            for (let i of temp) {
+                console.log(i)
+            }
+            setSelect1result(temp)
 
-            alert(temp[15].breadName)
 
-
-            // $('#chart1 li').removeClass('active');
-            // $(e).addClass('active');
-            // $(e).children().prop('checked',true);
+            $('#chart1 li').removeClass('active');
+            $(e).addClass('active');
+            $(e).children().prop('checked',true);
         }
 
 
-        const select2 = (e) => {
+        const select2 = (e, value, select1result) => {
+
+            let temp = []
+            console.log("넘어온 조건값 2: "+value)
+            for (let i of select1result) {
+                if (value === i.allergy) {
+                    temp.push(i)
+                }
+
+            }
+            for (let i of temp) {
+                console.log(i)
+            }
+            setSelect2result(temp)
+
 
             if ($(e).children().prop('checked') == true) {
                 $(e).removeClass('active');
@@ -91,37 +117,39 @@ import axios from "axios";
 
         const result = (e) => {
 
-            $('#resultList div.col-xs-6').hide();
+            $('#resultList div.col-xs-6').hide(e);
 
-            $('#result').show();
+            $('#result').show(e);
 
-            $('#result ul li').hide();
-
-            let selectItem = $(":input:radio[name=chart1]:checked").val();
-
-            $('#resultList div.col-xs-6').each(function () {
-
-                //문자열이 포함되어 있으면
-                if ($(e).attr('data-buyType').indexOf(select1) !== -1) {
-                    $(e).show();
-                }
-
-            });
+            $('#result ul li').hide(e);
 
 
-            $(":input:checkbox[name=chart2]:checked").each(function () {
 
-                var select2 = $(e).val();
-
-                $('#resultList div.col-xs-6').each(function () {
-
-                    if ($(e).attr('data-allergy').indexOf(select2) !== -1) {
-                        $(e).hide();
-                    }
-
-                });
-
-            });
+            // let select1 = $(":input:radio[name=chart1]:checked").val(e);
+            //
+            // $('#resultList div.col-xs-6').each(function (e) {
+            //
+            //     //문자열이 포함되어 있으면
+            //     if ($(e).attr('option').indexOf(select1) !== -1) {
+            //         $(e).show(e);
+            //     }
+            //
+            // });
+            //
+            //
+            // $(":input:checkbox[name=chart2]:checked").each(function (e) {
+            //
+            //     var select2 = $(e).val(e);
+            //
+            //     $('#resultList div.col-xs-6').each(function (e) {
+            //
+            //         if ($(e).attr('allergy').indexOf(select2) !== -1) {
+            //             $(e).hide(e);
+            //         }
+            //
+            //     });
+            //
+            // });
 
 
             /*
@@ -161,23 +189,17 @@ import axios from "axios";
                                      className="check"/>
                             </p>
                             <ul id="chart1">
-                                <li onClick={(e) => select1(e.target, "식사대용", breadAll)} value="식사대용"><input
-                                    type="radio" name="chart1"/><p>식사대용</p>
-                                    <div className="circle"></div>
+                                <li onClick={(e) => select1(e.target, "식사대용", breadAll)} value="식사대용">
+                                    <input type="radio" name="chart1"/><p>식사대용</p> <div className="circle"></div>
                                 </li>
-                                <li onClick={(e) => select1(e.target, "간식대용")}><input type="radio" name="chart1"
-                                                                                      value="간식대용"/><p>간식대용</p>
-                                    <div className="circle"></div>
+                                <li onClick={(e) => select1(e.target, "간식대용", breadAll)} value="간식대용">
+                                    <input type="radio" name="chart1"/><p>간식대용</p> <div className="circle"></div>
                                 </li>
-                                <li onClick={(e) => select1(e.target, "다이어트")}><input type="radio" name="chart1"
-                                                                                      value="다이어트"/><p>다이어트</p>
-                                    <div className="circle"></div>
+                                <li onClick={(e) => select1(e.target, "다이어트", breadAll)} value="다이어트">
+                                    <input type="radio" name="chart1"/><p>다이어트</p> <div className="circle"></div>
                                 </li>
-                                <li onClick={(e) => select1(e.target, "선물")} className="active"><input type="radio"
-                                                                                                       name="chart1"
-                                                                                                       value="선물"/>
-                                    <p>선물</p>
-                                    <div className="circle"></div>
+                                <li onClick={(e) => select1(e.target, "선물", breadAll)}
+                                    className="active"><input type="radio" name="chart1" value="선물"/><p>선물</p><div className="circle"></div>
                                 </li>
                             </ul>
                             <p className="stitle2" style={{"margin-top": '50px'}}>
@@ -188,74 +210,73 @@ import axios from "axios";
                                      className="check"/>
                             </p>
                             <ul id="chart2">
-                                <li onClick={(e) => select2(e.target, "아몬드")}>
+                                <li onClick={(e) => select2(e.target, "아몬드", select1result)}>
                                     <input type="checkbox" name="chart2" value="아몬드"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy1.png')"}}></div>
-
                                     <p>아몬드</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "호두")}>
+                                <li onClick={(e) => select2(e.target, "호두", select1result)}>
                                     <input type="checkbox" name="chart2" value="호두"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy2.png')"}}></div>
                                     <p>호두</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "땅콩")}>
+                                <li onClick={(e) => select2(e.target, "땅콩", select1result)}>
                                     <input type="checkbox" name="chart2" value="땅콩"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy3.png')"}}></div>
                                     <p>땅콩</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "피스타치오")}>
+                                <li onClick={(e) => select2(e.target, "피스타치오", select1result)}>
                                     <input type="checkbox" name="chart2" value="피스타치오"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy4.png')"}}></div>
                                     <p>피스타치오</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "캐슈넛")}>
+                                <li onClick={(e) => select2(e.target, "캐슈넛", select1result)}>
                                     <input type="checkbox" name="chart2" value="캐슈넛"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy5.png')"}}></div>
                                     <p>캐슈넛</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "마카마디아")}>
+                                <li onClick={(e) => select2(e.target, "마카마디아", select1result)}>
                                     <input type="checkbox" name="chart2" value="마카마디아"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy6.png')"}}></div>
                                     <p>마카마디아</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "밀가루")}>
+                                <li onClick={(e) => select2(e.target, "밀가루", select1result)}>
                                     <input type="checkbox" name="chart2" value="밀가루"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy7.png')"}}></div>
                                     <p>밀가루</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "콩(대두)")}>
+                                <li onClick={(e) => select2(e.target, "콩(대두)", select1result)}>
                                     <input type="checkbox" name="chart2" value="콩(대두)"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy8.png')"}}></div>
                                     <p>콩(대두)</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "설탕")}>
+                                <li onClick={(e) => select2(e.target, "설탕", select1result)}>
                                     <input type="checkbox" name="chart2" value="설탕"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy9.png')"}}></div>
                                     <p>설탕</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "토마토")}>
+                                <li onClick={(e) => select2(e.target, "토마토", select1result)}>
                                     <input type="checkbox" name="chart2" value="토마토"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy10.png')"}}></div>
                                     <p>토마토</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "건포도")}>
+                                <li onClick={(e) => select2(e.target, "건포도", select1result)}>
                                     <input type="checkbox" name="chart2" value="건포도"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy11.png')"}}></div>
                                     <p>건포도</p>
                                 </li>
-                                <li onClick={(e) => select2(e.target, "복숭아")}>
+                                <li onClick={(e) => select2(e.target, "복숭아", select1result)}>
                                     <input type="checkbox" name="chart2" value="복숭아"/>
                                     <div className="circle"
                                          style={{backgroundImage: "url('https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy12.png')"}}></div>
@@ -274,6 +295,47 @@ import axios from "axios";
                                 고객님이 건강 할 수 있도록 <span style={{"color": "#999"}}><br
                                 className="mobile_br"/>이렇게 추천 합니다.</span>
                             </p>
+
+                        <center>
+                            {select2result.map((i, index) => (
+                                <span key={index} className="col-xs-6 col-sm-4">
+                                <a rel="history" href="Bread01" className="image-link">
+                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
+                                    <h3>{i.breadName}</h3>
+                                </span>
+                            ))}
+
+                            {/*<div className="row">*/}
+                            {/*    {props.data*/}
+                            {/*        ? props.data.map((d,i) => (*/}
+                            {/*            <div  key={`${d.title}-${i}`} className="col-xs-6 col-md-3">*/}
+                            {/*                {" "}*/}
+                            {/*                <i className={d.icon}></i>*/}
+                            {/*                <h3>{d.title}</h3>*/}
+                            {/*                <p>{d.text}</p>*/}
+                            {/*            </div>*/}
+                            {/*        ))*/}
+                            {/*        : "Loading..."}*/}
+                            {/*</div>*/}
+
+                        </center>
+
+                            <div id="product_list" className="product-type-gallery">
+                                <div className="product-list-10 row">
+                                    <div className="col-xs-6 col-sm-4" data-buytype="" data-allergy=""
+                                         style={{"display": "none"}}>
+
+                                        {select2result.map((i, index) => (
+                                            <span key={index}>
+                                <a rel="history" href="Bread01" className="image-link">
+                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
+                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+
 
                         </div>
 
@@ -343,6 +405,11 @@ import axios from "axios";
                         {/*        </div>*/}
                         {/*    </div>*/}
                         {/*</div>*/}
+
+
+
+
+
                     </div>
                 </div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import {Navigation} from "../common/HomeMain";
 
 
 const OrderUpdateTypes= {REQUEST: 'OrderUpdate/REQUEST', SUCCESS: 'OrderUpdate/SUCCESS', FAIL: 'OrderUpdate/FAIL'}
@@ -27,7 +28,8 @@ export const OrderUpdateReducer = (state, action) => {
 
 export const OrderUpdate = () => {
 
-    return <>
+    return (<>
+        <Navigation/>
         <center>
             <article className="form">
                 <form className="form"><input placeholder="Name" required="" type="text" className="fbFaMk"
@@ -57,6 +59,6 @@ export const OrderUpdate = () => {
             </article>
         </center>
 
-    </>
+    </>)
 }
 

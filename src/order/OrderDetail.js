@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Pagination from "../vendor-test/common/pagination";
+import {Navigation} from "../common/HomeMain";
 const OrderDetailTypes= {REQUEST: 'OrderDetail/REQUEST', SUCCESS: 'OrderDetail/SUCCESS', FAIL: 'OrderDetail/FAIL'}
 const OrderDetailRequest = action => ({types: OrderDetailTypes.REQUEST, payload: action.payload})
 const OrderDetailSuccess = action => ({types: OrderDetailTypes.SUCCESS, payload: action.payload})
@@ -55,7 +56,8 @@ const PageDiv = styled.div`
 
 
 export const OrderDetail = () => {
-	return <>
+	return (<>
+		<Navigation/>
 		<center>
 			<article>
 				<BuyListTable>
@@ -76,5 +78,5 @@ export const OrderDetail = () => {
 				</PageDiv>
 			</article>
 		</center>
-	</>
+	</>)
 }
