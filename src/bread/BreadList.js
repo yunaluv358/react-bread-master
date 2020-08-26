@@ -8,6 +8,8 @@ export const BreadList = () => {
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
                     setData(response.data)
+                sessionStorage.setItem("bread", JSON.stringify(response.data))
+                alert("성공")
                 }
             ).catch((error => {
                 alert("실패")
@@ -15,6 +17,10 @@ export const BreadList = () => {
             }
         ))
     },[])
+    const imgClick = e => {
+
+    }
+
     return (
         <>
             <Navigation/>
@@ -31,7 +37,7 @@ export const BreadList = () => {
                         {data.map((i, index) => (
                             <span key={index}>
                                 <a rel="history" href="Bread01" className="image-link">
-                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
+                                    <img style={{width: '400px', height: '400px' }} onClick={imgClick} src={i.breadImage}/></a>
                             </span>
                         ))}
                     </div>

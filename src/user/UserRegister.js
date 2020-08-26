@@ -5,29 +5,6 @@ import './user-register.css'
 import axios from 'axios'
 import UserPostcode from "./UserPostcode";
 
-// const UserRegisterTypes = {REQUEST: 'UserRegister/REQUEST', SUCCESS: 'UserRegister/SUCCESS', FAIL: 'UserRegister/FAIL'}
-// const UserRegisterRequest = action => ({types: UserRegisterTypes.REQUEST, payload: action.payload})
-// const UserRegisterSuccess = action => ({types: UserRegisterTypes.SUCCESS, payload: action.payload})
-// const UserRegisterFail = action => ({types: UserRegisterTypes.FAIL, payload: action.payload})
-//
-// export const UserRegisterReducer = (state, action) => {
-//     switch (action.type) {
-//         case UserRegisterTypes.REQUEST:
-//             return {
-//                 ...state, payload: action.payload
-//             }
-//         case UserRegisterTypes.SUCCESS:
-//             return {
-//                 ...state, payload: action.payload
-//             }
-//         case UserRegisterTypes.FAIL:
-//             return {
-//                 ...state, payload: action.payload
-//             }
-//         default:
-//             return state
-//     }
-// }
 
 export const UserRegister = () => {
     // const classes = useStyles();
@@ -45,7 +22,7 @@ export const UserRegister = () => {
 
     const onSignCheck = e => {
         e.preventDefault();
-        const userData = {
+         const userData = {
             userId: userId,
             password: password,
             name: userName,
@@ -71,7 +48,6 @@ export const UserRegister = () => {
         <PageTemplate>
             <section className="signup">
                 <div className="main">
-                    {/*<div className="h3-bread">&nbsp;</div>*/}
                     <div className="h3-bread"></div>
                     <form className="theme-form">
                         <center><h2>회원가입</h2></center>
@@ -82,7 +58,7 @@ export const UserRegister = () => {
 
                         <div className="form-group">
                             <label>비밀번호</label>
-                            <input type="text" className="form-control" onChange={e=> setPassword(e.target.value)} placeholder="Last name"/>
+                            <input type='password' className="form-control" onChange={e=> setPassword(e.target.value)} placeholder="Last name"/>
                         </div>
 
                         <div className="form-group">
@@ -92,23 +68,23 @@ export const UserRegister = () => {
 
                         <div className="form-group">
                             <label>휴대전화</label>
-                            <input type="password" className="form-control" onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter password"/>
+                            <input type="phone" className="form-control" onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter password"/>
                         </div>
 
                         <div className="form-group">
                             <label>이메일</label>
-                            <input type="password" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
+                            <input type="text" className="form-control" onChange={e => setEmail(e.target.value)} placeholder="Enter email"/>
                         </div>
 
-                        <div className="form-row">
-                            <div className="col-md-6">
+                        <div cclassName="form-group">
                             <label>주소</label>
-                            <UserPostcode setAddress={(addr)=>(setAddr(addr))}/>
-                            <br/>
-                            <input type="text" className="form-control" value={addr} onChange={e => setEmail(e.target.value)}
-                                   placeholder="addr" required="" readOnly=""/>
-                            </div>
+
+                                <br/><br/><UserPostcode  setAddress={(addr)=>(setAddr(addr))}/>
+
+
+                            <input type="text" className="form-control" value={addr} onChange={e => setEmail(e.target.value)} placeholder="addr" required="" readOnly=""/>
                         </div>
+                        <br/>
                         <div className="form-group">
                             <label>나머지 주소</label>
                             <input type="text" className="form-control"

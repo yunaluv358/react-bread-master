@@ -52,9 +52,9 @@ export const UserAccess = () => {
         }else {
             axios.post(`http://localhost:8080/user/signIn`, userData)
                 .then(response => {
+                    sessionStorage.setItem("user", JSON.stringify(response.data))
                         alert("로그인 성공 !")
                         console.log(JSON.stringify(response.data))
-                        sessionStorage.setItem("userData", JSON.stringify(response.data))
                         history.push("/")
                     }
                 ).catch(
@@ -64,6 +64,25 @@ export const UserAccess = () => {
                 }
             )
         }
+        // if (userId && password){
+        //     axios.post(`http://localhost:8080/user/signIn`, userData)
+        //         .then(response => {
+        //                 sessionStorage.setItem("user", JSON.stringify(response.data))
+        //                 alert("로그인 성공 !")
+        //                 console.log(JSON.stringify(response.data))
+        //                 sessionStorage.setItem("userData", JSON.stringify(response.data))
+        //                 history.push("/")
+        //             }
+        //         ).catch(
+        //         error => {
+        //             alert("로그인 실패 !")
+        //             throw (error)
+        //         }
+        //     )
+        //     return history.push("/dashboard")
+        // }else {
+        //
+        // }
     }
     return <>
         <PageTemplate> <section className="Signin">

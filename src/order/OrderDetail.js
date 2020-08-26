@@ -24,7 +24,6 @@ export const OrderDetailReducer = (state, action) => {
 			return state
 	}
 }
-
 const BuyListTable = styled.table`
     width: 100%; 
     tbody {
@@ -37,7 +36,6 @@ const BuyListTable = styled.table`
         }
     }
 `;
-
 const PageDiv = styled.div`
     display: flex; 
     justify-content: center;
@@ -52,29 +50,29 @@ const PageDiv = styled.div`
         }
     }
 `;
-
-
 export const OrderDetail = () => {
 	return <>
 		<center>
-			<article>
-				<BuyListTable>
 					<thead>
-					<tr>
-						<th scope="col">num 주문번호</th>
-						<th scope="col">Name(option) 상품이름</th>
-						<th scope="col">Price 가격</th>
-						<th scope="col">Quantity 수량</th>
-						<th scope="col">Delivery 배송현황</th>
-					</tr>
+					<table border="1">
+						<th>상품사진</th>
+						<th>상품명</th>
+						<th>구매날짜</th>
+						<th>주문상태</th>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
 					</thead>
-					<tbody></tbody>
-				</BuyListTable>
-
-				<PageDiv>
-					<Pagination/>
-				</PageDiv>
-			</article>
 		</center>
 	</>
 }

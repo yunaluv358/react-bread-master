@@ -20,7 +20,7 @@ const UserPayment = () => {
         }
         IMP.request_pay(data, callback);
 
-        // axios.post(`http://localhost:8080/myPage/${data.name}/${data.amount}/${data.buyer_name}/${data.buyer_name}`)
+        // axios.post(`http://localhost:8080/page/${data.name}/${data.amount}/${data.buyer_name}/${data.buyer_name}`)
         //     .then((res)=>{
         //     alert("성공")
         //     }).catch(err=>{
