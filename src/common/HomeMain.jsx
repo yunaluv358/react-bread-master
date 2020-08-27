@@ -98,16 +98,44 @@ export const Navigation = () => {
 								join
 							</a>
 						</li>
+						{!sessionStorage.user &&
+						<li>
+
+						</li>
+						}
+						{sessionStorage.user &&
 						<li>
 							<a href="order" className="page-scroll">
 								order
 							</a>
 						</li>
+						}
+						{!sessionStorage.user &&
+						<li>
+
+						</li>
+						}
+						{sessionStorage.user &&
 						<li>
 							<a href="myPage" className="page-scroll">
 								mypage
 							</a>
 						</li>
+						}
+						{!sessionStorage.user &&
+						<li>
+
+						</li>
+						}
+						{sessionStorage.user &&
+						<li>
+							<a href="shipping" className="page-scroll">
+								주문현황
+							</a>
+						</li>
+						}
+
+
 					</ul>
 				</div>
 			</div>

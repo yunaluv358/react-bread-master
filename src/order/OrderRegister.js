@@ -20,12 +20,6 @@ const BreadReducer = (state = {bread:[]},action) => {
 }
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
-// console.log("주문자이름"+sessionUser.name)
-// console.log("주문자이름"+sessionUser.addr)
-// console.log("주문자이름"+sessionUser.email)
-// console.log("주문자이름"+sessionUser.addr)
-// console.log("주문자이름"+sessionUser.addr)
-
 export const OrderRegister = () => {
 	const [bread,seTBread] = useState({
 		breadName : '비건빵',
