@@ -56,7 +56,7 @@ const PageDiv = styled.div`
 
 
 export const OrderDetail = () => {
-	return (<>
+	return <>
 		<Navigation/>
 		<center>
 			<article>
@@ -78,5 +78,5 @@ export const OrderDetail = () => {
 				</PageDiv>
 			</article>
 		</center>
-	</>)
+	</>
 }

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 //import './bread.css'
 import axios from "axios";
 import {Navigation} from "../common/HomeMain";
+import { Button } from 'react-bootstrap';
 
 export const BreadItem = () => {
 	//const [selectedBread, setselectedBread] = useState([])
@@ -13,6 +14,11 @@ export const BreadItem = () => {
 		setBread(JSON.parse(localStorage.getItem('selectedBread')))
 
 	}, [])
+
+	const passDetail = bread => {
+		alert('소비자 선택 후 ...'+bread.breadName)
+		localStorage.setItem('selectedBread', JSON.stringify(bread))
+	}
 
 	return(<>
 				<Navigation/>
@@ -72,15 +78,16 @@ export const BreadItem = () => {
 										</tbody>
 									</table>
 								</div>
-								<div id="sit_tot_price"><span>총 금액 </span><strong>{bread.breadPrice}</strong> 원</div>
+								<div id="sit_tot_price" style={{"padding-bottom": "20px"}}><span>총 금액 </span><strong>{bread.breadPrice}</strong> 원</div>
 
 
 								<div id="sit_ov_btn">
-									<button type="button" onClick="location.href='order" className="sit_btn_buy">
-										바로구매
-									</button>
-									<a href="order" rel="next_page">바로구매</a>
-									<input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>
+									{/*<button type="button" onClick="location.href=order" className="sit_btn_buy">*/}
+									{/*	바로구매*/}
+									{/*</button>*/}
+									<Button variant="primary" size="lg" href="order" rel="next_page" onClick={()=>passDetail(bread)}>바로구매</Button>{' '}
+
+									{/*<input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>*/}
 									<div><img src={bread.breadImageDetail}/></div>
 								</div>
 							</div>
