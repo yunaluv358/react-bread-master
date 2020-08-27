@@ -5,7 +5,6 @@ import { OrderDetail } from "../order/OrderDetail";
 import { Link } from "react-router-dom"
 import { OrderUpdate } from "../order/OrderUpdate";
 import {Navigation} from "../common/HomeMain";
-import {Router} from "react-router-dom"
 
 const UserDetailNavigation = styled.div`
     
@@ -73,7 +72,6 @@ export const UserDetail = () => {
 
             <Route path="/MyPage/OrderDetail" component={OrderDetail}/>
             <Route path="/MyPage/EditProfile" component={OrderUpdate}/>
-
 
     </>)
 
