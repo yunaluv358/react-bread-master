@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { PageTemplate } from "../common/PageTemplate";
 import { useHistory, Link } from 'react-router-dom';
@@ -22,6 +23,35 @@ export const UserDetail = () => {
             phone: phone,
             addr:addr,
             detailAddr:detailAddr
+=======
+import React from "react";
+import styled from "styled-components";
+import Route from "react-router-dom/es/Route";
+import { OrderDetail } from "../order/OrderDetail";
+import { Link } from "react-router-dom"
+import { OrderUpdate } from "../order/OrderUpdate";
+import {Navigation} from "../common/HomeMain";
+import {Router} from "react-router-dom"
+
+const UserDetailNavigation = styled.div`
+    
+    padding: 30px 0 0; 
+    border-bottom: 1px solid #ccc;
+    button {
+        border: 1px solid transparent; 
+        border-bottom: 0; 
+        cursor: pointer; 
+        font-weight: 600;
+        background-color: transparent;
+        font-size: 18px;
+        outline: none;
+        padding: 15px;
+        @media (max-width: 600px) {
+            padding: 10px;
+        }
+        :hover {
+            color: black;
+>>>>>>> master
         }
         axios.patch(`http://localhost:8080/user/changeInfo/${userId}`, userData)
             .then(response => {
@@ -36,6 +66,7 @@ export const UserDetail = () => {
             }
         )
     }
+<<<<<<< HEAD
     return <>
         <PageTemplate>
             <section className="signup" style={{position:'relative',weidth:'10%'}}>
@@ -83,5 +114,32 @@ export const UserDetail = () => {
             </section>
         </PageTemplate>
     </>
+=======
+}
+
+
+export const UserDetail = () => {
+    return (<>
+
+            <Navigation/>
+
+            <h1 className="h3-bread" style={{"padding-top":"120px"}}></h1>
+            <div className="gaukuF"><h2 className="sc-jTzLTM btRZwy" >My Page</h2>
+                <button type="button" className="sc-dnqmqq qrXFy">LogOut</button>
+            </div>
+
+            <UserDetailNavigation>
+                <p><Link to="/MyPage/OrderDetail">OrderList</Link></p>
+                <p><Link to="/MyPage/EditProfile">Edit Profile</Link></p>
+            </UserDetailNavigation>
+
+            {/* 이중 라우팅 */}
+
+            <Route path="/MyPage/OrderDetail" component={OrderDetail}/>
+            <Route path="/MyPage/EditProfile" component={OrderUpdate}/>
+
+
+    </>)
+>>>>>>> master
 
 }

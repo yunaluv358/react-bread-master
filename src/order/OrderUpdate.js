@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< HEAD
 import UserPostcode from "../user/UserPostcode";
+=======
+import {Navigation} from "../common/HomeMain";
+>>>>>>> master
 
 
 const OrderUpdateTypes= {REQUEST: 'OrderUpdate/REQUEST', SUCCESS: 'OrderUpdate/SUCCESS', FAIL: 'OrderUpdate/FAIL'}
@@ -29,7 +33,8 @@ export const OrderUpdateReducer = (state, action) => {
 export const OrderUpdate = () => {
     const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
-    return <>
+    return (<>
+        <Navigation/>
         <center>
             <article className="form">
                 <form className="form"><input placeholder="Name" required="" type="text" className="fbFaMk"
@@ -47,6 +52,6 @@ export const OrderUpdate = () => {
             </article>
         </center>
 
-    </>
+    </>)
 }
 

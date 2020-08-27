@@ -1,4 +1,5 @@
 .bread-title{
+    padding-top: 120px;
     color: #e2a40c;
     text-align: left;
 }
@@ -680,3 +681,19 @@ body.mobile .audio-player {
     padding-right: 1rem;
 }
 
+.ol-before {position:relative;display:block;font-size:12px;background:#fff;margin-bottom:30px}
+/* 타이틀 */
+.ol-before-title {border-top:5px solid #F1EEEA}
+.ol-before-title h5 {font-size:13px}
+.ol-before-title p {font-size:11px;color:#707070}
+/* input */
+.ol-before .input input {height:40px;border-color:#bbb}
+.ol-before .input input:focus {border-color:#df3e35}
+.ol-before #ol_submit {display:block;width:100%;height:40px;line-height:40px;text-align:center;color:#fff;background:#00a0e9;border:0 none}
+.ol-before #ol_submit:hover {background:#09b2ff}
+.ol-before #ol_password_lost {line-height:27px}
+/* ol-before-register */
+.ol-before-register {margin-top:30px}
+.ol-before-register h6 {font-size:11px}
+.ol-before-register a {display:block;height:40px;line-height:38px;color:#00a0e9;border:1px solid #00a0e9;text-align:center}
+.ol-before-register a:hover {border-color:#09b2ff;color:#09b2ff}

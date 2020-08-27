@@ -22,7 +22,11 @@
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
+<<<<<<< HEAD
     "react-bootstrap-modal": "^4.2.0",
+=======
+    "react-center": "^1.1.1",
+>>>>>>> master
     "react-chartjs-2": "^2.7.6",
     "react-daum-postcode": "^1.9.1",
     "react-dom": "^16.13.1",
