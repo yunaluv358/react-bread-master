@@ -18,13 +18,12 @@ import { Main } from './Main';
 import { UserRegister } from "./user/UserRegister";
 import { UserAccess } from "./user/UserAccess";
 import { UserDetail } from "./user/UserDetail";
-import UserShipping from "./user/UserShipping";
 
 import theme from "./vendor/theme";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import { Map } from './vendor/map'
 
-import { AdminOrderDelivery } from "./admin/AdminOrderDelivery";
+import { OrderDelivery } from "./order/OrderDelivery";
 import { ShopDetail } from "./shop/ShopDetail";
 import { ShopLocation } from "./shop/ShopLocation";
 import { MovieGenre } from "./movie/MovieGenre";
@@ -34,7 +33,6 @@ import { createStore } from 'redux'
 import rootReducer from './RootReducer'
 import { AdminUserList } from "./admin/AdminUserList";
 import { AdminBreadRegister } from "./admin/AdminBreadRegister";
-
 
 
 
@@ -60,7 +58,6 @@ export const RootRouter = () => {
 					<Route path="/contacts" component={ ShopLocation }/>
 					<Route path="/movie-genre" component={MovieGenre}/>
 					<Route path="/movie-list" component={ MovieList }/>
-					<Route path="/shipping" component={ UserShipping }/>
 					<Redirect from="/message" to="/" /> {/* 주소/message 로 접속 시 주소/posts 로 리디렉션 */}
 					<ThemeProvider theme={theme}>
 						<Route path="/dashboard" component={Admin}/>
@@ -78,7 +75,7 @@ export const RootRouter = () => {
 								path="/user-list"
 							/>
 							<RouteWithLayout
-								component={ AdminOrderDelivery }
+								component={ OrderDelivery }
 								exact
 								layout={ AdminMain }
 								path="/order-delivery"

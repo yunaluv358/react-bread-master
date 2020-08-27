@@ -5,7 +5,7 @@ import { AdminDashboard } from "./AdminDashboard";
 import { AdminMain } from './AdminMain';
 import { AdminUserList } from "./AdminUserList";
 import { AdminBreadRegister } from "./AdminBreadRegister";
-import { AdminOrderDelivery } from "./AdminOrderDelivery";
+import { OrderDelivery } from "../order/OrderDelivery";
 import {Chart} from "../chart/Chart";
 
 
@@ -36,7 +36,7 @@ export const Admin = () => {
         path="/user-list"
       />
       <RouteWithLayout
-        component={AdminOrderDelivery}
+        component={OrderDelivery}
         exact
         layout={ AdminMain }
         path="/order-delivery"

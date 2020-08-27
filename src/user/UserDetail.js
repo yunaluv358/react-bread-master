@@ -69,11 +69,11 @@ const UserDetailNavigation = styled.div`
 <<<<<<< HEAD
     return <>
         <PageTemplate>
-            <section className="signup" style={{position:'relative',weidth:'10%'}}>
-                <div className="main" >
+            <section className="signup">
+                <div className="main">
                     <div className="h3-bread"></div>
-                    <form className="theme-form" >
-                        <center><h2>회원 정보수정</h2></center>
+                    <form className="theme-form">
+                        <center><h2>회원가입</h2></center>
                         <div className="form-group">
                             <label>아이디</label>
                             <input  value={userId} type="text" className="form-control" onChange={e => setUserId(e.target.value)} />
@@ -105,7 +105,7 @@ const UserDetailNavigation = styled.div`
                             <input type="text" className="form-control" value={detailAddr}
                                    onChange={e => setDetailAddr(e.target.value)} placeholder="나머지 주소는 직접입력해 주세요." required=""/>
                         </div>
-                        <button type="submit" className="btn btn-primary btn-block" onClick={crystalHandle}>정보 수정</button>
+                        <button type="submit" className="btn btn-primary btn-block" onClick={crystalHandle}>Sign Up</button>
                         <p className="forgot-password text-right">
                             Already registered <a href="#">sign in?</a>
                         </p>

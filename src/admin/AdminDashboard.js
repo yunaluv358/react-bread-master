@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {  Grid } from '@material-ui/core';
-import { AdminOrderDelivery } from "./AdminOrderDelivery";
+import { OrderDelivery } from "../order/OrderDelivery";
 import { AdminUserList } from "./AdminUserList";
 import { AdminBreadRegister } from "./AdminBreadRegister";
 import { Map } from "../vendor/map";
@@ -32,7 +32,7 @@ export const AdminDashboard = () => {
         </Grid >
         <Grid style={{position:'relative',left:"-38%",width:'30%',height:'100%',top:'0px'}}
         >
-          <AdminOrderDelivery />
+          <OrderDelivery />
         </Grid>
 
         <Grid style={{position:"relative",top:'-600px',width:'30%',height:'70%'}}

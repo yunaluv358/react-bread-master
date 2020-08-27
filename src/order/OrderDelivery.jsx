@@ -12,7 +12,7 @@ const OrderDeliveryReducer = ( state, action ) => {
 }
 
 
-export const AdminOrderDelivery = () => {
+export const OrderDelivery = () => {
     const [data,setData] = useState([])
     useEffect(()=>{
         axios.get(`http://localhost:8080/shipping/findAll`)
@@ -24,9 +24,6 @@ export const AdminOrderDelivery = () => {
             })
     },[])
     const columns = [
-        {
-            title:'상품명',field:'shippingBreadName'
-        },
         {
             title:'배송시작날짜',field:'shippingDate'
         },
@@ -48,6 +45,7 @@ export const AdminOrderDelivery = () => {
                     resolve(
                         axios.post(`http://localhost:8080/shipping/allUpdate`,[...dataUpdate])
                             .then((res)=>{
+
                             })
                             .catch(()=>{
                                 alert("통신실패")
