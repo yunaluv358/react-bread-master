@@ -20,6 +20,7 @@
     "mdbreact": "^4.27.0",
     "polyline": "^0.2.0",
     "react": "^16.13.1",
+    "react-center": "^1.1.1",
     "react-chartjs-2": "^2.7.6",
     "react-dom": "^16.13.1",
     "react-geocode": "^0.2.1",

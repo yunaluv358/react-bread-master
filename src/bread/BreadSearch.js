@@ -32,8 +32,6 @@ import axios from "axios";
              }
          },[chart1Select])*/
 
-        const subbreadAll = breadAll
-
         const init = (e) => {
             $(window).scrollTop($('div.find').offset().top - $('div.navbar').height());
 
@@ -56,21 +54,6 @@ import axios from "axios";
                     temp.push(i)
                 }
 
-               /* switch (value) {
-                    case "식사대용":
-
-                        console.log(temp[i].breadName)
-                    // case "호두": case "땅콩": case "피스타치오": case "캐슈넛": case "마카다미아": case "밀가루": case "콩(대두)": case "설탕": case "토마토": case "건포도": case "복숭아":
-
-                        // alert(temp[i].breadName + temp[i].option)
-                        break
-                    case "간식대용" :
-                        break
-                    case "다이어트" :
-                        break
-                    case "선물" :
-                        break
-                } */
 
             }
             for (let i of temp) {
@@ -123,47 +106,7 @@ import axios from "axios";
 
             $('#result ul li').hide(e);
 
-
-
-            // let select1 = $(":input:radio[name=chart1]:checked").val(e);
-            //
-            // $('#resultList div.col-xs-6').each(function (e) {
-            //
-            //     //문자열이 포함되어 있으면
-            //     if ($(e).attr('option').indexOf(select1) !== -1) {
-            //         $(e).show(e);
-            //     }
-            //
-            // });
-            //
-            //
-            // $(":input:checkbox[name=chart2]:checked").each(function (e) {
-            //
-            //     var select2 = $(e).val(e);
-            //
-            //     $('#resultList div.col-xs-6').each(function (e) {
-            //
-            //         if ($(e).attr('allergy').indexOf(select2) !== -1) {
-            //             $(e).hide(e);
-            //         }
-            //
-            //     });
-            //
-            // });
-
-
-            /*
-                $('input[name="chart2"]').each(function(){
-                  if( $(this).prop('checked') == true ){
-                    $('#resultList').each(function(){
-
-                    });
-                  }
-                });
-            */
         }
-
-        const almondUrl = "https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/allergy1.png";
 
         return (<>
                 <Navigation/>
@@ -334,82 +277,7 @@ import axios from "axios";
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-
-
-                        {/*<div id="resultList">*/}
-                        {/*    <div id="product_list" className="product-type-gallery">*/}
-                        {/*        <div className="product-list-10 row">*/}
-                        {/*            <div className="col-xs-6 col-sm-4" data-buyType="" data-allergy="">*/}
-                        {/*                <div className="item-list-10">*/}
-                        {/*                    <div className="product-img">*/}
-                        {/*                        <a href="https://thebreadblue.com/shop/1584704124">*/}
-                        {/*                            <div className="product-img-in">*/}
-                        {/*                                <img*/}
-                        {/*                                    src="/data/item/1584704124/7ZmI7Y6Y7J207KeA7KCV6riw67Cw7Iah7I2464Sk7J28_2020.0402.png"*/}
-                        {/*                                    width="600" height="600" alt="무화과 깜빠뉴" title="무화과 깜빠뉴"/>*/}
-                        {/*                                    <div className="rgba-banner-area"></div></div>*/}
-                        {/*                        </a>*/}
-
-                        {/*                    </div>*/}
-
-                        {/*                    <div className="adm-edit-btn btn-edit-mode hidden-xs hidden-sm"*/}
-                        {/*                         style={{"margin-top": "-10px", "display": "none"}}>*/}
-                        {/*                        <div className="btn-group">*/}
-                        {/*                            <a href="https://thebreadblue.com/adm/?dir=shop&amp;pid=itemform&amp;w=u&amp;it_id=1585656636&amp;wmode=1"*/}
-                        {/*                               onClick="eb_admset_modal(this.href); return false;"*/}
-                        {/*                               className="btn-e btn-e-xs btn-e-dark btn-e-split"><i*/}
-                        {/*                                className="far fa-edit"></i> 개별상품 설정</a>*/}
-                        {/*                            <a href="https://thebreadblue.com/adm/?dir=shop&amp;pid=itemform&amp;w=u&amp;it_id=1585656636"*/}
-                        {/*                               target="_blank"*/}
-                        {/*                               className="btn-e btn-e-xs btn-e-dark btn-e-split-dark dropdown-toggle"*/}
-                        {/*                               title="새창 열기">*/}
-                        {/*                                <i className="far fa-window-maximize"></i>*/}
-                        {/*                            </a>*/}
-                        {/*                        </div>*/}
-                        {/*                    </div>*/}
-
-                        {/*                    <div className="product-description">*/}
-                        {/*                        <div className="product-description-in">*/}
-                        {/*                            <h4 className="product-name">*/}
-                        {/*                                <a href="https://thebreadblue.com/shop/1585656636">*/}
-                        {/*                                    더브레드블루 정기배송 </a>*/}
-                        {/*                            </h4>*/}
-
-                        {/*                            <div className="product-price">*/}
-                        {/*                                <span className="title-price">₩ 50,000</span>*/}
-                        {/*                            </div>*/}
-
-
-                        {/*                            <div className="product-info"></div>*/}
-                        {/*                        </div>*/}
-                        {/*                    </div>*/}
-                        {/*                    <div className="clearfix"></div>*/}
-                        {/*                    <div className="product-description-bottom">*/}
-                        {/*                        <a className="pull-left font-size-12"*/}
-                        {/*                           href="https://thebreadblue.com/shop/itemuselist.php?sfl=a.it_id&stx=1585672089">리뷰보기</a>*/}
-                        {/*                        <ul className="list-inline product-ratings pull-right">*/}
-                        {/*                            <li><i className="rating far fa-star"></i></li>*/}
-                        {/*                            <li><i className="rating far fa-star"></i></li>*/}
-                        {/*                            <li><i className="rating far fa-star"></i></li>*/}
-                        {/*                            <li><i className="rating far fa-star"></i></li>*/}
-                        {/*                            <li><i className="rating far fa-star"></i></li>*/}
-                        {/*                        </ul>*/}
-                        {/*                        <div className="clearfix"></div>*/}
-                        {/*                    </div>*/}
-                        {/*                </div>*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
-
-
-
-
-
                     </div>
                 </div>
 
