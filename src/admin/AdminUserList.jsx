@@ -30,6 +30,12 @@ export const AdminUserList = () => {
     {
       title:'이메일',field:'email'
     },
+    {
+      title:'주소',field:'addr'
+    },
+    {
+      title:'상세주소',field:'detailAddr'
+    },
   ]
   const editable = {
     onRowUpdate: (newData,oldData) =>
@@ -76,7 +82,7 @@ export const AdminUserList = () => {
                             color: '#FFF'
                         },
                         rowStyle: {
-                            backgroundColor: '#EEE',
+                            // backgroundColor: '#EEE',
                         }
                     }}/>
               </div>

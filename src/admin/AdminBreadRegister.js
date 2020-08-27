@@ -96,7 +96,7 @@ export const AdminBreadRegister = () => {
                                          color: '#FFF'
                                      },
                                      rowStyle: {
-                                         backgroundColor: '#EEE',
+                                         // backgroundColor: '#EEE',
                                      }
                                  }}/>
               </div>
