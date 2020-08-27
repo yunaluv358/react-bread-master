@@ -92,12 +92,19 @@ export const Navigation = () => {
 							</a>
 						</li>
 						}
-
+						{!sessionStorage.user &&
 						<li>
 							<a href="signup" className="page-scroll">
 								join
 							</a>
 						</li>
+						}
+						{sessionStorage.user &&
+						<li>
+						</li>
+						}
+
+
 						{!sessionStorage.user &&
 						<li>
 

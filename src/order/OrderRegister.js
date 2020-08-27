@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './order-register.css'
 import { PageTemplate } from '../common/PageTemplate'
 import queryString from "query-string";
 import {MDBBtn} from "mdbreact";
 import {useDispatch} from "react-redux";
+import UserPayment from "../user/UserPayment";
 const CLEAR_BREAD = 'CLEAR_BREAD'
 const clearBread = () => ({
 	type: CLEAR_BREAD
@@ -18,12 +19,16 @@ const BreadReducer = (state = {bread:[]},action) => {
 			return state;
 	}
 }
+
 const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const OrderRegister = () => {
-	const [bread,seTBread] = useState({
-		breadName : '비건빵',
-		breadPrice : '7500',
+
+	const [user,setUser] = useState("")
+	const [bread,setBread]=useState("")
+	useEffect(()=>{
+		setUser(JSON.parse(sessionStorage.getItem('user')))
+		setBread(JSON.parse(localStorage.getItem('selectedBread')))
 	})
 	const onClickPayment = () => {
 		// 가맹점 코드
@@ -35,16 +40,14 @@ export const OrderRegister = () => {
 			pay_method: 'card', //결제 방법
 			merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
 			name : bread.breadName, //상품명
-			amount: bread.breadPrice, // 결제금액,상품가격
-			buyer_name : sessionUser.name, // 구매자
-			buyer_tel: sessionUser.phone, // 구매자 번호
-			buyer_email:sessionUser.email, // 구매자 이메일
-			buyer_addr : sessionUser.addr // 구매자 주소
+			amount: 200, // 결제금액,상품가격
+			buyer_name : user.name, // 구매자
+			buyer_tel: user.phone, // 구매자 번호
+			buyer_email:user.email, // 구매자 이메일
+			buyer_addr : user.addr // 구매자 주소
 
 		}
 		IMP.request_pay(data,callback); // 결제창 호출
-
-
 	}
 	const dispatch = useDispatch()
 	function callback(response) {
@@ -64,36 +67,31 @@ export const OrderRegister = () => {
 						<table className="fQMIPz">
 							<thead className="sc-kgAjT QollL">
 							<tr>
-								<th scope="col" className="sc-cJSrbW gVXHZH">product</th>
-								<th scope="col" className="sc-cJSrbW gVXHZH">Name (Option)</th>
-								<th scope="col" className="sc-cJSrbW gVXHZH">price</th>
-								<th scope="col" className="sc-cJSrbW gVXHZH">Quantity</th>
+								<th scope="col" className="sc-cJSrbW gVXHZH">{bread.breadName}</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr>
 								<td className="sc-hqyNC fvxYsy"></td>
 								<td><img
-									src="https://thebreadblue.com/data/item/1585656636/thumb-66y07ZmU6rO86rmc67mg64m0_1000x1000.png"
+									src={bread.breadImage}
 									className="fotorama__img"
 								/></td>
 								<td>
-									<div>무화과 깜빠뉴</div>
+									<div>{bread.breadName}</div>
 									L/BLACK
 								</td>
-								<td>￦7,900</td>
-								<td>1</td>
+								<td>{bread.breadPrice}</td>
+								{/*<td>1</td>*/}
 							</tr>
 							</tbody>
 							<tfoot>
 							<tr>
-								<td colSpan="1" className="sc-ksYbfQ eBRNqZ">Total</td>
-								<td colSpan="2"></td>
-								<td colSpan="1" className="sc-ksYbfQ eBRNqZ">￦59,300</td>
+								<td colSpan="1" className="sc-ksYbfQ eBRNqZ">{bread.breadPrice}</td>
 							</tr>
 							</tfoot>
 						</table>
-						<div id="responsiveTotalDiv" className="sc-kvZOFW gAYafu">Total : ￦59,300</div>
+						{/*<div id="responsiveTotalDiv" className="sc-kvZOFW gAYafu">Total : ￦59,300</div>*/}
 					</article>
 					<article className="sc-jnlKLf bCmhqn"><h3 className="sc-kIPQKe hRzZDy">Order Information</h3>
 						<form className="sc-eXEjpC eOBXHa">
@@ -118,9 +116,7 @@ export const OrderRegister = () => {
 						</form>
 					</article>
 					<MDBBtn gradient="black" size="lg" onClick={() => onClickPayment()}>결제하기</MDBBtn>
-					{/*<div className="sc-hrWEMg SVQWq">*/}
-					{/*    <button className="sc-eTuwsz fzBQRY">결제하기</button>*/}
-					{/*</div>*/}
+					<UserPayment>결제테스트</UserPayment>
 				</div>
 			</section>
 		</PageTemplate>
