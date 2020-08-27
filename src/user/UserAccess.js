@@ -40,6 +40,10 @@ export const UserAccess = () => {
         setUserId('admin119')
         setPassword('1111!@')
     }
+    const handleLogout = e=> {
+        sessionStorage.removeItem('user')
+        window.location.reload()
+    }
 
     const SignInButton = e => {
         e.preventDefault()
@@ -49,10 +53,10 @@ export const UserAccess = () => {
         }
         if (userId === 'admin119' && password === '1111!@'){
             return history.push("/dashboard")
-        }else {
+        }else{
             axios.post(`http://localhost:8080/user/signIn`, userData)
                 .then(response => {
-                    sessionStorage.setItem("user", JSON.stringify(response.data))
+                        sessionStorage.setItem("user", JSON.stringify(response.data))
                         alert("로그인 성공 !")
                         console.log(JSON.stringify(response.data))
                         history.push("/")
@@ -64,29 +68,10 @@ export const UserAccess = () => {
                 }
             )
         }
-        // if (userId && password){
-        //     axios.post(`http://localhost:8080/user/signIn`, userData)
-        //         .then(response => {
-        //                 sessionStorage.setItem("user", JSON.stringify(response.data))
-        //                 alert("로그인 성공 !")
-        //                 console.log(JSON.stringify(response.data))
-        //                 sessionStorage.setItem("userData", JSON.stringify(response.data))
-        //                 history.push("/")
-        //             }
-        //         ).catch(
-        //         error => {
-        //             alert("로그인 실패 !")
-        //             throw (error)
-        //         }
-        //     )
-        //     return history.push("/dashboard")
-        // }else {
-        //
-        // }
     }
     return <>
+        {!sessionStorage.user &&
         <PageTemplate> <section className="Signin">
-
             <div className="h3-bread">&nbsp;</div>
             <form>
                 <h3 >Sign In</h3>
@@ -100,20 +85,16 @@ export const UserAccess = () => {
                     <label>Password</label>
                     <input type="password" className="form-control" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter password" />
                 </div>
-
-
-
                 <button type="submit" className="btn btn-primary btn-block" onClick={SignInButton}>Submit</button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
                 <button onClick={onAdmin}>AdminButton</button>
             </form>
-
-
-
         </section></PageTemplate>
+        }
+
+
     </>
 
 }
-

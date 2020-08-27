@@ -5,26 +5,30 @@ import JsonData from '../vendor/data.json';
 
 export const HomeMain = () => {
 
-    const [landingPageData,setLandingPageData] = useState({})
+	const [landingPageData,setLandingPageData] = useState({})
 
-    useEffect(() => {
-        setLandingPageData(JsonData)
-    },[])
+	useEffect(() => {
+		setLandingPageData(JsonData)
+	},[])
 
-    // const componentDidMount = () => {
-    //     getlandingPageData();
-    // }
-    return (
-        <div>
-            <Navigation />
-            <Header data={JsonData.Header} />
-            <Features data={JsonData.Features} />
-            <ShopAbout data={JsonData.About} />
-            <ShopMessageRegister data={JsonData.Contact} />
-        </div>
-    )
+	// const componentDidMount = () => {
+	//     getlandingPageData();
+	// }
+	return (
+		<div>
+			<Navigation />
+			<Header data={JsonData.Header} />
+			<Features data={JsonData.Features} />
+			<ShopAbout data={JsonData.About} />
+			<ShopMessageRegister data={JsonData.Contact} />
+		</div>
+	)
 }
 export const Navigation = () => {
+	const handleLogout = e=> {
+		sessionStorage.removeItem('user')
+		window.location.reload()
+	}
 
 	return (
 		<nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -74,11 +78,21 @@ export const Navigation = () => {
 				>
 					<ul className="nav navbar-nav navbar-right">
 
+						{!sessionStorage.user &&
 						<li>
 							<a href="signin" className="page-scroll">
 								login
 							</a>
 						</li>
+						}
+						{sessionStorage.user &&
+						<li>
+							<a  className="page-scroll" onClick={handleLogout}>
+								logout
+							</a>
+						</li>
+						}
+
 						<li>
 							<a href="signup" className="page-scroll">
 								join
