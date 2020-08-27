@@ -125,12 +125,6 @@ export const Header = props => {
 								</a>{" "}
 
 
-								<a href="Contacts"
-								   className="btn btn-custom btn-lg page-scroll"
-								>
-									map
-								</a>{" "}
-
 
 							</div>
 						</div>

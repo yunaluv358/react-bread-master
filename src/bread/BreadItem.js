@@ -6,10 +6,12 @@ import {Navigation} from "../common/HomeMain";
 export const BreadItem = () => {
 	//const [selectedBread, setselectedBread] = useState([])
 
+	const [bread,setBread]=useState("");
+
 	useEffect(() => {
-		let selectedBread = localStorage.getItem('selectedBread')
-		let bread = JSON.parse(selectedBread)
-		console.log('소비자가 선택한 빵: '+ bread.breadName)
+
+		setBread(JSON.parse(localStorage.getItem('selectedBread')))
+
 	}, [])
 
 	return(
@@ -17,13 +19,6 @@ export const BreadItem = () => {
 				<Navigation/>
 				<div style={{"padding-bottom":"120px"}}/>
 
-				{/*<div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="" className="">*/}
-				{/*	<div grid-col="4" grid-pad="1.5"><h1>01</h1></div>*/}
-				{/*	<div grid-col="8" grid-pad="1.5"><h1>Fig Campagne</h1></div>*/}
-				{/*	<div grid-col="8" grid-pad="1.5"><h1>무화과 깜빠뉴</h1></div>*/}
-				{/*</div>*/}
-				{/*<br/>*/}
-				{/*<br/><br/>*/}
 
 				<div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="">
 					<div grid-col="x10" grid-pad="1.5">
@@ -41,10 +36,8 @@ export const BreadItem = () => {
 											<div className="fotorama__fullscreen-icon" tabIndex="0" role="button"></div>
 											<div className="fotorama__stage__shaft"
 											>
-												<div
-													className="fotorama__stage__frame fotorama__loaded fotorama__loaded--img fotorama__active"
-												><img src="https://thebreadblue.com/data/item/1585656636/thumb-66y07ZmU6rO86rmc67mg64m0_1000x1000.png"
-													className="fotorama__img" style={{"width":"400px"}}/></div>
+												<div className="fotorama__stage__frame fotorama__loaded fotorama__loaded--img fotorama__active">
+													<center><img src={bread.breadImage} className="fotorama__img" style={{"width":"400px"}}/></center></div>
 											</div>
 
 										</div>
@@ -58,10 +51,10 @@ export const BreadItem = () => {
 
 
 								<h3 className="product-title">
-									<strong>무화과 깜빠뉴</strong>
+									<strong>{bread.breadName}</strong>
 								</h3>
 
-								<p className="font-size-14 color-grey">톡톡 씹히는 무화과가 매력적인 무화과 깜빠뉴 </p>
+								<p className="font-size-14 color-grey">{bread.breadDescription}</p>
 
 								<div className="shop-description-box">
 									<table className="table">
@@ -69,7 +62,7 @@ export const BreadItem = () => {
 										<tr>
 											<th scope="row">판매가격</th>
 											<td>
-												<strong className="shop-product-prices">7,900원</strong>
+												<strong className="shop-product-prices">{bread.breadPrice}</strong>
 												<input type="hidden" id="it_price" value="7900"/>
 											</td>
 										</tr>
@@ -130,25 +123,13 @@ export const BreadItem = () => {
 									<button onclick="location.href='BreadOrder.js'" type="button">text</button>
 									<input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>
 
-
 								</div>
-
 							</div>
-
-							<img
-								src={'https://thebreadblue.com/data/editor/2007/ce5e7872b2037bb54992c26397bf2350_1595490076_5124.png'}/>
 						</div>
-
 					</div>
 				</div>
 
-
-				<div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="">
-					<div grid-col="4" grid-pad="1.5"></div>
-					<div grid-col="8" grid-pad="1.5" className=""><a href="breads" rel="next_page">prev
-						︎</a> &nbsp; &nbsp; &nbsp;&nbsp;
-						<a href="#" rel="next_page">Next ︎</a></div>
-				</div>
+				<center><img src={bread.breadImageDetail}/></center>
 			</>
 
 	)
