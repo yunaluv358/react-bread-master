@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './order-register.css'
 import { PageTemplate } from '../common/PageTemplate'
 import queryString from "query-string";
 import {MDBBtn} from "mdbreact";
 import {useDispatch} from "react-redux";
-import axios from 'axios'
-import { useHistory } from 'react-router-dom';
+import UserPayment from "../user/UserPayment";
 const CLEAR_BREAD = 'CLEAR_BREAD'
 const clearBread = () => ({
 	type: CLEAR_BREAD
@@ -25,9 +24,12 @@ const sessionUser = JSON.parse(sessionStorage.getItem('user'))
 
 export const OrderRegister = () => {
 
-	const [user,setUser] = useState(JSON.parse(sessionStorage.getItem('user')))
-	const [bread,setBread]=useState(JSON.parse(localStorage.getItem('selectedBread')))
-	const history = useHistory();
+	const [user,setUser] = useState("")
+	const [bread,setBread]=useState("")
+	useEffect(()=>{
+		setUser(JSON.parse(sessionStorage.getItem('user')))
+		setBread(JSON.parse(localStorage.getItem('selectedBread')))
+	})
 	const onClickPayment = () => {
 		// 가맹점 코드
 		const { IMP } = window;
@@ -38,45 +40,21 @@ export const OrderRegister = () => {
 			pay_method: 'card', //결제 방법
 			merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
 			name : bread.breadName, //상품명
-			// amount: bread.breadPrice, // 결제금액,상품가격
-			amount: 101, // 결제금액,상품가격
+			amount: 200, // 결제금액,상품가격
 			buyer_name : user.name, // 구매자
 			buyer_tel: user.phone, // 구매자 번호
 			buyer_email:user.email, // 구매자 이메일
 			buyer_addr : user.addr // 구매자 주소
 
 		}
-		/* 4. 결제 창 호출하기 */
 		IMP.request_pay(data,callback); // 결제창 호출
 	}
-	/* 3. 콜백 함수 정의하기 */
+	const dispatch = useDispatch()
 	function callback(response) {
-		const {success, error } = response
-		const data = {
-			shippingName : user.name,
-			shippingStatus : '배송준비',
-			shippingBreadName : bread.breadName,
-			// shippingPrice : bread.breadPrice
-			shippingPrice : '101',
-			shippingDate : '2020-08-28',
-			shippingAddr : user.addr
-		}
-		if (success) {
-			axios.post(`http://localhost:8080/shipping/payment`,data)
-				.then((response) => {
-					alert("성공")
-					history.push('/shipping')
-				})
-				.catch((err) => {
-					throw err;
-				});
-			let msg = `${response.name} ${response.breadPrice}원 결제가 완료되었습니다.`
-			alert(msg)
-
-		} else {
-			alert(`결제 실패: ${error}`);
-
-
+		const {seccess, error } = response
+		if (seccess) {
+			alert("결제성공")
+			dispatch()
 		}
 	}
 	return <>
@@ -138,6 +116,7 @@ export const OrderRegister = () => {
 						</form>
 					</article>
 					<MDBBtn gradient="black" size="lg" onClick={() => onClickPayment()}>결제하기</MDBBtn>
+					<UserPayment>결제테스트</UserPayment>
 				</div>
 			</section>
 		</PageTemplate>
