@@ -16,11 +16,11 @@ export const HomeMain = () => {
     )
 }
 export const Navigation = () => {
-    const history = useHistory();
+    // const history = useHistory();
     const handleLogout = e => {
         sessionStorage.removeItem('user')
-        // window.location.reload()
-        history.push("/")
+        window.location.reload()
+        // history.push("/")
     }
     return (
         <nav id="menu" className="navbar navbar-default navbar-fixed-top">
@@ -54,7 +54,6 @@ export const Navigation = () => {
                     id="bs-example-navbar-collapse-1"
                 >
                     <ul className="nav navbar-nav navbar-right">
-
                         {!sessionStorage.user &&
                         <li>
                             <a href="signin" className="page-scroll">
@@ -140,8 +139,6 @@ export const Header = props => {
                                 >
                                     Learn More
                                 </a>{" "}
-
-
                             </div>
                         </div>
                     </div>
