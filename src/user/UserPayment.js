@@ -20,19 +20,13 @@ const UserPayment = () => {
         }
         IMP.request_pay(data, callback);
 
-        // axios.post(`http://localhost:8080/page/${data.name}/${data.amount}/${data.buyer_name}/${data.buyer_name}`)
-        //     .then((res)=>{
-        //     alert("성공")
-        //     }).catch(err=>{
-        //     alert("실패")
-        // })
     }
     function callback(response) {
         const query = queryString.stringify(response);
     }
     return (
         <>
-            <MDBBtn gradient="black" size="lg" onClick={() => onClickPayment()}>결제하기</MDBBtn>
+            <MDBBtn gradient="black" size="lg" onClick={() => onClickPayment()}>결제테스트</MDBBtn>
         </>
     );
 
