@@ -34,6 +34,7 @@ import { createStore } from 'redux'
 import rootReducer from './RootReducer'
 import { AdminUserList } from "./admin/AdminUserList";
 import { AdminBreadRegister } from "./admin/AdminBreadRegister";
+import {SearchBreadItem} from "./bread/SearchBreadItem";
 
 
 
@@ -54,6 +55,7 @@ export const RootRouter = () => {
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/aboutDetail" component={AboutDetail}/>
 					<Route path="/bread01" component={BreadItem}/>
+					<Route path="/searchBreadItem" component={SearchBreadItem}/>
 					<Route path="/order" component={OrderRegister}/>
 					<Route path="/myPage" component={ UserDetail }/>
 					<Route path="/contactDetail" component={ ShopDetail }/>

@@ -108,6 +108,11 @@ export const BreadSearch = () => {
 
     }
 
+    const searchDetail = bread => {
+        alert('소비자 선택 후 ...'+bread.breadName)
+        localStorage.setItem('searchBread', JSON.stringify(bread))
+    }
+
     return (<>
             <Navigation/>
             <div style={{marginTop: '120px'}}>
@@ -242,43 +247,14 @@ export const BreadSearch = () => {
                         <center>
                             {select2result.map((i, index) => (
                                 <span key={index} className="col-xs-6 col-sm-4">
-                                <a rel="history" href="Bread01" className="image-link">
-                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
+                                <a rel="history" href="SearchBreadItem" className="image-link" onClick={()=>searchDetail(i)}>
+                                    <img src={i.breadImage} style={{width: '400px', height: '400px' }}/></a>
                                     <h3>{i.breadName}</h3>
                                 </span>
                             ))}
-
-                            {/*<div className="row">*/}
-                            {/*    {props.data*/}
-                            {/*        ? props.data.map((d,i) => (*/}
-                            {/*            <div  key={`${d.title}-${i}`} className="col-xs-6 col-md-3">*/}
-                            {/*                {" "}*/}
-                            {/*                <i className={d.icon}></i>*/}
-                            {/*                <h3>{d.title}</h3>*/}
-                            {/*                <p>{d.text}</p>*/}
-                            {/*            </div>*/}
-                            {/*        ))*/}
-                            {/*        : "Loading..."}*/}
-                            {/*</div>*/}
-
                         </center>
 
-                        <div id="product_list" className="product-type-gallery">
-                            <div className="product-list-10 row">
-                                <div className="col-xs-6 col-sm-4" data-buytype="" data-allergy=""
-                                     style={{"display": "none"}}>
-
-                                    {select2result.map((i, index) => (
-                                        <span key={index}>
-                                <a rel="history" href="Bread01" className="image-link">
-                                    <img style={{width: '400px', height: '400px' }} src={i.breadImage} /></a>
-                            </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
 
