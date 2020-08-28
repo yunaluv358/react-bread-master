@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import MaterialTable from "material-table";
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
+import {Button} from "@material-ui/core";
 
 const OrderDeliveryTypes = {REQUEST: 'Chart/REQUEST'}
 const OrderDeliveryRequest = action => ({type: OrderDeliveryTypes.REQUEST, payload: action.payload})
@@ -35,7 +37,13 @@ export const AdminOrderDelivery = () => {
         },
         {
             title:'배송상태',field: 'shippingStatus'
-        }
+        },
+        {
+            title:'상품가격',field: 'shippingPrice'
+        },
+        {
+            title:'회원주소',field: 'shippingAddr'
+        },
     ]
     const editable = {
         onRowUpdate: (newData,oldData) =>
@@ -58,6 +66,14 @@ export const AdminOrderDelivery = () => {
     }
     return (
         <>
+            <Button
+                color="primary"
+                size="small"
+                variant="text"
+                href="/adminOrderDelivery"
+            >
+                전체보기<ArrowRightIcon/>
+            </Button>
             <table title="배송 진행 목록" parent="Users" />
             <div className="container-fluid">
                 <div className="card">
@@ -73,7 +89,7 @@ export const AdminOrderDelivery = () => {
                         <div className="clearfix"/>
                         <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
                             <MaterialTable
-                                title={"배송"}
+                                title={"배송관리"}
                                 data={data}
                                 columns={columns}
                                 editable={editable} options={{
@@ -82,9 +98,9 @@ export const AdminOrderDelivery = () => {
                                     color: '#FFF'
                                 },
                                 rowStyle: {
-                                    // backgroundColor: '#EEE',
                                 }
                             }}/>
+
                         </div>
                     </div>
                 </div>

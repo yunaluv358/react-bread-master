@@ -60,12 +60,12 @@ export const AdminSidebar = props => {
     },
     {
       title: '배송관리',
-      href: '/order-delivery',
+      href: '/adminOrderDelivery',
       icon: <DashboardIcon />
     },
     {
       title: '상품등록 수정',
-      href: '/productRegistration',
+      href: '/adminBreadRegister',
       icon: <DashboardIcon />
     }
   ];

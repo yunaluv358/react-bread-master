@@ -3,15 +3,14 @@ import  { Pagination, Paginate } from '../common/Pagination';
 import axios from "axios";
 import './bread.css'
 import {Navigation} from "../common/HomeMain";
-
-
+import {useHistory} from "react-router-dom";
 export const BreadList = () => {
-
     const [pageSize, setPageSize] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(1)
     const [data,setData] = useState([])
 
+    const history = useHistory()
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
@@ -26,18 +25,13 @@ export const BreadList = () => {
         setPageSize(6)
         setCurrentPage(1)
     },[])
-
-
-
     const handlePageChange = (page) => {
         setCurrentPage(page); // 페이지 수 클릭 시 현재 페이지 변경
     }
-
-    const countHandler = e => {
-        if (count === 0)
-            return <p>There are no movies in the database.</p>
-    }
-
+    // const countHandler = e => {
+    //     if (count === 0)
+    //         return <p>There are no movies in the database.</p>
+    // }
     const subdata = Paginate(data, currentPage, pageSize);
 
     const passDetail = bread => {
@@ -59,21 +53,18 @@ export const BreadList = () => {
                     <div className="image-gallery" gid="6">
                         {subdata.map((i, index) => (
                             <span key={index}>
-                                <a rel="history" href="Bread01" className="image-link" onClick={()=>passDetail(i)}>
+                                <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
                                     <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
                             </span>
                         ))}
-
                         <Pagination
                             pageSize={pageSize}
                             itemsCount={data.length}
                             currentPage={currentPage}
                             onPageChange={handlePageChange}
                         />
-
                     </div>
                 </div>
-
             </div>
         </>
     )

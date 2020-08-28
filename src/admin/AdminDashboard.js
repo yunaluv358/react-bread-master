@@ -4,7 +4,7 @@ import {  Grid } from '@material-ui/core';
 import { AdminOrderDelivery } from "./AdminOrderDelivery";
 import { AdminUserList } from "./AdminUserList";
 import { AdminBreadRegister } from "./AdminBreadRegister";
-import { Map } from "../vendor/map";
+import { Map } from "../vendor/map/Map";
 import {Chart} from "../chart/Chart";
 
 const useStyles = makeStyles(theme => ({
@@ -35,12 +35,12 @@ export const AdminDashboard = () => {
           <AdminOrderDelivery />
         </Grid>
 
-        <Grid style={{position:"relative",top:'-600px',width:'30%',height:'70%'}}
+        <Grid style={{position:"relative",top:'-600px',width:'30%',height:'100px'}}
         >
           <AdminUserList />
         </Grid>
 
-        <Grid style={{position:'relative',left:"2%",width:'30%',height:'22%',top:'-570px'}}
+        <Grid style={{position:'relative',left:"2%",width:'30%',height:'22%',top:'-450px'}}
         >
           <AdminBreadRegister />
         </Grid>

@@ -8,7 +8,6 @@ const List = ({title,columns,data,editable}) => {
                            columns={columns}
                            data={data}
                            editable={editable}
-
             />
         </>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { Card,
   CardHeader,
@@ -68,10 +68,8 @@ export const Chart = props => {
         <CardHeader
             action={
               <div>
-                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} size="small" variant="text" >
-
+                <Button style={{position:'relative'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} size="small" variant="text" >
                   {chartType}
-
                   <ArrowDropDownIcon />
                 </Button>
                 <Menu

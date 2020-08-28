@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {Bar} from 'react-chartjs-2'
 import axios from 'axios'
-import data from "../vendor/map/data";
 
 const ChartBar = props => {
     const [totalKey,setTotalKey] = useState([]);
@@ -16,15 +15,12 @@ const ChartBar = props => {
                 const keyContainer =[];
                 const valueContainer  = [];
 
-                console.log(res.data)
                 Object.entries(res.data).forEach(([key,value])=>{
                     console.log("밸류값"+value)
                     keyContainer.push(key)
                     valueContainer.push(value)
 
                 })
-                valueContainer.push(200)
-                // 푸쉬성공 예시
                     setTotalKey(keyContainer);
                     setTotalValue(valueContainer);
             })
@@ -37,7 +33,6 @@ const ChartBar = props => {
 
     console.log(totalValue)
     const chartData = {
-        // labels: totalKey,
         labels:[1,2,3,5,5,6,7,8,9],
         datasets: [
             {
@@ -49,17 +44,10 @@ const ChartBar = props => {
                 xPadding:20,
                 yPadding:20,
             }
-        ]
-    }
+        ],
 
+    }
     const {chartValue} = props
-    const [dataType, setDataType] = useState(chartData)
-    // const switchCase = (param) =>{
-    //     switch(param){
-    //         case "Sales": return setDataType(chartData)
-    //     }
-    // }
-    // switchCase(chartValue)
     return (
         <div>
             <h2>{chartValue}</h2>
@@ -67,6 +55,8 @@ const ChartBar = props => {
             <input type="button" onClick={chartHandle} value={"회원조회"}/>
             <Bar
                 data={chartData}
+                width={40}
+                height={20}
             />
         </div>
     );
