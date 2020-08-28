@@ -78,10 +78,7 @@ export const UserRegister = () => {
 
                         <div cclassName="form-group">
                             <label>주소</label>
-
                                 <br/><br/><UserPostcode  setAddress={(addr)=>(setAddr(addr))}/>
-
-
                             <input type="text" className="form-control" value={addr} onChange={e => setEmail(e.target.value)} placeholder="addr" required="" readOnly=""/>
                         </div>
                         <br/>

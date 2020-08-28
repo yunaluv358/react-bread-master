@@ -39,7 +39,7 @@ export const Admin = () => {
         component={AdminOrderDelivery}
         exact
         layout={ AdminMain }
-        path="/order-delivery"
+        path="/adminOrderDelivery"
       />
       <RouteWithLayout
         component={Chart}
@@ -51,7 +51,7 @@ export const Admin = () => {
         component={AdminBreadRegister}
         exact
         layout={ AdminMain }
-        path="/productRegistration"
+        path="/adminBreadRegister"
       />
     </Switch>
   );

@@ -1,31 +1,21 @@
 import React, {useEffect, useState} from "react";
-//import './bread.css'
-import axios from "axios";
 import {Navigation} from "../common/HomeMain";
 import { Button } from 'react-bootstrap';
 
 export const SearchBreadItem = () => {
-    //const [selectedBread, setselectedBread] = useState([])
 
     const [bread,setBread]=useState("");
 
     useEffect(() => {
-
         setBread(JSON.parse(localStorage.getItem('searchBread')))
-
     }, [])
-
     const searchDetail = bread => {
         alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('searchBread', JSON.stringify(bread))
     }
-
     return(<>
             <Navigation/>
             <div style={{"padding-bottom":"120px"}}/>
-
-
-
             <div style={{"text-align":"center"}}>
                 <div grid-col="x10" grid-pad="1.5">
 
@@ -52,42 +42,12 @@ export const SearchBreadItem = () => {
                                     3,500원(주문 시 결제, 오만원 이상 무료 배송)
                                 </td>
                             </tr>
-
-
-                            <div id="sit_sel_option">
-                                <h3>선택된 옵션</h3>
-                                <ul className="sit_opt_added">
-                                    <li className="sit_opt_list">
-                                        <input type="hidden" name="io_type[1585656636][]" value="0"/>
-                                        <input type="hidden" name="io_id[1585656636][]" value=""/>
-                                        <input type="hidden" name="io_value[1585656636][]" value="무화과 깜빠뉴"/>
-                                        <input type="hidden" className="io_price" value="0"/>
-                                        <input type="hidden" className="io_stock" value="99930"/>
-                                        <div className="opt_name">
-                                            <span className="sit_opt_subj">{bread.breadName}</span>
-                                        </div>
-                                    </li>
-                                </ul>
-                                {/*<script>*/}
-                                {/*    $(function() {*/}
-                                {/*    price_calculate();*/}
-                                {/*});*/}
-                                {/*</script>*/}
-                            </div>
-
                             </tbody>
                         </table>
                     </div>
                     <div id="sit_tot_price" style={{"padding-bottom": "20px"}}><span>총 금액 </span><strong>{bread.breadPrice}</strong> 원</div>
-
-
                     <div id="sit_ov_btn">
-                        {/*<button type="button" onClick="location.href=order" className="sit_btn_buy">*/}
-                        {/*	바로구매*/}
-                        {/*</button>*/}
                         <Button variant="primary" size="lg" href="order" rel="next_page" onClick={()=>searchDetail(bread)}>바로구매</Button>{' '}
-
-                        {/*<input type="button" value="확인" onClick="location.href='BreadOrder.js'"/>*/}
                         <div><img src={bread.breadImageDetail}/></div>
                     </div>
                 </div>

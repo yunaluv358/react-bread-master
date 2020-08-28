@@ -38,6 +38,7 @@ export const UserDetail = () => {
     }
     return <>
         <PageTemplate>
+            <br/><br/><br/>
             <section className="signup" style={{position:'relative',weidth:'10%'}}>
                 <div className="main" >
                     <div className="h3-bread"></div>

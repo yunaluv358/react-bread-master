@@ -10,7 +10,6 @@ import { BreadSearch } from "./bread/BreadSearch";
 import { BreadItem } from "./bread/BreadItem";
 
 import { OrderRegister } from "./order/OrderRegister";
-import { MovieList } from "./movie/MovieList";
 import { Features } from "./common/HomeMain";
 import { ShopAbout, AboutDetail } from './shop/ShopAbout';
 import { Main } from './Main';
@@ -22,12 +21,11 @@ import UserShipping from "./user/UserShipping";
 
 import theme from "./vendor/theme";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
-import { Map } from './vendor/map'
+import { Map } from './vendor/map/Map'
 
 import { AdminOrderDelivery } from "./admin/AdminOrderDelivery";
 import { ShopDetail } from "./shop/ShopDetail";
 import { ShopLocation } from "./shop/ShopLocation";
-import { MovieGenre } from "./movie/MovieGenre";
 import {Chart} from "./chart/Chart";
 
 import { createStore } from 'redux'
@@ -54,14 +52,12 @@ export const RootRouter = () => {
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/aboutDetail" component={AboutDetail}/>
-					<Route path="/bread01" component={BreadItem}/>
+					<Route path="/breadItem" component={BreadItem}/>
 					<Route path="/searchBreadItem" component={SearchBreadItem}/>
 					<Route path="/order" component={OrderRegister}/>
 					<Route path="/myPage" component={ UserDetail }/>
 					<Route path="/contactDetail" component={ ShopDetail }/>
 					<Route path="/contacts" component={ ShopLocation }/>
-					<Route path="/movie-genre" component={MovieGenre}/>
-					<Route path="/movie-list" component={ MovieList }/>
 					<Route path="/shipping" component={ UserShipping }/>
 					<Redirect from="/message" to="/" /> {/* 주소/message 로 접속 시 주소/posts 로 리디렉션 */}
 					<ThemeProvider theme={theme}>
@@ -83,7 +79,7 @@ export const RootRouter = () => {
 								component={ AdminOrderDelivery }
 								exact
 								layout={ AdminMain }
-								path="/order-delivery"
+								path="/adminOrderDelivery"
 							/>
 							<RouteWithLayout
 								component={ Chart }
@@ -95,7 +91,7 @@ export const RootRouter = () => {
 								component={ AdminBreadRegister }
 								exact
 								layout={ AdminMain }
-								path="/productRegistration"
+								path="/adminBreadRegister"
 							/>
 						</Switch>
 					</ThemeProvider>

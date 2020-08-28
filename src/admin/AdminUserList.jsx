@@ -57,6 +57,14 @@ export const AdminUserList = () => {
   }
   return (
       <>
+          <Button
+              color="primary"
+              size="small"
+              variant="text"
+              href="/user-list"
+          >
+              전체보기<ArrowRightIcon/>
+          </Button>
         <table title="회원 리스트" parent="Users" />
         <div className="container-fluid">
           <div className="card">
@@ -89,14 +97,7 @@ export const AdminUserList = () => {
             </div>
           </div>
         </div>
-        <Button
-            color="primary"
-            size="small"
-            variant="text"
-            href="/user-list"
-        >
-          전체보기<ArrowRightIcon/>
-        </Button>
+
       </>
   );
 };

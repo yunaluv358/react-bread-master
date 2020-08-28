@@ -11,8 +11,6 @@ export const BreadRegisterReducer = ( state, action ) => {
     default: return state
   }
 }
-
-
 export const AdminBreadRegister = () => {
   const [data,setData] = useState([])
   useEffect(() => {
@@ -71,7 +69,15 @@ export const AdminBreadRegister = () => {
   }
   return (
       <>
-        <table title="빵리스트" parent="Users" />
+        <table title="빵리스트" parent="Users"/>
+          <Button
+              color="primary"
+              size="small"
+              variant="text"
+              href="/adminBreadRegister"
+          >
+              전체보기<ArrowRightIcon/>
+          </Button>
         <div className="container-fluid">
           <div className="card">
             <div className="card-header">
@@ -86,7 +92,7 @@ export const AdminBreadRegister = () => {
             <div className="card-body">
               <div className="clearfix"/>
               <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                  <MaterialTable title={"빵리스트"}
+                  <MaterialTable title={"상품등록수정"}
                                data={data}
                                columns={columns}
                                editable={editable}
@@ -103,14 +109,7 @@ export const AdminBreadRegister = () => {
             </div>
           </div>
         </div>
-        <Button
-            color="primary"
-            size="small"
-            variant="text"
-            href="/productRegistration"
-        >
-          전체보기<ArrowRightIcon/>
-        </Button>
+
       </>
   );
 };
