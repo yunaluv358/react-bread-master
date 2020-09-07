@@ -49,6 +49,7 @@ export const UserRegister = () => {
             <section className="signup">
                 <div className="main">
                     <div className="h3-bread"></div>
+                    <br/><br/>
                     <form className="theme-form">
                         <center><h2>회원가입</h2></center>
                         <div className="form-group">
