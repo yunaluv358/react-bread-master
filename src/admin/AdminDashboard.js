@@ -34,10 +34,10 @@ export const AdminDashboard = () => {
         <Grid>
           <AdminUserList style={{position:"relative",top:'-300px',width:'30%',height:'550px',left:"-70%"}} />
         </Grid>
-        {/*<Grid*/}
-        {/*>*/}
-        {/*  <AdminBreadRegister style={{position:"relative",top:'-300px',width:'30%',height:'550px',left:"-70%"}} />*/}
-        {/*</Grid>*/}
+        <Grid
+        >
+          <AdminBreadRegister style={{position:"relative",top:'-300px',width:'500px',height:'550px',left:"-70%"}} />
+        </Grid>
       </Grid>
     </div>
   </>

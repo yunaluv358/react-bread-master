@@ -110,7 +110,7 @@ export const AdminBreadRegister = () => {
                                  options={{
                                      headerStyle: {
                                          width : 50 ,
-                                         maxWidth : 20,
+                                         maxWidth : 200,
                                          backgroundColor: '#01579b',
                                          color: '#FFF',
                                          overflow:'hidden'
@@ -118,7 +118,7 @@ export const AdminBreadRegister = () => {
                                      },
                                      cellStyle : {
                                          width : 20 ,
-                                         maxWidth : 20,
+                                         maxWidth : 200,
                                          overflow:'hidden'
                                      }
                                  }}/>
