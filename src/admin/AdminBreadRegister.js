@@ -3,6 +3,7 @@ import {Button,} from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import axios from 'axios'
 import MaterialTable from "material-table";
+import {makeStyles} from "@material-ui/styles";
 const BreadRegisterTypes = {REQUEST: 'AdminBreadRegister/REQUEST'}
 const BreadRegisterRequest = action => ({type: BreadRegisterTypes.REQUEST, payload: action.payload})
 export const BreadRegisterReducer = ( state, action ) => {
@@ -13,6 +14,13 @@ export const BreadRegisterReducer = ( state, action ) => {
 }
 export const AdminBreadRegister = () => {
   const [data,setData] = useState([])
+    const useStyle = makeStyles({
+        root: {
+            width:"50%",
+            height:"50%",
+
+        }
+    })
   useEffect(() => {
     axios.get(`http://localhost:8080/bread/findAll`)
         .then((res)=>{
@@ -46,7 +54,8 @@ export const AdminBreadRegister = () => {
     },
     {
       title:'상세설명',field:'breadDescription'
-    }
+    },
+
 
   ]
   const editable = {
@@ -67,6 +76,7 @@ export const AdminBreadRegister = () => {
           })
         })
   }
+  const classes = useStyle()
   return (
       <>
         <table title="빵리스트" parent="Users"/>
@@ -92,17 +102,24 @@ export const AdminBreadRegister = () => {
             <div className="card-body">
               <div className="clearfix"/>
               <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
-                  <MaterialTable title={"상품등록수정"}
+                  <MaterialTable
+                      title={"상품등록수정"}
                                data={data}
                                columns={columns}
                                editable={editable}
                                  options={{
                                      headerStyle: {
+                                         width : 50 ,
+                                         maxWidth : 20,
                                          backgroundColor: '#01579b',
-                                         color: '#FFF'
+                                         color: '#FFF',
+                                         overflow:'hidden'
+
                                      },
-                                     rowStyle: {
-                                         // backgroundColor: '#EEE',
+                                     cellStyle : {
+                                         width : 20 ,
+                                         maxWidth : 20,
+                                         overflow:'hidden'
                                      }
                                  }}/>
               </div>
