@@ -28,10 +28,6 @@ export const BreadList = () => {
     const handlePageChange = (page) => {
         setCurrentPage(page); // 페이지 수 클릭 시 현재 페이지 변경
     }
-    // const countHandler = e => {
-    //     if (count === 0)
-    //         return <p>There are no movies in the database.</p>
-    // }
     const subdata = Paginate(data, currentPage, pageSize);
 
     const passDetail = bread => {

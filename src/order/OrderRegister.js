@@ -8,7 +8,8 @@ import {Navigation} from "../common/HomeMain";
 
 
 export const OrderRegister = () => {
-
+	const [pageSize, setPageSize] = useState(5)
+	const [currentPage,setCurrentPage] = useState(1)
 	const [user,setUser] = useState(JSON.parse(sessionStorage.getItem('user')))
 	const [bread,setBread]= useState(JSON.parse(localStorage.getItem('selectedBread')))
 	const history = useHistory()
@@ -41,7 +42,8 @@ export const OrderRegister = () => {
 			// shippingPrice : bread.breadPrice
 			shippingPrice: '101',
 			shippingDate: '2020-08-28',
-			shippingAddr: user.addr
+			shippingAddr: user.addr,
+			shippingBreadImg : bread.breadImage
 		}
 		if (success) {
 			axios.post(`http://localhost:8080/shipping/payment`, data)

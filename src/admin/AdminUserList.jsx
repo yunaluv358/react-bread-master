@@ -97,7 +97,6 @@ export const AdminUserList = () => {
             </div>
           </div>
         </div>
-
       </>
   );
 };

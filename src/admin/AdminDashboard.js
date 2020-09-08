@@ -19,34 +19,26 @@ export const AdminDashboard = () => {
   return <>
     <div className={classes.root}>
       <Grid
-        container
-        spacing={5}
+          container
+          spacing={5}
       >
-        <Grid style={{position:'relative',left:"0%",width:'30%',height:'50%'}}
-        >
-          <Chart />
+        <Grid style={{position:'relative',left:"0%",width:'450px',height:'400px'}}>
+          <Chart  />
         </Grid>
-        <Grid style={{position:'relative',left:"33%",width:'40%',height:'1000px'}}
-        >
-          <Map />
+        <Grid style={{position:'relative',left:"-280px",width:'500px',height:'400px'}}>
+          <Map/>
         </Grid >
-        <Grid style={{position:'relative',left:"-38%",width:'30%',height:'100%',top:'0px'}}
-        >
-          <AdminOrderDelivery />
+        <Grid >
+          <AdminOrderDelivery style={{position:"relative",width:'30%',height:'550px',left:"-70%"}}  />
         </Grid>
-
-        <Grid style={{position:"relative",top:'-600px',width:'30%',height:'100px'}}
-        >
-          <AdminUserList />
+        <Grid>
+          <AdminUserList style={{position:"relative",top:'-300px',width:'30%',height:'550px',left:"-70%"}} />
         </Grid>
-
-        <Grid style={{position:'relative',left:"2%",width:'30%',height:'22%',top:'-450px'}}
-        >
-          <AdminBreadRegister />
-        </Grid>
-
+        {/*<Grid*/}
+        {/*>*/}
+        {/*  <AdminBreadRegister style={{position:"relative",top:'-300px',width:'30%',height:'550px',left:"-70%"}} />*/}
+        {/*</Grid>*/}
       </Grid>
     </div>
-	    </>
+  </>
 }
-

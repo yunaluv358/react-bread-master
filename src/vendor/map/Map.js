@@ -12,8 +12,9 @@ import {makeStyles} from "@material-ui/styles";
 const MAP_KEY='AIzaSyAdb4BpT5FdcmwNVkmh88DHC5n4SaWewRA';
 const libraries = ["places"];
 const mapContainerStyle = {
-  width: "100%",
-  height: "750px",
+  width: "50%",
+  height: "100%",
+  margin:"auto", top:"50px"
 };
 const options = {
   // disableDefaultUI: true,
@@ -36,6 +37,9 @@ const useStyles = makeStyles(() => ({
     },
     actions: {
         justifyContent: 'flex-end'
+    },
+    search : {
+        width:"60%"
     }
 }));
 export const Map = () =>{
@@ -102,7 +106,7 @@ export const Map = () =>{
 
   function Locate({ panTo }) {
     return (
-        <button
+        <button style={{left:'74%'}}
             className="locate"
             onClick={() => {
               navigator.geolocation.getCurrentPosition(
@@ -157,7 +161,7 @@ export const Map = () =>{
     };
 
     return (
-        <div className="search" style={{left:"55%"}}>
+        <div className="search" style={{width:"51%"}} >
           <Combobox onSelect={handleSelect}>
             <ComboboxInput
                 value={value}
@@ -182,23 +186,6 @@ export const Map = () =>{
       <>
         <div className="container">
           <div className="row">
-            <div className="col-lg-2">
-              <div className="dashboard-left">
-                <div className="collection-mobile-back">
-                    <CardActions className={classes.actions}>
-                        <Button
-                            color="primary"
-                            size="small"
-                            variant="text"
-                            href="/map"
-                            style={{left:'-80%'}}
-                        >
-                            전체보기<ArrowRightIcon/>
-                        </Button>
-                    </CardActions>
-                </div>
-              </div>
-            </div>
             <div className="col-lg-12">
               <div className="dashboard-right">
                 <Locate panTo={panTo} />
