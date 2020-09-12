@@ -14,9 +14,12 @@ import { Features } from "./common/HomeMain";
 import { ShopAbout, AboutDetail } from './shop/ShopAbout';
 import { Main } from './Main';
 
+//유저
 import { UserRegister } from "./user/UserRegister";
 import { UserAccess } from "./user/UserAccess";
 import { UserDetail } from "./user/UserDetail";
+import {UserFindID} from "./user/UserFindID";
+import {UserFindPW} from "./user/UserFindPW";
 import UserShipping from "./user/UserShipping";
 
 import theme from "./vendor/theme";
@@ -34,10 +37,6 @@ import { AdminUserList } from "./admin/AdminUserList";
 import { AdminBreadRegister } from "./admin/AdminBreadRegister";
 import {SearchBreadItem} from "./bread/SearchBreadItem";
 
-
-
-
-
 export const RootRouter = () => {
 	return <>
 		<Provider store = {createStore(rootReducer)}>
@@ -51,6 +50,8 @@ export const RootRouter = () => {
 					<Route path="/search" component={BreadSearch}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
+					<Route path="/findId" component={UserFindID}/>
+					<Route path="/findPw" component={UserFindPW}/>
 					<Route path="/aboutDetail" component={AboutDetail}/>
 					<Route path="/breadItem" component={BreadItem}/>
 					<Route path="/searchBreadItem" component={SearchBreadItem}/>

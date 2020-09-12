@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from "react-bootstrap/Modal";
-// var Modal = require('react-bootstrap-modal')
 const UserPostcode = ({setAddress}) => {
     console.log("포스트코드받은값" + setAddress)
     const [show,setShow] = useState(false)

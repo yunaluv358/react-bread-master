@@ -4,10 +4,33 @@ import { useHistory, Link } from 'react-router-dom';
 import './user-register.css'
 import axios from 'axios'
 import UserPostcode from "./UserPostcode";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+
+    },
+    font : {
+        fontFamily: 'italic ',
+        color : "brown",
+        fontSize : "30px",
+        margin : "12px 0px"
+    },
+    box : {
+        borderRadius : "1em",
+        boxShadow : "5px 5px 5px 5px gray"
+    },
+    find : {
+        margin : 8
+    },
+}));
 
 export const UserRegister = () => {
-    // const classes = useStyles();
+    const classes = useStyles();
     const [userId, setUserId] = useState("");
     const [password, setPassword] = useState("");
     const [userName, setUserName] = useState("");
@@ -46,12 +69,11 @@ export const UserRegister = () => {
 
     return <>
         <PageTemplate>
-            <section className="signup">
+            <section className={classes.paper}>
                 <div className="main">
                     <div className="h3-bread"></div>
-                    <br/><br/>
-                    <form className="theme-form">
-                        <center><h2>회원가입</h2></center>
+                    <form className={classes.box}>
+                        <center><h2 className={classes.font}>Bread</h2></center>
                         <div className="form-group">
                             <label>아이디</label>
                             <input type="text" className="form-control" onChange={e => setUserId(e.target.value)} placeholder="First name"/>
@@ -89,8 +111,10 @@ export const UserRegister = () => {
                                    onChange={e => setDetailAddr(e.target.value)} placeholder="나머지 주소는 직접입력해 주세요." required=""/>
                         </div>
                         <button type="submit" className="btn btn-primary btn-block" onClick={onSignCheck}>Sign Up</button>
-                        <p className="forgot-password text-right">
-                            Already registered <a href="#">sign in?</a>
+                        <p className={classes.find}>
+                            <a className={classes.find} href="/findId">아이디찾기</a>
+                            <a className={classes.find} href="/findPw">비밀번호찾기</a>
+                            <a className={classes.find} href="/signIn">로그인 </a>
                         </p>
                     </form>
                 </div>
