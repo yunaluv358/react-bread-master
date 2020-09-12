@@ -4,7 +4,6 @@ import {Button} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
 
 export const BreadItem = () => {
-
     const [bread, setBread] = useState("");
     const history = useHistory()
     useEffect(() => {
@@ -19,7 +18,6 @@ export const BreadItem = () => {
         history.push("/")
     }
     return (<>
-            {sessionStorage.user &&
             <>
                 <Navigation/>
                 <div style={{"padding-bottom": "120px"}}/>
@@ -79,16 +77,7 @@ export const BreadItem = () => {
                     </div>
                 </div>
             </>
-            }
-            {!sessionStorage.user &&
-            <div>
-                <Navigation/><br/><br/><br/><br/>
-                <center>
-                <h1>로그인후 이용해주세요</h1>
-                <input type="button" onClick={homeClick} value={"홈으로.."}/>
-                </center>
-            </div>
-            }
+
         </>
     )
 }

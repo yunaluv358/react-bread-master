@@ -6,8 +6,6 @@ import {Combobox,ComboboxInput, ComboboxPopover,ComboboxList, ComboboxOption,} f
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardText, MDBCol } from 'mdbreact';
 import './map.css'
 import "@reach/combobox/styles.css";
-import {Button, Card, CardActions} from "@material-ui/core";
-import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 import {makeStyles} from "@material-ui/styles";
 const MAP_KEY='AIzaSyAdb4BpT5FdcmwNVkmh88DHC5n4SaWewRA';
 const libraries = ["places"];
@@ -17,7 +15,6 @@ const mapContainerStyle = {
   margin:"auto", top:"50px"
 };
 const options = {
-  // disableDefaultUI: true,
   zoomControl: true,
 };
 const center = {
@@ -203,7 +200,6 @@ export const Map = () =>{
                     <Polyline
                     path={[selected,searchLocation]}
                     visible={true}
-                    // visible  text 는 지워지지만 공간은 여전히 점유하고 있다
                         options={{
                             strokeColor:"#fa0a1a",
                             strokeOpacity: 1,

@@ -79,6 +79,7 @@ export const ShopLocation = () => {
                         </Marker>
                     ))
                 }
+                
 
             </GoogleMap>
         </>

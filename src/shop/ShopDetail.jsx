@@ -16,7 +16,6 @@ export const ShopDetail = () => <><div style={{marginTop: '50px'}}>
 		            <div className="clearfix"></div>
 		        </div>
 		    </div>
-
 		    <div className="basic-body sub-basic-body">
 		        <div className="container">
 		            <div className="row">
@@ -44,13 +43,11 @@ export const ShopDetail = () => <><div style={{marginTop: '50px'}}>
 		                                </div>
 		                            </div>
 		                        </div>
-
 		                    </div>
 		                </section>
 		                <div className="clearfix"></div>
 		            </div>
 		        </div>
 		    </div>
-
 		</section>
 	</PageTemplate></div></>

@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-
     },
     find : {
         margin : 8
@@ -33,8 +32,6 @@ export const UserAccess = () => {
     const [password,setPassword] = useState('')
     const history = useHistory();
     const classes = useStyles();
-
-
     const onAdmin = e => {
         e.preventDefault()
         setUserId('admin119')
@@ -44,7 +41,6 @@ export const UserAccess = () => {
         sessionStorage.removeItem('user')
         window.location.reload()
     }
-
     const SignInButton = e => {
         e.preventDefault()
         const userData = {
@@ -88,7 +84,7 @@ export const UserAccess = () => {
                 <p className={classes.find}>
                     <a className={classes.find} href="/findId">아이디찾기</a>
                     <a className={classes.find} href="/findPw">비밀번호찾기</a>
-                    <a className={classes.find} href="/signup">회원가입 </a>
+                    <a className={classes.find} href="/signup">회원가입</a>
                 </p>
                 <center><button onClick={onAdmin}>AdminButton</button></center>
             </form>

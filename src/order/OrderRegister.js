@@ -5,6 +5,30 @@ import {MDBBtn} from "mdbreact";
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import {Navigation} from "../common/HomeMain";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+const useStyles = makeStyles((theme) => ({
+	paper: {
+		marginTop: theme.spacing(2),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+
+	},
+	find : {
+		margin : 8
+	},
+	box : {
+		borderRadius : "1em",
+		boxShadow : "5px 5px 2px 2px gray",
+	},
+	font : {
+		fontFamily: 'italic',
+		color : "brown",
+		fontSize : "30px",
+		margin : "12px 0px"
+	}
+}));
 
 
 export const OrderRegister = () => {
@@ -13,6 +37,7 @@ export const OrderRegister = () => {
 	const [user,setUser] = useState(JSON.parse(sessionStorage.getItem('user')))
 	const [bread,setBread]= useState(JSON.parse(localStorage.getItem('selectedBread')))
 	const history = useHistory()
+	const classes = useStyles()
 
 	const onClickPayment = () => {
 		// 가맹점 코드
@@ -39,8 +64,7 @@ export const OrderRegister = () => {
 			shippingName: user.name,
 			shippingStatus: '배송준비',
 			shippingBreadName: bread.breadName,
-			// shippingPrice : bread.breadPrice
-			shippingPrice: '101',
+			shippingPrice : bread.breadPrice,
 			shippingDate: '2020-08-28',
 			shippingAddr: user.addr,
 			shippingBreadImg : bread.breadImage
@@ -70,64 +94,54 @@ export const OrderRegister = () => {
 	return <>
 		{sessionStorage.user &&
 		<PageTemplate>
-			<section className="order">
-				<h1 className="h3-bread">  </h1>
+			<section className={classes.paper}>
+				<center>
 				<div className="sc-esjQYD goIgCJ">
 					<article className="sc-jnlKLf bCmhqn">
-						<div className="sc-VigVT cibeyu"><h2 className="sc-jTzLTM btRZwy">Order</h2></div>
+						<div className="sc-VigVT cibeyu"><h2 className="sc-jTzLTM btRZwy">주문화면</h2></div>
+						<div className="sc-VigVT cibeyu"><h3 className="sc-jTzLTM btRZwy">{bread.breadName}</h3></div>
 						<table className="fQMIPz">
-							<thead className="sc-kgAjT QollL">
-							<tr>
-								<th scope="col" className="sc-cJSrbW gVXHZH">{bread.breadName}</th>
-							</tr>
-							</thead>
 							<tbody>
 							<tr>
 								<td className="sc-hqyNC fvxYsy"></td>
 								<td><img
 									src={bread.breadImage}
 									className="fotorama__img"
+									style={{"width": "345px"}}
 								/></td>
-								<td>
-									<div>{bread.breadName}</div>
-									L/BLACK
-								</td>
-								<td>{bread.breadPrice}</td>
-								{/*<td>1</td>*/}
 							</tr>
 							</tbody>
-							<tfoot>
-							<tr>
-								<td colSpan="1" className="sc-ksYbfQ eBRNqZ">{bread.breadPrice}</td>
-							</tr>
-							</tfoot>
 						</table>
-						{/*<div id="responsiveTotalDiv" className="sc-kvZOFW gAYafu">Total : ￦59,300</div>*/}
 					</article>
-					<article className="sc-jnlKLf bCmhqn"><h3 className="sc-kIPQKe hRzZDy">Order Information</h3>
-						<form className="sc-eXEjpC eOBXHa">
+					<div>
+						<h3 className="sc-kIPQKe hRzZDy">주문정보</h3>
+						<form className={classes.box}>
 							<div className="NngVZ">
-								<div className="sc-RefOD gBZRgU">name</div>
+								<div>상품명</div>
+								<div>{bread.breadName}</div>
+							</div>
+							<div className="NngVZ">
+								<div className="sc-RefOD gBZRgU">주문자명</div>
 								<div className="sc-iQKALj fxDVnv">{user.name}</div>
 							</div>
 							<div className="NngVZ">
-								<div className="sc-RefOD gBZRgU">address</div>
-								{/*<div className="sc-iQKALj fxDVnv">06001</div>*/}
+								<div className="sc-RefOD gBZRgU">배송지</div>
 								<div className="sc-iQKALj sc-bwCtUz lgbbNn">{user.addr}</div>
 								<div className="sc-iQKALj sc-bwCtUz lgbbNn">주소</div>
 							</div>
 							<div className="NngVZ">
-								<div className="sc-RefOD gBZRgU">email</div>
-								<div className="sc-iQKALj fxDVnv">{user.email}</div>
-							</div>
-							<div className="NngVZ">
-								<div className="sc-RefOD gBZRgU">phone</div>
+								<div className="sc-RefOD gBZRgU">번호</div>
 								<div className="sc-iQKALj fxDVnv">{user.phone}</div>
 							</div>
+							<div className="NngVZ">
+								<div className="sc-RefOD gBZRgU">주문가격</div>
+								<div className="sc-iQKALj fxDVnv">{bread.breadPrice}</div>
+							</div>
 						</form>
-					</article>
+					</div>
 					<MDBBtn gradient="black" size="lg" onClick={() => onClickPayment()}>결제하기</MDBBtn>
 				</div>
+				</center>
 			</section>
 		</PageTemplate>
 		}
