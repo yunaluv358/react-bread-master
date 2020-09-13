@@ -95,7 +95,8 @@ export const AdminOrderDelivery = () => {
                                 editable={editable} options={{
                                 headerStyle: {
                                     backgroundColor: '#01579b',
-                                    color: '#FFF'
+                                    color: '#FFF',
+                                    fontSize : '17px'
                                 },
                                 rowStyle: {
                                 }

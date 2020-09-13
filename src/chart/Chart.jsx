@@ -14,16 +14,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ChartBar from "./ChartBar";
 import ChartDoughnut from "./ChartDoughnut";
 import ChartPolar from "./ChartPolar";
-
-const ChartTypes = {REQUEST: 'Chart/REQUEST'}
-const ChartRequest = action => ({type: ChartTypes.REQUEST, payload: action.payload})
-const ChartReducer = ( state, action ) => {
-  switch (action.type) {
-    case ChartTypes.REQUEST: return {...state, payload: action.payload}
-    default: return state
-  }
-}
-
+import ArrowRightIcon from "@material-ui/icons/ArrowRight";
 export const useStyles = makeStyles(() => ({
   root: {
     height: '100%'
@@ -44,7 +35,6 @@ export const Chart = props => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [chartType, setChartType] = useState("차트종류")
-  // CheckBox
   const [checked, setChecked] = useState({
     checkBox_Age: false,
     checkBox_Sex: false,
@@ -59,7 +49,6 @@ export const Chart = props => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // const [chartValue, setChartValue] = useState("판매량/방문자 통계")
   return (
       <Card
           {...rest}
@@ -68,7 +57,7 @@ export const Chart = props => {
         <CardHeader
             action={
               <div>
-                <Button style={{position:'relative'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} size="small" variant="text" >
+                <Button style={{position:'relative',left:'-370px',top:'60px'}} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} size="small" variant="text" >
                   {chartType}
                   <ArrowDropDownIcon />
                 </Button>
@@ -84,7 +73,7 @@ export const Chart = props => {
                   <MenuItem onClick={()=> {setAnchorEl(null); setChartType("폴라형")}}>폴라형</MenuItem>
                 </Menu>
               </div>}
-            title="판매량/방문자비교"
+            title="주문"
         />
         <CardActions>
           <FormGroup
@@ -99,9 +88,16 @@ export const Chart = props => {
                   ? <ChartDoughnut/>:
                   <ChartBar/>}
         </CardContent>
+        <Button
+            color="primary"
+            size="small"
+            variant="text"
+            href="/chart"
+        >
+          전체보기<ArrowRightIcon/>
+        </Button>
       </Card>
   );
 };
 
 
-export default ChartReducer;

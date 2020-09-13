@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PageTemplate } from "../common/PageTemplate";
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './user-register.css'
 import axios from 'axios'
 import UserPostcode from "./UserPostcode";
@@ -90,5 +90,4 @@ export const UserDetail = () => {
             </section>
         </PageTemplate>
     </>
-
 }

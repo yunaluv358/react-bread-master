@@ -42,7 +42,6 @@ export const AdminProfile = props => {
         className={classes.avatar}
         component={RouterLink}
         src={user.avatar}
-        // to="/settings"
       />
       <Typography
         className={classes.name}

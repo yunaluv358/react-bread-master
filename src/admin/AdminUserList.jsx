@@ -80,17 +80,15 @@ export const AdminUserList = () => {
               <div className="clearfix"/>
               <div id="batchDelete" className="category-table user-list order-table coupon-list-delete">
                 <MaterialTable
-                    title={"회원"}
+                    title={"회원관리"}
                     data={data}
                     columns={columns}
                     editable={editable}
                     options={{
                         headerStyle: {
                             backgroundColor: '#01579b',
-                            color: '#FFF'
-                        },
-                        rowStyle: {
-                            // backgroundColor: '#EEE',
+                            color: '#FFF',
+                            fontSize : '18px'
                         }
                     }}/>
               </div>

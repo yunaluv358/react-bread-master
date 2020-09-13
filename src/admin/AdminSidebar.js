@@ -44,7 +44,7 @@ export const AdminSidebar = props => {
       icon: <DashboardIcon />
     },
     {
-      title: '방문자/판매 차트',
+      title: '주문차트',
       href: '/chart',
       icon: <DashboardIcon />
     },

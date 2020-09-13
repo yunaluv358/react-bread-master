@@ -113,7 +113,8 @@ export const AdminBreadRegister = () => {
                                          maxWidth : 200,
                                          backgroundColor: '#01579b',
                                          color: '#FFF',
-                                         overflow:'hidden'
+                                         overflow:'hidden',
+                                         fontSize : '15px'
 
                                      },
                                      cellStyle : {
