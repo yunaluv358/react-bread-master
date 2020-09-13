@@ -38,7 +38,7 @@ const ChartPolar = props => {
         labels: totalKey,
         datasets: [
             {
-                label:'주문수',
+                label:[1,2,3,5,5,6,7,8,9],
                 data: totalValue,
                 backgroundColor: 'rgba(120,29,29,0.3)',
                 borderWidth: 4,

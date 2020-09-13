@@ -36,6 +36,7 @@ export const OrderRegister = () => {
 	const [currentPage,setCurrentPage] = useState(1)
 	const [user,setUser] = useState(JSON.parse(sessionStorage.getItem('user')))
 	const [bread,setBread]= useState(JSON.parse(localStorage.getItem('selectedBread')))
+	const [date,setDate]= useState(new Date())
 	const history = useHistory()
 	const classes = useStyles()
 
@@ -49,7 +50,7 @@ export const OrderRegister = () => {
 			pay_method: 'card', //결제 방법
 			merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
 			name : bread.breadName, //상품명
-			amount: 200, // 결제금액,상품가격
+			amount: bread.breadPrice, // 결제금액,상품가격
 			buyer_name : user.name, // 구매자
 			buyer_tel: user.phone, // 구매자 번호
 			buyer_email:user.email, // 구매자 이메일
@@ -65,7 +66,7 @@ export const OrderRegister = () => {
 			shippingStatus: '배송준비',
 			shippingBreadName: bread.breadName,
 			shippingPrice : bread.breadPrice,
-			shippingDate: '2020-08-28',
+			shippingDate: date.toLocaleString(),
 			shippingAddr: user.addr,
 			shippingBreadImg : bread.breadImage
 		}

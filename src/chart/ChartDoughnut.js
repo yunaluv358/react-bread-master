@@ -33,7 +33,7 @@ const ChartDoughnut = props => {
     }
     console.log(totalValue)
     const chartData = {
-        labels: totalKey,
+        labels:[1,2,3,5,5,6,7,8,9],
         datasets: [
             {
                 label:'주문수',
