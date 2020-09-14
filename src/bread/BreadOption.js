@@ -6,9 +6,7 @@ import $ from 'jquery'
 import axios from "axios";
 
 
-
 export const BreadOption = () => {
-    const [chart1Select, setChart1Select] = useState("")
     const [breadAll, setBreadAll] = useState([])
     const [select1result, setSelect1result] = useState([])
     const [select2result, setSelect2result] = useState([])
@@ -26,20 +24,11 @@ export const BreadOption = () => {
 
     }, [])
 
-    /* useEffect(()=>{
-         if(chart1Select){
-            setChart1Select(chart1Select)
-         }
-     },[chart1Select])*/
-
     const init = (e) => {
         $(window).scrollTop($('div.find').offset().top - $('div.navbar').height());
-
         $('#result').hide();
-
         $('#chart1 li').removeClass('active');
         $(":input:radio[name=chart1]:checked").prop('checked', false);
-
         $('#chart2 li').removeClass('active');
         $(":input:checkbox[name=chart2]:checked").each(function () {
             $(e).prop('checked', false);
@@ -53,8 +42,6 @@ export const BreadOption = () => {
             if(value === i.option){
                 temp.push(i)
             }
-
-
         }
         for (let i of temp) {
             console.log(i)
@@ -235,7 +222,6 @@ export const BreadOption = () => {
                             <button type="button" onClick={(e) => init(e)}>초기화</button>
                             <button type="button" id="confirm" onClick={(e) => result(e)}>결과보기</button>
                         </div>
-
                     </div>
                     <div id="result">
 
@@ -243,7 +229,6 @@ export const BreadOption = () => {
                             고객님이 건강 할 수 있도록 <span style={{"color": "#999"}}><br
                             className="mobile_br"/>이렇게 추천 합니다.</span>
                         </p>
-
                         <center>
                             {select2result.map((i, index) => (
                                 <span key={index} className="col-xs-6 col-sm-4">
