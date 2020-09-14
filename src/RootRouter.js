@@ -36,6 +36,7 @@ import rootReducer from './RootReducer'
 import { AdminUserList } from "./admin/AdminUserList";
 import { AdminBreadRegister } from "./admin/AdminBreadRegister";
 import {SearchBreadItem} from "./bread/SearchBreadItem";
+import Chatbot from "./vendor/chatbot/Chatbot";
 
 export const RootRouter = () => {
 	return <>
@@ -60,6 +61,7 @@ export const RootRouter = () => {
 					<Route path="/contactDetail" component={ ShopDetail }/>
 					<Route path="/contacts" component={ ShopLocation }/>
 					<Route path="/shipping" component={ UserShipping }/>
+					<Route path="/bot" component={ Chatbot }/>
 					<Redirect from="/message" to="/" /> {/* 주소/message 로 접속 시 주소/posts 로 리디렉션 */}
 					<ThemeProvider theme={theme}>
 						<Route path="/dashboard" component={Admin}/>

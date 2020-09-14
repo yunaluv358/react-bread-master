@@ -7,7 +7,7 @@ import 'font-awesome/css/font-awesome.css';
 import Chatbot from "./vendor/chatbot/Chatbot";
 ReactDOM.render(
   <React.StrictMode>
-    <Chatbot />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

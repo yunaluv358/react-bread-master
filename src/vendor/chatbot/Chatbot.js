@@ -1,6 +1,9 @@
 import React from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import UserShipping from "../../user/UserShipping";
+import {Route} from "react-router-dom";
+import {BreadList} from "../../bread/BreadList";
 const theme = {
     title : '잡담',
     background: '#f5f8fb',
@@ -27,21 +30,69 @@ const Chatbot = () => {
                     {
                         id:'2',
                         options: [
-                            {value:1, label:'원하는 빵 이름 검색',trigger:'breadSearch'},
-                            {value:2, label:'빵 카테고리 선택 분류'},
-                            {value:3, label:'배송조회'}
+                            {value:1, label:'원하는 빵 이름 검색',trigger: 'breadSearch'},
+                            {value:2, label:'빵 카테고리 선택 분류',trigger:'breadOption'},
+                            {value:3, label:'배송조회',trigger: 'shipping'}
                         ]
                     },
                     {
-                      id:'breadSearch',
-                        message: '구매목적을 선택해 주세요',
+                        id:'breadSearch',
+                        message: '원하는 빵이름',
+                        user: true,
+                        trigger: 'result'
+                    },
+                    {
+                        id: 'result',
+                        message: '검색 빵 결과값'
+                    },
+                    {
+                      id:'breadOption',
                         options:[
-                            {value:1, label:'식사대용',trigger:'breadSearch'},
-                            {value:2, label:'간식대용',trigger:'breadSearch'},
-                            {value:3, label:'다이어트',trigger:'breadSearch'},
-                            {value:4, label:'선물',trigger:'breadSearch'},
+                            {value:1,label:'식사대용',trigger:'allergy'},
+                            {value:2, label:'간식대용',trigger:'allergy'},
+                            {value:3, label:'다이어트',trigger:'allergy'},
+                            {value:4, label:'선물',trigger:'allergy'}
                         ]
+                    },
+                    {
+                        id:'allergy',
+                        options:[
+                            {label:'아몬드',trigger:'breadResult'},
+                            {label:'호두',trigger:'breadResult'},
+                            {label:'땅콩',trigger:'breadResult'},
+                            {label:'피스타치오',trigger:'breadResult'},
+                            {label:'캐슈넛',trigger:'breadResult'},
+                            {label:'마카마디아',trigger:'breadResult'},
+                            {label:'밀가루',trigger:'breadResult'},
+                            {label:'콩(대두)',trigger:'breadResult'},
+                            {label:'설탕',trigger:'breadResult'},
+                            {label:'토마토',trigger:'breadResult'},
+                            {label:'건포도',trigger:'breadResult'},
+                            {label:'복숭아',trigger:'breadResult'},
+                        ],
+                    },
+                    {
+                        id:'breadResult',
+                        message: '빵의 카테고리 결과값 들어올곳'
+                    },
+                    {
+                        id:'shipping',
+                        message: '배송조회를 위해 아이디입력해주세요',
+                        trigger: 'pw'
+                    },
+                    {
+                        id:'pw',
+                        message: '배송조회를 위해 비밀번호 입력해주세요',
+                        trigger: 'shippingResult'
+                    },
+                    {
+                        id:'shippingResult',
+                        options: [
+                            {label:'배송조회 결과값'},
+                            {value:'배송전체조회',label:'배송전체조회',component:<BreadList/>}
+                    ]
                     }
+
                 ]}
             />
         </ThemeProvider>
