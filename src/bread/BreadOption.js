@@ -225,7 +225,7 @@ export const BreadOption = () => {
                     </div>
                     <div id="result">
 
-                        <p className="stitle2" style={{"margin-top": "50px"}}>
+                        <p className="stitle2" style={{"margin-top": "50px" , "margin-bottom": "50px", "text-align":"center"}}>
                             고객님이 건강 할 수 있도록 <span style={{"color": "#999"}}><br
                             className="mobile_br"/>이렇게 추천 합니다.</span>
                         </p>
