@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 
-export const BreadSearch = () => {
+export const BreadOption = () => {
     const [chart1Select, setChart1Select] = useState("")
     const [breadAll, setBreadAll] = useState([])
     const [select1result, setSelect1result] = useState([])
@@ -151,7 +151,7 @@ export const BreadSearch = () => {
                             </li>
                         </ul>
                         <p className="stitle2" style={{"margin-top": '50px'}}>
-                            피하고 싶은 재료
+                            원하는 재료
                         </p>
                         <p className="title">
                             <img src="https://thebreadblue.com/theme/eb4_shop_005/page/img/findbread/check.png"

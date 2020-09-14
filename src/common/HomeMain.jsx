@@ -43,8 +43,8 @@ export const Navigation = () => {
                         about </a>{" "}
                     <a className="navbar-brand page-scroll" href="breadList">
                         breads </a>{" "}
-                    <a className="navbar-brand page-scroll" href="search">
-                        search </a>{" "}
+                    <a className="navbar-brand page-scroll" href="option">
+                        option </a>{" "}
                     <a className="navbar-brand page-scroll" href="contactDetail">
                         contact </a>{" "}
                 </div>

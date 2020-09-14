@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Admin } from "./admin/AdminRouter";
 import { AdminMain } from "./admin/AdminMain";
 import { BreadList } from "./bread/BreadList";
-import { BreadSearch } from "./bread/BreadSearch";
+import { BreadOption } from "./bread/BreadOption";
 import { BreadItem } from "./bread/BreadItem";
 
 import { OrderRegister } from "./order/OrderRegister";
@@ -47,7 +47,7 @@ export const RootRouter = () => {
 					<Route path="/about" component ={ShopAbout} />
 					<Route path="/shop-message-register" component = {ShopMessageRegister}/>
 					<Route path="/breadList" component = {BreadList} />
-					<Route path="/search" component={BreadSearch}/>
+					<Route path="/option" component={BreadOption}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>
