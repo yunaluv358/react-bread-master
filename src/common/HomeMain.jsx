@@ -16,11 +16,10 @@ export const HomeMain = () => {
     )
 }
 export const Navigation = () => {
-    // const history = useHistory();
+    const history = useHistory();
     const handleLogout = e => {
-        sessionStorage.removeItem('user')
-        window.location.reload()
-        // history.push("/")
+        sessionStorage.clear()
+        history.push("/")
     }
     return (
         <nav id="menu" className="navbar navbar-default navbar-fixed-top">

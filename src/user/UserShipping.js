@@ -29,6 +29,7 @@ const UserShipping = () => {
     })
     useEffect(()=>{
         const shippingName = user.name
+        localStorage.clear()
         axios.get(`http://localhost:8080/shipping/${shippingName}`)
             .then((res)=>{
                 alert("성공")

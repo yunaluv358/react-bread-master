@@ -38,7 +38,7 @@ export const UserDetail = () => {
             .then(response => {
                     alert("데이터 변경 성공")
                     sessionStorage.clear()
-                    history.push("/")
+                        history.push("/")
                 }
             ).catch(
             error => {
