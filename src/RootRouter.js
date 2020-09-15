@@ -47,12 +47,15 @@ import { Map } from './vendor/map/Map'
 
 //챗봇
 import Chatbot from "./vendor/chatbot/Chatbot";
-
+import {BotBreadCategoly} from "./vendor/chatbot/BotBreadCategoly";
 // 리뷰
 import {ReviewWrite} from "./review/ReviewWrite";
 import {Review} from "./review/Review";
 import {ReviewSearch} from "./review/ReviewSearch";
 import {ReviewInfo} from "./review/ReviewInfo";
+import {ChatBotLogin} from "./vendor/chatbot/ChatBotLogin";
+import {ChatBotSearch} from "./vendor/chatbot/ChatBotSearch";
+
 
 export const RootRouter = () => {
 	return <>
@@ -82,6 +85,9 @@ export const RootRouter = () => {
 					<Route path="/contacts" component={ ShopLocation }/>
 					<Route path="/shipping" component={ UserShipping }/>
 					<Route path="/bot" component={ Chatbot }/>
+					<Route path="/botBreadCategoly" component={ BotBreadCategoly }/>
+					<Route path="/chatBotLogin" component={ ChatBotLogin }/>
+					<Route path="/chatBotSearch" component={ ChatBotSearch }/>
 					<Redirect from="/message" to="/" /> {/* 주소/message 로 접속 시 주소/posts 로 리디렉션 */}
 					<ThemeProvider theme={theme}>
 						<Route path="/dashboard" component={Admin}/>

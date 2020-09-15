@@ -3,6 +3,7 @@ import {ShopAbout} from '../shop/ShopAbout'
 import {ShopMessageRegister} from '../shop/ShopMessageRegister';
 import JsonData from '../vendor/data.json';
 import {useHistory} from "react-router-dom";
+import Chatbot from "../vendor/chatbot/Chatbot";
 
 export const HomeMain = () => {
     return (
@@ -49,7 +50,9 @@ export const Navigation = () => {
                         review </a>{" "}
                     <a className="navbar-brand page-scroll" href="contactDetail">
                         contact </a>{" "}
-
+                    <div>
+                        <Chatbot/>
+                    </div>
                 </div>
                 <div
                     className="collapse navbar-collapse"

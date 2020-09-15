@@ -3,6 +3,8 @@ import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
 import {BreadList} from "../../bread/BreadList";
 import {BreadOption} from "../../bread/BreadOption";
+import {ChatBotLogin} from "./ChatBotLogin";
+import {ChatBotSearch} from "./ChatBotSearch";
 const theme = {
     title : '잡담',
     background: '#f5f8fb',
@@ -20,10 +22,13 @@ const Chatbot = () => {
     return (
         <ThemeProvider theme={theme}>
             <ChatBot
+                floating = {true}
+                headerTitle = {'Bread bot'}
+                enableSmoothScroll = {true}
                 steps={[
                     {
                         id:'1',
-                        message: '서비스를 선택해주세요',
+                        message: '이용해주셔서 감사합니다 서비스를 선택해주세요',
                         trigger:'2'
                     },
                     {
@@ -42,59 +47,26 @@ const Chatbot = () => {
                     },
                     {
                         id: 'result',
-                        message: '검색 빵 결과값'
+                        options: [
+                            {label: '결과조회', component: <ChatBotSearch/>}
+                        ]
                     },
                     {
                       id:'breadOption',
                         options:[
-                            {value:'빵카테고리 선택',label:'빵카테고리 선택',component:<BreadOption/>}
+                            {label:'빵카테고리 선택',component:<BreadOption/>}
                         ]
-                        // options:[
-                        //     {value:1,label:'식사대용',trigger:'allergy'},
-                        //     {value:2, label:'간식대용',trigger:'allergy'},
-                        //     {value:3, label:'다이어트',trigger:'allergy'},
-                        //     {value:4, label:'선물',trigger:'allergy'}
-                        // ]
                     },
-                    // {
-                    //     id:'allergy',
-                    //     options:[
-                    //         {label:'아몬드',trigger:'breadResult'},
-                    //         {label:'호두',trigger:'breadResult'},
-                    //         {label:'땅콩',trigger:'breadResult'},
-                    //         {label:'피스타치오',trigger:'breadResult'},
-                    //         {label:'캐슈넛',trigger:'breadResult'},
-                    //         {label:'마카마디아',trigger:'breadResult'},
-                    //         {label:'밀가루',trigger:'breadResult'},
-                    //         {label:'콩(대두)',trigger:'breadResult'},
-                    //         {label:'설탕',trigger:'breadResult'},
-                    //         {label:'토마토',trigger:'breadResult'},
-                    //         {label:'건포도',trigger:'breadResult'},
-                    //         {label:'복숭아',trigger:'breadResult'},
-                    //     ],
-                    // },
                     {
                         id:'breadResult',
                         message: '빵의 카테고리 결과값 들어올곳'
                     },
                     {
                         id:'shipping',
-                        message: '배송조회를 위해 아이디입력해주세요',
-                        trigger: 'pw'
-                    },
-                    {
-                        id:'pw',
-                        message: '배송조회를 위해 비밀번호 입력해주세요',
-                        trigger: 'shippingResult'
-                    },
-                    {
-                        id:'shippingResult',
-                        options: [
-                            {label:'배송조회 결과값'},
-                            {value:'배송전체조회',label:'배송전체조회',component:<BreadList/>}
-                    ]
+                        options:[
+                            {label:'배송조회를 위해 아이디와 비밀번호를 입력해주세요',component:<ChatBotLogin/>}
+                        ]
                     }
-
                 ]}
             />
         </ThemeProvider>

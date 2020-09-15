@@ -47,7 +47,7 @@ export const BreadList = () => {
                 </div>
                 <div grid-col="8" grid-pad="1.5" className="">
                     <div className="image-gallery" gid="6">
-                        {subdata.map((i, index) => (
+                            {subdata.map((i, index) => (
                             <span key={index}>
                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
                                     <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
