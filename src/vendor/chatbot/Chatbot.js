@@ -1,9 +1,8 @@
 import React from 'react';
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
-import UserShipping from "../../user/UserShipping";
-import {Route} from "react-router-dom";
 import {BreadList} from "../../bread/BreadList";
+import {BreadOption} from "../../bread/BreadOption";
 const theme = {
     title : '잡담',
     background: '#f5f8fb',
@@ -48,29 +47,32 @@ const Chatbot = () => {
                     {
                       id:'breadOption',
                         options:[
-                            {value:1,label:'식사대용',trigger:'allergy'},
-                            {value:2, label:'간식대용',trigger:'allergy'},
-                            {value:3, label:'다이어트',trigger:'allergy'},
-                            {value:4, label:'선물',trigger:'allergy'}
+                            {value:'빵카테고리 선택',label:'빵카테고리 선택',component:<BreadOption/>}
                         ]
+                        // options:[
+                        //     {value:1,label:'식사대용',trigger:'allergy'},
+                        //     {value:2, label:'간식대용',trigger:'allergy'},
+                        //     {value:3, label:'다이어트',trigger:'allergy'},
+                        //     {value:4, label:'선물',trigger:'allergy'}
+                        // ]
                     },
-                    {
-                        id:'allergy',
-                        options:[
-                            {label:'아몬드',trigger:'breadResult'},
-                            {label:'호두',trigger:'breadResult'},
-                            {label:'땅콩',trigger:'breadResult'},
-                            {label:'피스타치오',trigger:'breadResult'},
-                            {label:'캐슈넛',trigger:'breadResult'},
-                            {label:'마카마디아',trigger:'breadResult'},
-                            {label:'밀가루',trigger:'breadResult'},
-                            {label:'콩(대두)',trigger:'breadResult'},
-                            {label:'설탕',trigger:'breadResult'},
-                            {label:'토마토',trigger:'breadResult'},
-                            {label:'건포도',trigger:'breadResult'},
-                            {label:'복숭아',trigger:'breadResult'},
-                        ],
-                    },
+                    // {
+                    //     id:'allergy',
+                    //     options:[
+                    //         {label:'아몬드',trigger:'breadResult'},
+                    //         {label:'호두',trigger:'breadResult'},
+                    //         {label:'땅콩',trigger:'breadResult'},
+                    //         {label:'피스타치오',trigger:'breadResult'},
+                    //         {label:'캐슈넛',trigger:'breadResult'},
+                    //         {label:'마카마디아',trigger:'breadResult'},
+                    //         {label:'밀가루',trigger:'breadResult'},
+                    //         {label:'콩(대두)',trigger:'breadResult'},
+                    //         {label:'설탕',trigger:'breadResult'},
+                    //         {label:'토마토',trigger:'breadResult'},
+                    //         {label:'건포도',trigger:'breadResult'},
+                    //         {label:'복숭아',trigger:'breadResult'},
+                    //     ],
+                    // },
                     {
                         id:'breadResult',
                         message: '빵의 카테고리 결과값 들어올곳'

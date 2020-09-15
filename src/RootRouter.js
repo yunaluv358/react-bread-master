@@ -8,8 +8,9 @@ import { AdminMain } from "./admin/AdminMain";
 import { BreadList } from "./bread/BreadList";
 import { BreadOption } from "./bread/BreadOption";
 import { BreadItem } from "./bread/BreadItem";
-import { Review } from "./review/Review";
 
+import { Review } from "./review/Review";
+import { ReviewWrite } from "./review/ReviewWrite";
 import { OrderRegister } from "./order/OrderRegister";
 import { Features } from "./common/HomeMain";
 import { ShopAbout, AboutDetail } from './shop/ShopAbout';
@@ -39,6 +40,7 @@ import { AdminBreadRegister } from "./admin/AdminBreadRegister";
 import {SearchBreadItem} from "./bread/SearchBreadItem";
 import Chatbot from "./vendor/chatbot/Chatbot";
 
+
 export const RootRouter = () => {
 	return <>
 		<Provider store = {createStore(rootReducer)}>
@@ -51,6 +53,7 @@ export const RootRouter = () => {
 					<Route path="/breadList" component = {BreadList} />
 					<Route path="/option" component={BreadOption}/>
 					<Route path="/review" component={Review}/>
+					<Route path="/reviewWrite" component={ReviewWrite}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>

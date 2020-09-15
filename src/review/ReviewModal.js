@@ -41,7 +41,7 @@ export const ReviewModal = ({
         e.preventDefault();
         if(storeNameModal) {
             axios
-                .get(`http://localhost:8080/stores/findStore/${storeNameModal}`)
+                .get(`http://localhost:8080/review/stores/findStore/${storeNameModal}`)
                 .then((response) => {
                     const values = [];
                     const keys = [];
