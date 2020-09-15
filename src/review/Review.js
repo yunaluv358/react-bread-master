@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
-import {Button, Table, Container, Row, Col, Pagination} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Form, Col, Button, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ReactQuill from "react-quill";
 import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
 
 export const Review = () => {
-    const [categorySelect, setCategorySelect] = useState("");
-    const [postList, setPostList] = useState([]);
-    const [currentPage,setCurrentPage] = useState(1);
-    const [postPerPage] = useState(5);
+    const [userId, setUserId] = useState("")
+    const [contents, setContents] = useState("");
+    const [postTitle, setPostTitle] = useState("");
+    const [category, setCategory] = useState("");
 
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = postList.slice(indexOfFirstPost,indexOfLastPost);
+    const [accountDetail] = useState(
+        JSON.parse(sessionStorage.getItem("user"))
+    );
 
+    const [id, setId] = useState("");
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const handleQuill = (value) => {
+        setContents(value);
+    };
 
-<<<<<<< HEAD
     const newNotice = (e) => {
         e.preventDefault();
         const notice = {
@@ -43,131 +46,98 @@ export const Review = () => {
                 .catch((err) => {
                     throw err;
                 });
-=======
-    const nextPage = () =>{
-        if(currentPage<currentPosts.length){
-            setCurrentPage(currentPage+1)}
-        else if(postPerPage<currentPosts.length){
-            setCurrentPage(currentPage+1)
-        } else{
-            setCurrentPage(currentPage)
->>>>>>> fab1d0a1b844ac1dd4582e6d8425fb84d91cc543
-        }
-    }
-
-    const prevPage = () => {
-        if(currentPage>1){
-            setCurrentPage(currentPage-1)
         }
     };
 
+    const modules = {
+        toolbar: [
+            [{ header: [1, 2, false] }],
+            [{ font: [] }],
+            ["bold", "italic", "underline", "strike", "blockquote"],
+            [{ align: [] }],
+            [{ color: [] }, { background: [] }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link", "image"],
 
-    useEffect(() => {
-        axios
-            .get('http://localhost:8080/posts/postlist')
-            .then((res)=>{
-                setPostList(res.data)
+            ["clean"],
+        ],
+        clipboard: {
+            matchVisual: false,
+        },
+    };
 
-            })
-            .catch((err)=>{
-                throw err;
-            })
-    }, [])
-
-    const handleSearch = (searchWord) => {
-        axios
-            .get(`http://localhost:8080/posts/notice/search`,{
-                params:{
-                    searchWord:searchWord,
-                    categorySelect:categorySelect
-                }
-            })
-            .then((res)=>{
-                setPostList(res.data)
-            })
-            .catch((err)=>{
-                throw err;
-            })
-
-    }
-
-
+    const formats = [
+        "header",
+        "font",
+        "bold",
+        "italic",
+        "underline",
+        "strike",
+        "blockquote",
+        "align",
+        "color",
+        "background",
+        "list",
+        "bullet",
+        "link",
+        "image",
+    ];
 
     return (
         <>
-            <h2 className="mt-4" style={{"text-align" : "center"}}>리뷰 게시판</h2>
             <div className="content-title">
-                <div id="select-search-bar">
-                    <select
-                        className="form-control"
-                        id="select"
-                        value={categorySelect}
-                        onChange={(e) => setCategorySelect(e.target.value)}
-                    >
-                        <option value="">카테고리</option>
-                        <option value="지역">지역화폐</option>
-                        <option value="사이트">사이트</option>
-                    </select>
-                </div>
+                <h2 className="menu-h2"> - 리뷰 작성</h2>
             </div>
-
-            <div>
-                <Table responsive hover>
-                    <thead style={{ "text-align": "center" }}>
-                    <tr>
-                        <th>번호</th>
-                        <th>구분</th>
-                        <th>제목</th>
-                        <th>작성자</th>
-                        <th>등록일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {currentPosts.map((info, i) => (
-                        <tr key={i}>
-                            <td style={{ "text-align": "center" }}>
-                                { (postList.length -i)}
-                            </td>
-                            <td style={{ "text-align": "center" }}> {info.category}</td>
-                            <td>
-                                {" "}
-                                <Link to={`/admin/notice-detail/${info.postId}`}>
-                                    {info.postTitle}
-                                </Link>
-                            </td>
-                            {info.category === "사이트" && (
-                                <td style={{ "text-align": "center" }}>관리자</td>
-                            )}
-                            {info.category === "지역화폐" && (
-                                <td style={{ "text-align": "center" }}>경기지역화폐</td>
-                            )}
-                            <td style={{ "text-align": "center" }}>{info.regDate}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </Table>
-
-                <Container fluid>
-                    <Row noGutters>
-                        <Col>
-                            {" "}
-                            <Link to="/ReviewWrite">
-                                <Button variant="primary" id="button-right">
-                                    글쓰기
-                                </Button>
-                            </Link>
-                        </Col>
-                    </Row>
-                </Container>
-                <div>
-                    <Pagination
-                        postPerPage={postPerPage}
-                        TotalPostList={postList.length}
-                        paginate={paginate}
-                        nextPage={nextPage}
-                        prevPage={prevPage}
-                    />
-                </div>
+            <Form>
+                <Form.Group as={Row}>
+                    <Form.Label column sm={1}>
+                        카테고리
+                    </Form.Label>
+                    <Col sm={2}>
+                        <Form.Control
+                            as="select"
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            <option value="카테고리" selected>
+                                카테고리
+                            </option>
+                            <option value="지역화폐">지역화폐</option>
+                            <option value="사이트">사이트</option>
+                        </Form.Control>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row}>
+                    <Form.Label column sm={1} style={{ textAlign: "center" }}>
+                        제목
+                    </Form.Label>
+                    <Col>
+                        <Form.Control
+                            onChange={(e) => setPostTitle(e.target.value)}
+                            value={postTitle}
+                            as="input"
+                        />
+                    </Col>
+                </Form.Group>
+                <ReactQuill
+                    theme="snow"
+                    value={contents}
+                    onChange={handleQuill}
+                    modules={modules}
+                    formats={formats}
+                    style={{ height: "400px" }}
+                />
+            </Form>
+            <br />
+            <div id="quill-button-center">
+                <Link to="/admin/notice">
+                    <Button variant="primary" onClick={newNotice} type="submit">
+                        확인
+                    </Button>{" "}
+                    <Button variant="secondary" type="button">
+                        취소
+                    </Button>{" "}
+                </Link>
             </div>
         </>
     );
