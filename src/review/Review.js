@@ -9,7 +9,6 @@ export const Review = () => {
     const [postList, setPostList] = useState([]);
     const [currentPage,setCurrentPage] = useState(1);
     const [postPerPage] = useState(5);
-
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = postList.slice(indexOfFirstPost,indexOfLastPost);
@@ -36,10 +35,9 @@ export const Review = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:8080/posts/postlist')
+            .get('http://localhost:8080/review/posts/postlist')
             .then((res)=>{
                 setPostList(res.data)
-
             })
             .catch((err)=>{
                 throw err;
@@ -62,9 +60,6 @@ export const Review = () => {
             })
 
     }
-
-
-
     return (
         <>
             <h2 className="mt-4" style={{"text-align" : "center"}}>리뷰 게시판</h2>
@@ -100,20 +95,25 @@ export const Review = () => {
                             <td style={{ "text-align": "center" }}>
                                 { (postList.length -i)}
                             </td>
+
                             <td style={{ "text-align": "center" }}> {info.category}</td>
+
                             <td>
                                 {" "}
-                                <Link to={`/admin/notice-detail/${info.postId}`}>
+                                <Link to={`/admin/notice-detail/${info.postTitle}`}>
                                     {info.postTitle}
                                 </Link>
                             </td>
+
                             {info.category === "사이트" && (
                                 <td style={{ "text-align": "center" }}>관리자</td>
                             )}
+
                             {info.category === "지역화폐" && (
                                 <td style={{ "text-align": "center" }}>경기지역화폐</td>
                             )}
-                            <td style={{ "text-align": "center" }}>{info.regDate}</td>
+
+                            <td style={{ "text-align": "center" }}>{info.date}</td>
                         </tr>
                     ))}
                     </tbody>

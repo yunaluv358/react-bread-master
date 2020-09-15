@@ -10,11 +10,10 @@ export const ReviewWrite = () => {
     const [contents, setContents] = useState("");
     const [postTitle, setPostTitle] = useState("");
     const [category, setCategory] = useState("");
-
+    const [date,setDate]= useState(new Date())
     const [accountDetail] = useState(
         JSON.parse(sessionStorage.getItem("user"))
     );
-
     const [id, setId] = useState("");
 
     const handleQuill = (value) => {
@@ -28,6 +27,7 @@ export const ReviewWrite = () => {
             category: category,
             postTitle: postTitle,
             contents: contents,
+            date: date.toLocaleString(),
         };
         if (
             category === "" ||
@@ -41,7 +41,7 @@ export const ReviewWrite = () => {
                 .post(`http://localhost:8080/review/posts/notice/create`, notice)
                 .then((res) => {
 
-                    window.location.href = "/admin/notice";
+                    window.location.href = "/review";
                 })
                 .catch((err) => {
                     throw err;
