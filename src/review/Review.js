@@ -1,9 +1,25 @@
 import React, { useEffect, useState } from "react";
-import {Button, Table, Container, Row, Col, Pagination} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import {Button, Table, Container, Row, Col, Pagination, Form} from "react-bootstrap";
+import { Link,useHistory } from "react-router-dom";
 import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
+import {PageTemplate} from "../common/PageTemplate";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(15),
+        boxShadow : "5px 5px 5px 5px gray"
+    },
+    margin : {
+        margin : '5%'
+    },
+    size : {
+        width : '200px',
+        height :'200%'
+    }
+
+}));
 export const Review = () => {
     const [categorySelect, setCategorySelect] = useState("");
     const [postList, setPostList] = useState([]);
@@ -12,9 +28,9 @@ export const Review = () => {
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = postList.slice(indexOfFirstPost,indexOfLastPost);
-
-
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const classes = useStyles()
+    const history = useHistory()
 
     const nextPage = () =>{
         if(currentPage<currentPosts.length){
@@ -25,17 +41,14 @@ export const Review = () => {
             setCurrentPage(currentPage)
         }
     }
-
     const prevPage = () => {
         if(currentPage>1){
             setCurrentPage(currentPage-1)
         }
     };
-
-
     useEffect(() => {
         axios
-            .get('http://localhost:8080/review/posts/postlist')
+            .get('http://localhost:8080/review/postlist')
             .then((res)=>{
                 setPostList(res.data)
             })
@@ -60,27 +73,27 @@ export const Review = () => {
             })
 
     }
+    const reviewSearch = data => {
+        alert('리뷰 제목'+data.title)
+        history.push('/reviewSearch')
+        sessionStorage.setItem('reviewData', JSON.stringify(data))
+    }
     return (
         <>
-            <h2 className="mt-4" style={{"text-align" : "center"}}>리뷰 게시판</h2>
-            <div className="content-title">
-                <div id="select-search-bar">
+            <PageTemplate>
+            <section className={classes.paper}>
+                <h2>리뷰 게시판</h2>
                     <select
-                        className="form-control"
                         id="select"
                         value={categorySelect}
                         onChange={(e) => setCategorySelect(e.target.value)}
                     >
-                        <option value="">카테고리</option>
-                        <option value="지역">지역화폐</option>
-                        <option value="사이트">사이트</option>
+                        <option value="맛">맛</option>
+                        <option value="배송만족도">배송만족도</option>
+                        <option value="기타">기타</option>
                     </select>
-                </div>
-            </div>
-
-            <div>
                 <Table responsive hover>
-                    <thead style={{ "text-align": "center" }}>
+                    <thead >
                     <tr>
                         <th>번호</th>
                         <th>구분</th>
@@ -90,30 +103,19 @@ export const Review = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {currentPosts.map((info, i) => (
-                        <tr key={i}>
-                            <td style={{ "text-align": "center" }}>
-                                { (postList.length -i)}
+                    {currentPosts.map((i, index) => (
+                        <tr key={index}>
+                            <td >
+                                {i.reviewId}
                             </td>
-
-                            <td style={{ "text-align": "center" }}> {info.category}</td>
-
+                            <td> {i.category}</td>
                             <td>
-                                {" "}
-                                <Link to={`/admin/notice-detail/${info.postTitle}`}>
-                                    {info.postTitle}
-                                </Link>
+                                <a onClick={()=>reviewSearch(i)}>
+                                    {i.title}
+                                </a>
                             </td>
-
-                            {info.category === "사이트" && (
-                                <td style={{ "text-align": "center" }}>관리자</td>
-                            )}
-
-                            {info.category === "지역화폐" && (
-                                <td style={{ "text-align": "center" }}>경기지역화폐</td>
-                            )}
-
-                            <td style={{ "text-align": "center" }}>{info.date}</td>
+                            <td> {i.userId}</td>
+                            <td>{i.date}</td>
                         </tr>
                     ))}
                     </tbody>
@@ -123,7 +125,7 @@ export const Review = () => {
                     <Row noGutters>
                         <Col>
                             {" "}
-                            <Link to="/ReviewWrite">
+                            <Link to="/reviewWrite">
                                 <Button variant="primary" id="button-right">
                                     글쓰기
                                 </Button>
@@ -140,7 +142,8 @@ export const Review = () => {
                         prevPage={prevPage}
                     />
                 </div>
-            </div>
+            </section>
+            </PageTemplate>
         </>
     );
 };

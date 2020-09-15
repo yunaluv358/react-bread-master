@@ -3,14 +3,13 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { ShopMessageRegister } from './shop/ShopMessageRegister';
 import PropTypes from 'prop-types';
-import { Admin } from "./admin/AdminRouter";
-import { AdminMain } from "./admin/AdminMain";
+
+// 빵 상품
 import { BreadList } from "./bread/BreadList";
 import { BreadOption } from "./bread/BreadOption";
 import { BreadItem } from "./bread/BreadItem";
 
-import { Review } from "./review/Review";
-import { ReviewWrite } from "./review/ReviewWrite";
+// 주문
 import { OrderRegister } from "./order/OrderRegister";
 import { Features } from "./common/HomeMain";
 import { ShopAbout, AboutDetail } from './shop/ShopAbout';
@@ -23,23 +22,37 @@ import { UserDetail } from "./user/UserDetail";
 import {UserFindID} from "./user/UserFindID";
 import {UserFindPW} from "./user/UserFindPW";
 import UserShipping from "./user/UserShipping";
+import {SearchBreadItem} from "./bread/SearchBreadItem";
 
-import theme from "./vendor/theme";
-import ThemeProvider from "@material-ui/styles/ThemeProvider";
-import { Map } from './vendor/map/Map'
-
-import { AdminOrderDelivery } from "./admin/AdminOrderDelivery";
+//매장위치 표시 지도사용
 import { ShopDetail } from "./shop/ShopDetail";
 import { ShopLocation } from "./shop/ShopLocation";
-import {Chart} from "./chart/Chart";
 
+// 리듀서
 import { createStore } from 'redux'
 import rootReducer from './RootReducer'
+import theme from "./vendor/theme";
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+
+// 관리자
+import { AdminOrderDelivery } from "./admin/AdminOrderDelivery";
 import { AdminUserList } from "./admin/AdminUserList";
 import { AdminBreadRegister } from "./admin/AdminBreadRegister";
-import {SearchBreadItem} from "./bread/SearchBreadItem";
+import { Admin } from "./admin/AdminRouter";
+import { AdminMain } from "./admin/AdminMain";
+
+// 관리자 차트와 지도
+import {Chart} from "./chart/Chart";
+import { Map } from './vendor/map/Map'
+
+//챗봇
 import Chatbot from "./vendor/chatbot/Chatbot";
 
+// 리뷰
+import {ReviewWrite} from "./review/ReviewWrite";
+import {Review} from "./review/Review";
+import {ReviewSearch} from "./review/ReviewSearch";
+import {ReviewInfo} from "./review/ReviewInfo";
 
 export const RootRouter = () => {
 	return <>
@@ -54,6 +67,8 @@ export const RootRouter = () => {
 					<Route path="/option" component={BreadOption}/>
 					<Route path="/review" component={Review}/>
 					<Route path="/reviewWrite" component={ReviewWrite}/>
+					<Route path="/reviewSearch" component={ReviewSearch}/>
+					<Route path="/reviewInformation" component={ReviewInfo}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>

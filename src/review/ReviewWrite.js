@@ -4,13 +4,32 @@ import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
-
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import {PageTemplate} from "../common/PageTemplate";
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        marginTop: theme.spacing(15),
+        width: '70%',
+        height: '70%',
+        textAlign: 'center'
+    },
+    margin : {
+        margin : '5%',
+        marginTop : '5%'
+    },
+    titleSize : {
+        width:'80%'
+    },
+    font : {
+        fontSize : '21px'
+}));
 export const ReviewWrite = () => {
     const [userId, setUserId] = useState("")
     const [contents, setContents] = useState("");
-    const [postTitle, setPostTitle] = useState("");
+    const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [date,setDate]= useState(new Date())
+    const  classes = useStyles()
     const [accountDetail] = useState(
         JSON.parse(sessionStorage.getItem("user"))
     );
@@ -24,27 +43,28 @@ export const ReviewWrite = () => {
         e.preventDefault();
         const notice = {
             userId: accountDetail.userId,
-            category: category,
-            postTitle: postTitle,
+            title: title,
             contents: contents,
+            category:category,
             date: date.toLocaleString(),
         };
         if (
             category === "" ||
-            postTitle === "" ||
+            title === "" ||
             contents === "" ||
             category === "카테고리"
         ) {
             alert("입력창을 다채워주세요");
         } else {
             axios
-                .post(`http://localhost:8080/review/posts/notice/create`, notice)
+                .post(`http://localhost:8080/review/save`, notice)
                 .then((res) => {
-
+                    alert("성공");
                     window.location.href = "/review";
                 })
                 .catch((err) => {
                     throw err;
+                    alert("실패");
                 });
         }
     };
@@ -85,12 +105,13 @@ export const ReviewWrite = () => {
 
     return (
         <>
-            <div className="content-title">
-                <h2 className="menu-h2"> - 리뷰 작성</h2>
-            </div>
-            <Form>
+        <PageTemplate>
+            <center>
+                <div className={classes.paper}>
+                    <Form>
+                <h2>  리뷰 작성</h2>
                 <Form.Group as={Row}>
-                    <Form.Label column sm={1}>
+                    <Form.Label className={classes.font}>
                         카테고리
                     </Form.Label>
                     <Col sm={2}>
@@ -102,22 +123,25 @@ export const ReviewWrite = () => {
                             <option value="카테고리" selected>
                                 카테고리
                             </option>
-                            <option value="지역화폐">지역화폐</option>
-                            <option value="사이트">사이트</option>
+                            <option value="맛">맛</option>
+                            <option value="배송만족도">배송만족도</option>
+                            <option value="기타">기타</option>
                         </Form.Control>
                     </Col>
                 </Form.Group>
                 <Form.Group as={Row}>
-                    <Form.Label column sm={1} style={{ textAlign: "center" }}>
+                    <Form.Label className={classes.font}>
                         제목
                     </Form.Label>
-                    <Col>
+                    <center>
+                    <Col className={classes.titleSize}>
                         <Form.Control
-                            onChange={(e) => setPostTitle(e.target.value)}
-                            value={postTitle}
+                            onChange={(e) => setTitle(e.target.value)}
+                            value={title}
                             as="input"
                         />
                     </Col>
+                    </center>
                 </Form.Group>
                 <ReactQuill
                     theme="snow"
@@ -129,16 +153,19 @@ export const ReviewWrite = () => {
                 />
             </Form>
             <br />
-            <div id="quill-button-center">
-                <Link to="/admin/notice">
+            <div className={classes.margin}>
+                <Link to="/review">
                     <Button variant="primary" onClick={newNotice} type="submit">
                         확인
                     </Button>{" "}
-                    <Button variant="secondary" type="button">
+                    <Button variant="secondary" type="button" href={'/review'}>
                         취소
                     </Button>{" "}
                 </Link>
             </div>
-        </>
+        </div>
+    </center>
+</PageTemplate>
+</>
     );
 };

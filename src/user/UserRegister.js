@@ -38,10 +38,7 @@ export const UserRegister = () => {
     const [email, setEmail] = useState("")
     const [addr, setAddr] = useState("")
     const [detailAddr, setDetailAddr] = useState("")
-
     const history = useHistory();
-
-
 
     const onSignCheck = e => {
         e.preventDefault();

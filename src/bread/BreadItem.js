@@ -23,7 +23,6 @@ export const BreadItem = () => {
                 <div style={{"padding-bottom": "120px"}}/>
                 <div style={{"text-align": "center"}}>
                     <div grid-col="x10" grid-pad="1.5">
-
                         <div>
                             <center><img src={bread.breadImage} className="fotorama__img" style={{"width": "345px"}}/>
                             </center>
@@ -62,7 +61,6 @@ export const BreadItem = () => {
                                         </li>
                                     </ul>
                                 </div>
-
                                 </tbody>
                             </table>
                         </div>

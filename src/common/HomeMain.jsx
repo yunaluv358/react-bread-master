@@ -49,6 +49,7 @@ export const Navigation = () => {
                         review </a>{" "}
                     <a className="navbar-brand page-scroll" href="contactDetail">
                         contact </a>{" "}
+
                 </div>
                 <div
                     className="collapse navbar-collapse"
