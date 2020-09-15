@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
 
-export const Review = () => {
+export const ReviewWrite = () => {
     const [userId, setUserId] = useState("")
     const [contents, setContents] = useState("");
     const [postTitle, setPostTitle] = useState("");

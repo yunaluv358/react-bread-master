@@ -45,7 +45,7 @@ export const Navigation = () => {
                         breads </a>{" "}
                     <a className="navbar-brand page-scroll" href="option">
                         option </a>{" "}
-                    <a className="navbar-brand page-scroll" href="review">
+                    <a className="navbar-brand page-scroll" href="reviewWrite">
                         review </a>{" "}
                     <a className="navbar-brand page-scroll" href="contactDetail">
                         contact </a>{" "}
