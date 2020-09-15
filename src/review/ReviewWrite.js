@@ -38,7 +38,7 @@ export const ReviewWrite = () => {
             alert("입력창을 다채워주세요");
         } else {
             axios
-                .post(`http://localhost:8080/posts/notice/create`, notice)
+                .post(`http://localhost:8080/review/posts/notice/create`, notice)
                 .then((res) => {
 
                     window.location.href = "/admin/notice";
