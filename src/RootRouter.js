@@ -8,6 +8,7 @@ import { AdminMain } from "./admin/AdminMain";
 import { BreadList } from "./bread/BreadList";
 import { BreadOption } from "./bread/BreadOption";
 import { BreadItem } from "./bread/BreadItem";
+import { Review } from "./review/Review";
 
 import { OrderRegister } from "./order/OrderRegister";
 import { Features } from "./common/HomeMain";
@@ -48,6 +49,7 @@ export const RootRouter = () => {
 					<Route path="/shop-message-register" component = {ShopMessageRegister}/>
 					<Route path="/breadList" component = {BreadList} />
 					<Route path="/option" component={BreadOption}/>
+					<Route path="/review" component={Review}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>
