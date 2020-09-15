@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     font : {
         fontSize : '21px'
+    }
 }));
 export const ReviewWrite = () => {
     const [userId, setUserId] = useState("")

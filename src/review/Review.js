@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {Button, Table, Container, Row, Col, Pagination, Form} from "react-bootstrap";
+import {Button, Table, Container, Row, Col, Form} from "react-bootstrap";
 import { Link,useHistory } from "react-router-dom";
 import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
 import {PageTemplate} from "../common/PageTemplate";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import  { Pagination, Paginate } from '../common/Pagination';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -21,58 +22,32 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 export const Review = () => {
-    const [categorySelect, setCategorySelect] = useState("");
-    const [postList, setPostList] = useState([]);
-    const [currentPage,setCurrentPage] = useState(1);
-    const [postPerPage] = useState(5);
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = postList.slice(indexOfFirstPost,indexOfLastPost);
+    const [category, setCategory] = useState("");
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
     const classes = useStyles()
     const history = useHistory()
+    const [pageSize, setPageSize] = useState(5)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [count, setCount] = useState(1)
+    const [data,setData] = useState([])
 
-    const nextPage = () =>{
-        if(currentPage<currentPosts.length){
-            setCurrentPage(currentPage+1)}
-        else if(postPerPage<currentPosts.length){
-            setCurrentPage(currentPage+1)
-        } else{
-            setCurrentPage(currentPage)
-        }
-    }
-    const prevPage = () => {
-        if(currentPage>1){
-            setCurrentPage(currentPage-1)
-        }
-    };
     useEffect(() => {
         axios
             .get('http://localhost:8080/review/postlist')
             .then((res)=>{
-                setPostList(res.data)
+                setData(res.data)
             })
             .catch((err)=>{
                 throw err;
             })
+        setPageSize(6)
+        setCurrentPage(1)
     }, [])
-
-    const handleSearch = (searchWord) => {
-        axios
-            .get(`http://localhost:8080/review/posts/notice/create`,{
-                params:{
-                    searchWord:searchWord,
-                    categorySelect:categorySelect
-                }
-            })
-            .then((res)=>{
-                setPostList(res.data)
-            })
-            .catch((err)=>{
-                throw err;
-            })
-
+    const handlePageChange = (page) => {
+        setCurrentPage(page); // 페이지 수 클릭 시 현재 페이지 변경
     }
+    const subdata = Paginate(data, currentPage, pageSize);
+
     const reviewSearch = data => {
         alert('리뷰 제목'+data.title)
         history.push('/reviewSearch')
@@ -83,15 +58,16 @@ export const Review = () => {
             <PageTemplate>
             <section className={classes.paper}>
                 <h2>리뷰 게시판</h2>
-                    <select
-                        id="select"
-                        value={categorySelect}
-                        onChange={(e) => setCategorySelect(e.target.value)}
-                    >
-                        <option value="맛">맛</option>
-                        <option value="배송만족도">배송만족도</option>
-                        <option value="기타">기타</option>
-                    </select>
+                    {/*<select*/}
+                    {/*    id="select"*/}
+                    {/*    value={category}*/}
+                    {/*    onChange={(e) => setCategory(e.target.value)}*/}
+                    {/*    // onClick={categolySearch}*/}
+                    {/*>*/}
+                    {/*    <option value="맛">맛</option>*/}
+                    {/*    <option value="배송만족도">배송만족도</option>*/}
+                    {/*    <option value="기타">기타</option>*/}
+                    {/*</select>*/}
                 <Table responsive hover>
                     <thead >
                     <tr>
@@ -103,7 +79,7 @@ export const Review = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {currentPosts.map((i, index) => (
+                    {subdata.map((i, index) => (
                         <tr key={index}>
                             <td >
                                 {i.reviewId}
@@ -118,9 +94,14 @@ export const Review = () => {
                             <td>{i.date}</td>
                         </tr>
                     ))}
+                    <Pagination
+                        pageSize={pageSize}
+                        itemsCount={data.length}
+                        currentPage={currentPage}
+                        onPageChange={handlePageChange}
+                    />
                     </tbody>
                 </Table>
-
                 <Container fluid>
                     <Row noGutters>
                         <Col>
@@ -133,15 +114,6 @@ export const Review = () => {
                         </Col>
                     </Row>
                 </Container>
-                <div>
-                    <Pagination
-                        postPerPage={postPerPage}
-                        TotalPostList={postList.length}
-                        paginate={paginate}
-                        nextPage={nextPage}
-                        prevPage={prevPage}
-                    />
-                </div>
             </section>
             </PageTemplate>
         </>
