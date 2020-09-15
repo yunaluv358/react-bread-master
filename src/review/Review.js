@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     size : {
         width : '200px',
         height :'200%'
+    },
+    numberStyle : {
+        margin :'2'
     }
 
 }));
@@ -30,6 +33,7 @@ export const Review = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(1)
     const [data,setData] = useState([])
+    const [userData,setUserData]= useState(JSON.parse(sessionStorage.getItem("user")))
 
     useEffect(() => {
         axios
@@ -58,16 +62,7 @@ export const Review = () => {
             <PageTemplate>
             <section className={classes.paper}>
                 <h2>리뷰 게시판</h2>
-                    {/*<select*/}
-                    {/*    id="select"*/}
-                    {/*    value={category}*/}
-                    {/*    onChange={(e) => setCategory(e.target.value)}*/}
-                    {/*    // onClick={categolySearch}*/}
-                    {/*>*/}
-                    {/*    <option value="맛">맛</option>*/}
-                    {/*    <option value="배송만족도">배송만족도</option>*/}
-                    {/*    <option value="기타">기타</option>*/}
-                    {/*</select>*/}
+
                 <Table responsive hover>
                     <thead >
                     <tr>
@@ -94,7 +89,8 @@ export const Review = () => {
                             <td>{i.date}</td>
                         </tr>
                     ))}
-                    <Pagination
+
+                    <Pagination className={classes.numberStyle}
                         pageSize={pageSize}
                         itemsCount={data.length}
                         currentPage={currentPage}

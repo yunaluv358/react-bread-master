@@ -27,18 +27,18 @@ const useStyles = makeStyles((theme) => ({
 
 export const ReviewSearch = () => {
     const [review,setReview] = useState('')
-    const [userId, setUserId] = useState("")
+    // const [userId, setUserId] = useState("")
+    const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")))
     const [contents, setContents] = useState("");
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [date,setDate]= useState(new Date())
     const classes = useStyles()
 
-    const [accountDetail] = useState(
-        JSON.parse(sessionStorage.getItem("user"))
-    );
+    // const [accountDetail] = useState(
+    //     JSON.parse(sessionStorage.getItem("user"))
+    // );
 
-    const [id, setId] = useState("");
     useEffect(() => {
         setReview(JSON.parse(sessionStorage.getItem('reviewData')))
     }, [])
@@ -133,21 +133,22 @@ export const ReviewSearch = () => {
                             </Form>
                         </div>
                         <div className={classes.margin}>
+                            {user === null &&
+                            <>
+                            </>
+                            }
+                            {user &&
                             <Link to="/reviewInformation">
                                 <Button variant="primary"  type="button">
                                     확인
                                 </Button>{" "}
-                                {accountDetail.userId === review.userId &&
+                                {user.userId === review.userId &&
                                 <Button variant="primary" type="button" >
                                     수정하기
                                 </Button>
-
-                                }
-                                {!accountDetail.userId &&
-                                <>
-                                </>
                                 }
                             </Link>
+                            }
                         </div>
                     </center>
             </PageTemplate>
