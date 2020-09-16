@@ -41,7 +41,6 @@ export const OrderRegister = () => {
 	const classes = useStyles()
 
 	const nullCheck = () => {
-		alert('장바구니가 비어있습니다 빵을 선택해 주세요')
 		history.push('/')
 	}
 
@@ -76,20 +75,15 @@ export const OrderRegister = () => {
 		if (success) {
 			axios.post(`http://localhost:8080/shipping/payment`, data)
 				.then((response) => {
-					alert("성공")
 					history.push('/shipping')
 				})
 				.catch((err) => {
 					throw err;
 				});
-			let msg = `${response.name} ${bread.breadPrice}원 결제가 완료되었습니다.`
-			alert(msg)
 		} else {
-			alert(`결제 실패: ${error}`);
 		}
 	}
 	const homeClick = e =>{
-		alert("홈으로 이동합니다")
 		history.push("/")
 	}
 	return <>

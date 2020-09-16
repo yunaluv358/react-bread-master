@@ -50,7 +50,6 @@ export const AdminUserList = () => {
                 .then((res) => {
                 })
                 .catch(() => {
-                  alert("통신실패")
                 })
           })
         })

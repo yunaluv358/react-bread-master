@@ -10,11 +10,9 @@ export const BreadItem = () => {
         setBread(JSON.parse(localStorage.getItem('selectedBread')))
     }, [])
     const passDetail = bread => {
-        alert('소비자 선택 후 ...' + bread.breadName)
         localStorage.setItem('selectedBread', JSON.stringify(bread))
     }
     const homeClick = e =>{
-        alert("홈으로 이동합니다")
         history.push("/")
     }
     return (<>

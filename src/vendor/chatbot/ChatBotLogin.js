@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import {PageTemplate} from "../../common/PageTemplate";
-// import '../user/user-access.css'
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 import makeStyles from "@material-ui/core/styles/makeStyles";
@@ -50,13 +48,10 @@ export const ChatBotLogin = () => {
             axios.post(`http://localhost:8080/user/signIn`, userData)
                 .then(response => {
                         sessionStorage.setItem("user", JSON.stringify(response.data))
-                        alert("로그인 성공 !")
-                        console.log(JSON.stringify(response.data))
                         history.push("/shipping")
                     }
                 ).catch(
                 error => {
-                    alert("로그인 실패 ! 회원가입을 위해 회원가입창으로 넘어갑니다")
                     history.push("/signup")
                     throw (error)
                 }

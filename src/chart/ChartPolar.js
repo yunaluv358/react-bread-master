@@ -16,12 +16,9 @@ const ChartPolar = props => {
         axios
             .get(`http://localhost:8080/user/data/${name}`)
             .then((res)=>{
-                alert("성공" + res.data)
                 const keyContainer =[];
                 const valueContainer  = [];
-                console.log(res.data)
                 Object.entries(res.data).forEach(([key,value])=>{
-                    console.log("밸류값"+value)
                     keyContainer.push(key)
                     valueContainer.push(value)
                 })
@@ -29,11 +26,9 @@ const ChartPolar = props => {
                 setTotalValue(valueContainer);
             })
             .catch((err)=>{
-                alert("실패")
                 throw err;
             })
     }
-    console.log(totalValue)
     const chartData = {
         labels: totalKey,
         datasets: [

@@ -24,11 +24,9 @@ export const AdminBreadRegister = () => {
   useEffect(() => {
     axios.get(`http://localhost:8080/bread/findAll`)
         .then((res)=>{
-          // alert("빵리스트를 가져옵니다")
           setData(res.data)
         })
         .catch(()=>{
-          // alert("재시도 바랍니다")
         })
   },[])
   const columns = [
@@ -71,7 +69,6 @@ export const AdminBreadRegister = () => {
                 .then((res) => {
                 })
                 .catch(() => {
-                  alert("통신실패")
                 })
           })
         })

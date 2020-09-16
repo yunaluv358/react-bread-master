@@ -14,7 +14,6 @@ export const HomeMain = () => {
             <Features data={JsonData.Features}/>
             <ShopAbout data={JsonData.About}/>
             <Review/>
-            {/*<ShopMessageRegister data={JsonData.Contact}/>*/}
         </div>
     )
 }

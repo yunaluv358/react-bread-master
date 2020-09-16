@@ -6,10 +6,11 @@ import { Navigation } from "./HomeMain";
 const selectedStyle = {
 	backgroundColor: "white", color: "grey"
 }
-export const PageTemplate = ({children}) => <div className={"page"}>
+export const PageTemplate = ({children}) =>
+	<div className={"page"}>
 	<MainMenu/>
 	{ children }
-</div>
+	</div>
 
 export const MainMenu = () => <nav className={"main-menu"}>
 	<div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="" className="">

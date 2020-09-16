@@ -48,13 +48,10 @@ export const UserFindID = () => {
         }
         axios.get(`http://localhost:8080/user/findId?name=${name}&phone=${phone}`)
            .then((res) => {
-            alert('성공')
                setUserId(res.data.userId)
-               console.log("데이터"+res.data.userId)
                setShow(true)
            })
            .catch((error) => {
-            alert('실패')
            })
     }
 

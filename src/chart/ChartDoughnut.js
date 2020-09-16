@@ -14,12 +14,9 @@ const ChartDoughnut = props => {
         axios
             .get(`http://localhost:8080/user/data/${name}`)
             .then((res)=>{
-                alert("성공" + res.data)
                 const keyContainer =[];
                 const valueContainer  = [];
-                console.log(res.data)
                 Object.entries(res.data).forEach(([key,value])=>{
-                    console.log("밸류값"+value)
                     keyContainer.push(key)
                     valueContainer.push(value)
                 })
@@ -27,11 +24,9 @@ const ChartDoughnut = props => {
                 setTotalValue(valueContainer);
             })
             .catch((err)=>{
-                alert("실패")
                 throw err;
             })
     }
-    console.log(totalValue)
     const chartData = {
         labels:[1,2,3,5,5,6,7,8,9],
         datasets: [
@@ -49,12 +44,6 @@ const ChartDoughnut = props => {
 
     const {chartValue} = props
     const [dataType, setDataType] = useState(chartData)
-    // const switchCase = (param) =>{
-    //     switch(param){
-    //         case "Sales": return setDataType(chartData)
-    //     }
-    // }
-    // switchCase(chartValue)
     return (
         <div>
             <h2>{chartValue}</h2>

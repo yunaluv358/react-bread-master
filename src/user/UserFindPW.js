@@ -49,12 +49,10 @@ export const UserFindPW = () => {
         }
         axios.get(`http://localhost:8080/user/findPw?userId=${userId}&name=${name}&phone=${phone}`)
             .then((res)=>{
-                alert('성공')
                 setPw(res.data.password)
                 setShow(true)
             })
             .catch((error)=>{
-                alert('실패')
             })
     }
     return <>

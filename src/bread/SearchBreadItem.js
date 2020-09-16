@@ -10,7 +10,6 @@ export const SearchBreadItem = () => {
         setBread(JSON.parse(localStorage.getItem('searchBread')))
     }, [])
     const searchDetail = bread => {
-        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('searchBread', JSON.stringify(bread))
     }
     return(<>

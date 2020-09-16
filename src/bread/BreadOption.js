@@ -13,11 +13,9 @@ export const BreadOption = () => {
     useEffect(() => {
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
-                    alert('성공')
                     setBreadAll(response.data)
                 }
             ).catch((error => {
-                alert("실패")
                 throw (error)
             }
         ))
@@ -37,14 +35,12 @@ export const BreadOption = () => {
 
     const select1 = (e, value, breadAll) => {
         let temp = []
-        console.log("넘어온 조건값: "+value)
         for (let i of breadAll) {
             if(value === i.option){
                 temp.push(i)
             }
         }
         for (let i of temp) {
-            console.log(i)
         }
         setSelect1result(temp)
 
@@ -58,7 +54,6 @@ export const BreadOption = () => {
     const select2 = (e, value, select1result) => {
 
         let temp = []
-        console.log("넘어온 조건값 2: "+value)
         for (let i of select1result) {
             if (value === i.allergy) {
                 temp.push(i)
@@ -66,7 +61,6 @@ export const BreadOption = () => {
 
         }
         for (let i of temp) {
-            console.log(i)
         }
         setSelect2result(temp)
 
@@ -96,7 +90,6 @@ export const BreadOption = () => {
     }
 
     const searchDetail = bread => {
-        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('searchBread', JSON.stringify(bread))
     }
 

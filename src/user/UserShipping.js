@@ -32,12 +32,9 @@ const UserShipping = () => {
         localStorage.clear()
         axios.get(`http://localhost:8080/shipping/${shippingName}`)
             .then((res)=>{
-                alert("성공")
                 setData(res.data)
-                console.log("데이터"+res.data)
             })
             .catch(() =>{
-                alert("실패")
             })
     },[])
     const handlePageChange = (page) => {

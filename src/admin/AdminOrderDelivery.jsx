@@ -58,7 +58,6 @@ export const AdminOrderDelivery = () => {
                             .then((res)=>{
                             })
                             .catch(()=>{
-                                alert("통신실패")
                             })
                     )
                 })

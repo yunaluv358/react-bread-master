@@ -50,18 +50,16 @@ export const Review = () => {
             .catch((err)=>{
                 throw err;
             })
-        setPageSize(6)
+        setPageSize(5)
         setCurrentPage(1)
     }, [])
     const titleSearch = e => {
         axios
             .get(`http://localhost:8080/review/title/${title}`)
             .then((res)=>{
-                alert("성공" + res.data)
                 setData(res.data)
             })
             .catch((err)=>{
-                alert("실패")
                 throw err;
             })
     }
@@ -71,7 +69,6 @@ export const Review = () => {
     const subdata = Paginate(data, currentPage, pageSize);
 
     const reviewSearch = data => {
-        alert('리뷰 제목'+data.title)
         history.push('/reviewSearch')
         sessionStorage.setItem('reviewData', JSON.stringify(data))
     }

@@ -36,13 +36,11 @@ export const UserDetail = () => {
         }
         axios.patch(`http://localhost:8080/user/changeInfo/${userId}`, userData)
             .then(response => {
-                    alert("데이터 변경 성공")
                     sessionStorage.clear()
                         history.push("/")
                 }
             ).catch(
             error => {
-                alert("데이터 변경 실패")
                 throw (error)
             }
         )

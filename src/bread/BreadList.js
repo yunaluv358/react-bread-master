@@ -23,15 +23,13 @@ export const BreadList = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
-                    alert('성공')
                     setData(response.data)
                 }
             ).catch((error => {
-                alert("실패")
                 throw (error)
             }
         ))
-        setPageSize(6)
+        setPageSize(5)
         setCurrentPage(1)
     },[])
     const handlePageChange = (page) => {
@@ -40,7 +38,6 @@ export const BreadList = () => {
     const subdata = Paginate(data, currentPage, pageSize);
 
     const passDetail = bread => {
-        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('selectedBread', JSON.stringify(bread))
     }
     return (

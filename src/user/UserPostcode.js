@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from "react-bootstrap/Modal";
 const UserPostcode = ({setAddress}) => {
-    console.log("포스트코드받은값" + setAddress)
     const [show,setShow] = useState(false)
 
     const handleClosed = () =>{
@@ -28,7 +27,6 @@ const UserPostcode = ({setAddress}) => {
         }
         setAddress(fullAddress)
         setShow(false)
-        console.log("풀어드레스값?"+fullAddress);
     }
 
     return (

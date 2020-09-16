@@ -57,20 +57,35 @@ export const ReviewInfo = () => {
             contents === "" ||
             category === "카테고리"
         ) {
-            alert("입력창을 다채워주세요");
         } else {
             axios
                 .patch(`http://localhost:8080/review/info`, notice)
                 .then((res) => {
-                    alert("성공");
                     window.location.href = "/review";
                 })
-                .catch((err) => {
-                    throw err;
-                    alert("실패");
+                .catch((error) => {
+                    throw error;
                 });
         }
     };
+
+    const reviewDelete = e => {
+        e.preventDefault();
+        const notice = {
+            userId:accountDetail.userId,
+            title: title,
+            contents: contents,
+            category:category,
+            date: date,
+        };
+        axios.post(`http://localhost:8080/review/delete`, notice)
+            .then((res)=>{
+                window.location.href = "/review";
+            })
+            .catch((error)=>{
+                throw error
+            })
+    }
 
     const modules = {
         toolbar: [
@@ -160,8 +175,11 @@ export const ReviewInfo = () => {
                             <Button variant="primary" onClick={newNotice} type="submit">
                                 확인
                             </Button>{" "}
-                            <Button variant="secondary" type="button" href={'/review'}>
+                            <Button variant="secondary" type="button">
                                 취소
+                            </Button>{" "}
+                            <Button variant="secondary" onClick={reviewDelete} type="button">
+                                삭제
                             </Button>{" "}
                         </Link>
                     </div>

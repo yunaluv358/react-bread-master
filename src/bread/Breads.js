@@ -7,11 +7,9 @@ export const Breads = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
-                    alert("브레드리스트 가져오기 성공")
                     setData(response.data)
                 }
             ).catch((error => {
-                alert("실패")
                 throw (error)
             }
         ))

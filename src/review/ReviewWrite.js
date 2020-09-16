@@ -38,7 +38,6 @@ export const ReviewWrite = () => {
     };
 
     const homeClick = e =>{
-        alert("홈으로 이동합니다")
         history.push("/")
     }
 
@@ -57,17 +56,14 @@ export const ReviewWrite = () => {
             contents === "" ||
             category === "카테고리"
         ) {
-            alert("입력창을 다채워주세요");
         } else {
             axios
                 .post(`http://localhost:8080/review/save`, notice)
                 .then((res) => {
-                    alert("성공");
                     window.location.href = "/review";
                 })
                 .catch((err) => {
                     throw err;
-                    alert("실패");
                 });
         }
     };

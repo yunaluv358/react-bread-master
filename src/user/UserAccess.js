@@ -53,13 +53,10 @@ export const UserAccess = () => {
             axios.post(`http://localhost:8080/user/signIn`, userData)
                 .then(response => {
                         sessionStorage.setItem("user", JSON.stringify(response.data))
-                        alert("로그인 성공 !")
-                        console.log(JSON.stringify(response.data))
                         history.push("/")
                     }
                 ).catch(
                 error => {
-                    alert("로그인 실패 !")
                     throw (error)
                 }
             )

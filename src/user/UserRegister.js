@@ -53,12 +53,10 @@ export const UserRegister = () => {
         }
         axios.post(`http://localhost:8080/user/register`, userData)
             .then((res) => {
-                    alert("회원가입 성공 !")
                     history.push("/Signin")
                 }
             ).catch(
             error => {
-                alert("회원가입 실패")
                 throw (error)
             }
         );

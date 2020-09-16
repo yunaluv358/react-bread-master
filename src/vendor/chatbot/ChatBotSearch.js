@@ -16,7 +16,6 @@ export const ChatBotSearch = (props) => {
     const [data, setData] = useState([])
     const classes = useStyle()
     const passDetail = bread => {
-        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('selectedBread', JSON.stringify(bread))
     }
     useEffect(()=>{
@@ -24,11 +23,9 @@ export const ChatBotSearch = (props) => {
         setBreadName(steps.breadSearch.value)
         axios.get(`http://localhost:8080/bread/breadSearch/${breadName}`)
             .then( response => {
-                alert('성공')
                 setData(response.data)
             } )
             .catch( response => {
-                alert('실패')
             } );
     },[breadName])
 

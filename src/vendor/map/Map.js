@@ -79,21 +79,17 @@ export const Map = () =>{
     Geocode.setLanguage('ko')
     Geocode.fromLatLng(marker.lat,marker.lng).then(
         response => {
-          console.log(response)
           const address = response.results[0].formatted_address
           const length = response.results[0].address_components.length
           const postcode = response.results[0].address_components[length-1].long_name
-          console.log(postcode.indexOf('-'))
           if(postcode.indexOf('-') != -1){ //결과값이 없으면 -1 반환
             setSelectedPc(postcode)
           }else{
             setSelectedPc("정보없음")
           }
           setSelectedAddr(address)
-          console.log(address);
         },
         error => {
-          console.error(error);
         }
     );
   };
@@ -153,7 +149,6 @@ export const Map = () =>{
         setSelectedPc(postal_code)
         setSearchLocation({ lat, lng });
       } catch (error) {
-        console.log("Error: ", error);
       }
     };
 
