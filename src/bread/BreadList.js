@@ -15,17 +15,6 @@ const useStyle = makeStyles(()=>({
         fontSize : '20px',
         color:'brown'
     },
-    listSize : {
-        width : '400px',
-        height : '400px',
-    },
-    descrip : {
-        width : '120%',
-        whiteSpace:'nowrap',
-        overflow:'hidden',
-        color:'gray',
-        wordBreak:'normal'
-    },
     description : {
         fontSize : '10px',
         color:'gray'
@@ -53,7 +42,7 @@ export const BreadList = () => {
                 throw (error)
             }
         ))
-        setPageSize(8)
+        setPageSize(7)
         setCurrentPage(1)
     },[])
     const handlePageChange = (page) => {
@@ -68,11 +57,11 @@ export const BreadList = () => {
     return (
         <>
             <Navigation/>
-                <center>
-                    {/*<div grid-col="8" grid-pad="1.5" >*/}
-                    <div className={classes.size}  >
-                        <div >
-                        <div >
+            <center>
+
+                <div className={classes.size}  >
+                    <div>
+                        <div>
                             {subdata.map((i, index) => (
                                 <div key={index} style={{display: "inline-block",}} >
                                     <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
@@ -92,9 +81,9 @@ export const BreadList = () => {
                                 onPageChange={handlePageChange}
                             />
                         </div>
-                        </div>
                     </div>
-                </center>
+                </div>
+            </center>
 
             {/*</div>*/}
         </>
