@@ -50,6 +50,12 @@ export const Review = () => {
         setPageSize(5)
         setCurrentPage(1)
     }, [])
+
+    function enterKey (){
+        if (window.event.keyCode == 13) {
+            titleSearch()
+        }
+    }
     const titleSearch = e => {
         axios
             .get(`http://localhost:8080/review/title/${title}`)
@@ -75,7 +81,7 @@ export const Review = () => {
             <section className={classes.paper}>
                 <h2>리뷰 게시판</h2>
                 <input type="text" onChange={e => setTitle(e.target.value)}/>
-                <input type="button" onClick={titleSearch} value={"제목검색"}/>
+                <input type="button" onkeyup={enterKey} onClick={titleSearch} value={"제목검색"}/>
                 <Table responsive hover>
                     <thead >
                     <tr>

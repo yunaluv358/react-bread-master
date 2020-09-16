@@ -4,6 +4,7 @@ import './user-access.css'
 import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import Modal from "react-bootstrap/Modal";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 export const UserAccess = () => {
     const [userId,setUserId] = useState('')
     const [password,setPassword] = useState('')
+    const [show,setShow] = useState(false)
     const history = useHistory();
     const classes = useStyles();
     const onAdmin = e => {
@@ -41,6 +43,7 @@ export const UserAccess = () => {
         sessionStorage.removeItem('user')
         window.location.reload()
     }
+
     const SignInButton = e => {
         e.preventDefault()
         const userData = {
@@ -58,6 +61,7 @@ export const UserAccess = () => {
                 ).catch(
                 error => {
                     throw (error)
+                    setShow(true)
                 }
             )
         }
@@ -72,6 +76,7 @@ export const UserAccess = () => {
                 <div className="form-group">
                     <label>UserId</label>
                     <input type="email" className="form-control" value={userId} onChange={e => setUserId(e.target.value)} placeholder="Enter email" />
+
                 </div>
                 <div className="form-group">
                     <label>Password</label>
