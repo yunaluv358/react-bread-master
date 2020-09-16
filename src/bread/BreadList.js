@@ -16,7 +16,7 @@ const useStyle = makeStyles(()=>({
         color:'brown'
     },
     description : {
-        fontSize : '10px',
+        fontSize : '5px',
         color:'gray'
     },
     size : {
@@ -26,7 +26,6 @@ const useStyle = makeStyles(()=>({
 export const BreadList = () => {
     const [pageSize, setPageSize] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
-    const [count, setCount] = useState(1)
     const [data,setData] = useState([])
     const classes = useStyle()
 
@@ -58,20 +57,19 @@ export const BreadList = () => {
         <>
             <Navigation/>
             <center>
-
                 <div className={classes.size}  >
                     <div>
                         <div>
                             {subdata.map((i, index) => (
-                                <div key={index} style={{display: "inline-block",}} >
+                                <div key={index} style={{display: "inline-block"}} >
                                     <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
-                                        <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
-                                    <a rel="history" href="breadItem" className={classes.font}  onClick={()=>passDetail(i)}>
-                                        <div>{i.breadName}</div></a>
-                                    <a rel="history" href="breadItem" className={classes.fontPrice}  onClick={()=>passDetail(i)}>
-                                        <div>{i.breadPrice}원</div></a>
-                                    <a rel="history" href="breadItem" className={classes.description}   onClick={()=>passDetail(i)}>
-                                        <div>{i.breadDescription}</div></a>
+                                        <img src={i.breadImage} style={{width: '330px', height: '330px' }} /></a>
+                                    <a rel="history" href="breadItem"  onClick={()=>passDetail(i)}>
+                                        <div className={classes.font} >{i.breadName}</div></a>
+                                    <a rel="history" href="breadItem" onClick={()=>passDetail(i)}>
+                                        <div  className={classes.fontPrice} >{i.breadPrice}원</div></a>
+                                    <a rel="history" href="breadItem"  onClick={()=>passDetail(i)}>
+                                        <div className={classes.description}>{i.breadDescription}</div></a>
                                 </div>
                             ))}
                             <Pagination

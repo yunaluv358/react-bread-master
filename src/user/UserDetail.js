@@ -45,6 +45,26 @@ export const UserDetail = () => {
             }
         )
     }
+    const deleteHandle = e => {
+        const userData = {
+            userId: userId,
+            password: password,
+            name: name,
+            email: email,
+            phone: phone,
+            addr:addr,
+            detailAddr:detailAddr
+        }
+        axios.post(`http://localhost:8080/user/delete`,userData)
+            .then((res)=> {
+                sessionStorage.removeItem('user')
+                window.location.href = "/";
+            })
+            .catch((error) => {
+                throw error
+            })
+
+    }
     return <>
         <PageTemplate>
             <section className={classes.paper} style={{position:'relative',weidth:'10%'}}>
@@ -83,6 +103,7 @@ export const UserDetail = () => {
                                    onChange={e => setDetailAddr(e.target.value)} placeholder="나머지 주소는 직접입력해 주세요." required=""/>
                         </div>
                         <button type="submit" className="btn btn-primary btn-block" onClick={crystalHandle}>정보 수정</button>
+                        <button type="submit"style={{color:'red'}} className="btn btn-white btn-block" onClick={deleteHandle}>탈퇴</button>
                     </form>
                 </div>
             </section>

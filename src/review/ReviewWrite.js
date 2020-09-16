@@ -31,8 +31,8 @@ export const ReviewWrite = () => {
     const [category, setCategory] = useState("");
     const [date,setDate]= useState(new Date())
     const  classes = useStyles()
-    const [id, setId] = useState("");
     const history = useHistory()
+
     const handleQuill = (value) => {
         setContents(value);
     };
@@ -43,7 +43,7 @@ export const ReviewWrite = () => {
 
     const newNotice = (e) => {
         e.preventDefault();
-        const notice = {
+        const data = {
             userId: user.userId,
             title: title,
             contents: contents,
@@ -58,7 +58,7 @@ export const ReviewWrite = () => {
         ) {
         } else {
             axios
-                .post(`http://localhost:8080/review/save`, notice)
+                .post(`http://localhost:8080/review/save`, data)
                 .then((res) => {
                     window.location.href = "/review";
                 })

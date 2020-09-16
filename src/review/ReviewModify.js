@@ -27,29 +27,28 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const ReviewInfo = () => {
-    const [userId, setUserId] = useState("")
+export const ReviewModify = () => {
+    const [userId, setUserId] = useState(JSON.parse(sessionStorage.reviewData).userId);
+    const [reviewId, setReviewId] = useState(JSON.parse(sessionStorage.reviewData).reviewId);
     const [contents, setContents] = useState(JSON.parse(sessionStorage.reviewData).contents);
     const [title, setTitle] = useState(JSON.parse(sessionStorage.reviewData).title);
     const [category, setCategory] =  useState(JSON.parse(sessionStorage.reviewData).category);
-    const [date,setDate]= useState(JSON.parse(sessionStorage.reviewData).date)
-    const [id, setId] = useState("");
+    const [date,setDate]= useState(new Date())
     const classes = useStyles()
-    const [accountDetail] = useState(
-        JSON.parse(sessionStorage.getItem("user"))
-    );
+
     const handleQuill = (value) => {
         setContents(value);
     };
 
     const newNotice = (e) => {
         e.preventDefault();
-        const notice = {
-            userId:accountDetail.userId,
+        const data = {
+            userId:userId,
+            reviewId:reviewId,
             title: title,
             contents: contents,
             category:category,
-            date: date,
+            date: date.toLocaleString(),
         };
         if (
             category === "" ||
@@ -59,7 +58,7 @@ export const ReviewInfo = () => {
         ) {
         } else {
             axios
-                .patch(`http://localhost:8080/review/info`, notice)
+                .patch(`http://localhost:8080/review/info`, data)
                 .then((res) => {
                     window.location.href = "/review";
                 })
@@ -71,14 +70,15 @@ export const ReviewInfo = () => {
 
     const reviewDelete = e => {
         e.preventDefault();
-        const notice = {
-            userId:accountDetail.userId,
+        const data = {
+            userId:userId,
+            reviewId: reviewId,
             title: title,
             contents: contents,
             category:category,
             date: date,
         };
-        axios.post(`http://localhost:8080/review/delete`, notice)
+        axios.post(`http://localhost:8080/review/delete`, data)
             .then((res)=>{
                 window.location.href = "/review";
             })

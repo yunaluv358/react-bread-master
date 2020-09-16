@@ -31,15 +31,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const Review = () => {
     const [category, setCategory] = useState("");
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    const classes = useStyles()
-    const history = useHistory()
     const [pageSize, setPageSize] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
-    const [count, setCount] = useState(1)
     const [data,setData] = useState([])
     const [title,setTitle] = useState('')
-    const [userData,setUserData]= useState(JSON.parse(sessionStorage.getItem("user")))
+    const classes = useStyles()
+    const history = useHistory()
 
     useEffect(() => {
         axios
@@ -68,8 +65,8 @@ export const Review = () => {
     }
     const subdata = Paginate(data, currentPage, pageSize);
 
-    const reviewSearch = data => {
-        history.push('/reviewSearch')
+    const reviewDetail = data => {
+        history.push('/reviewDetail')
         sessionStorage.setItem('reviewData', JSON.stringify(data))
     }
     return (
@@ -97,7 +94,7 @@ export const Review = () => {
                             </td>
                             <td> {i.category}</td>
                             <td>
-                                <a rel="history"  className={classes.font} onClick={()=>reviewSearch(i)}>
+                                <a rel="history"  className={classes.font} onClick={()=>reviewDetail(i)}>
                                     {i.title}
                                 </a>
                             </td>
