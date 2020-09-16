@@ -4,6 +4,7 @@ import {ShopMessageRegister} from '../shop/ShopMessageRegister';
 import JsonData from '../vendor/data.json';
 import {useHistory} from "react-router-dom";
 import Chatbot from "../vendor/chatbot/Chatbot";
+import {Review} from "../review/Review";
 
 export const HomeMain = () => {
     return (
@@ -12,7 +13,8 @@ export const HomeMain = () => {
             <Header data={JsonData.Header}/>
             <Features data={JsonData.Features}/>
             <ShopAbout data={JsonData.About}/>
-            <ShopMessageRegister data={JsonData.Contact}/>
+            <Review/>
+            {/*<ShopMessageRegister data={JsonData.Contact}/>*/}
         </div>
     )
 }
