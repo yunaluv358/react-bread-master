@@ -145,7 +145,7 @@ export const ReviewSearch = () => {
                                     확인
                                 </Button>
                                 {user.userId === review.userId &&
-                                <Button variant="primary" href={"/reviewWrite"} className={classes.thumb} >
+                                <Button variant="primary" href={"/reviewInfo"} className={classes.thumb} >
                                     수정하기
                                 </Button>
                                 }

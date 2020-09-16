@@ -73,12 +73,12 @@ export const UserRegister = () => {
                         <center><h2 className={classes.font}>Bread</h2></center>
                         <div className="form-group">
                             <label>아이디</label>
-                            <input type="text" className="form-control" onChange={e => setUserId(e.target.value)} placeholder="First name"/>
+                            <input type="text" className="form-control" onChange={e => setUserId(e.target.value)} placeholder="Id"/>
                         </div>
 
                         <div className="form-group">
                             <label>비밀번호</label>
-                            <input type='password' className="form-control" onChange={e=> setPassword(e.target.value)} placeholder="Last name"/>
+                            <input type='password' className="form-control" onChange={e=> setPassword(e.target.value)} placeholder="Password"/>
                         </div>
 
                         <div className="form-group">

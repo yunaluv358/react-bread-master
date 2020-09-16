@@ -71,7 +71,7 @@ export const RootRouter = () => {
 					<Route path="/review" component={Review}/>
 					<Route path="/reviewWrite" component={ReviewWrite}/>
 					<Route path="/reviewSearch" component={ReviewSearch}/>
-					<Route path="/reviewInformation" component={ReviewInfo}/>
+					<Route path="/reviewInfo" component={ReviewInfo}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>
