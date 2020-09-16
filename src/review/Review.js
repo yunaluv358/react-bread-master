@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
         width : '200px',
         height :'200%'
     },
-    numberStyle : {
-        margin :'2'
+    writeButton : {
+       textAlign :'center',
+        marginBottom : '9'
     }
 
 }));
@@ -89,21 +90,21 @@ export const Review = () => {
                             <td>{i.date}</td>
                         </tr>
                     ))}
+                        <Pagination
+                                    pageSize={pageSize}
+                                    itemsCount={data.length}
+                                    currentPage={currentPage}
+                                    onPageChange={handlePageChange}
+                        />
 
-                    <Pagination className={classes.numberStyle}
-                        pageSize={pageSize}
-                        itemsCount={data.length}
-                        currentPage={currentPage}
-                        onPageChange={handlePageChange}
-                    />
                     </tbody>
                 </Table>
                 <Container fluid>
                     <Row noGutters>
-                        <Col>
+                        <Col className={classes.writeButton}>
                             {" "}
                             <Link to="/reviewWrite">
-                                <Button variant="primary" id="button-right">
+                                <Button variant="primary" id="button-right" >
                                     글쓰기
                                 </Button>
                             </Link>

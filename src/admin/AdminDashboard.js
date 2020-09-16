@@ -10,6 +10,12 @@ import {Chart} from "../chart/Chart";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(4)
+  },
+  size:{
+    width: 'auto',
+    height: 'auto',
+    maxWidth: 'px',
+    maxHeight: '100px'
   }
 }));
 
@@ -22,7 +28,6 @@ export const AdminDashboard = () => {
           container
           spacing={5}
       >
-
         <Grid style={{position:'relative',left:"0%",width:'450px',height:'400px'}}>
           <Chart/>
         </Grid>

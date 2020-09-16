@@ -4,11 +4,19 @@ import axios from "axios";
 import './bread.css'
 import {Navigation} from "../common/HomeMain";
 import {useHistory} from "react-router-dom";
+import {makeStyles} from "@material-ui/styles";
+
+const useStyle = makeStyles(()=>({
+    font : {
+        fontSize : '20px'
+    }
+}))
 export const BreadList = () => {
     const [pageSize, setPageSize] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(1)
     const [data,setData] = useState([])
+    const classes = useStyle()
 
     const history = useHistory()
     useEffect(()=>{
@@ -51,6 +59,12 @@ export const BreadList = () => {
                             <span key={index}>
                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
                                     <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
+                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
+                                    <div className={classes.font}>{i.breadName}</div></a>
+                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
+                                    <div className={classes.font}>{i.breadPrice}원</div></a>
+                                 <a lassName={classes.font} rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
+                                    <div style={{overflow:'hidden',color:'gray'}}>{i.breadDescription}</div></a>
                             </span>
                         ))}
                         <Pagination

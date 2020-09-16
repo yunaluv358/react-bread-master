@@ -134,8 +134,11 @@ export const ReviewSearch = () => {
                         </div>
                         <div className={classes.margin}>
                             {user === null &&
-                            <>
-                            </>
+                            <Link to="/review">
+                                <Button variant="primary"  type="button">
+                                    확인
+                                </Button>{" "}
+                            </Link>
                             }
                             {user &&
                             <Link to="/reviewInformation">
