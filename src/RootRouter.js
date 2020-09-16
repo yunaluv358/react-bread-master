@@ -48,6 +48,7 @@ import { Map } from './vendor/map/Map'
 //챗봇
 import Chatbot from "./vendor/chatbot/Chatbot";
 import {BotBreadCategoly} from "./vendor/chatbot/BotBreadCategoly";
+
 // 리뷰
 import {ReviewWrite} from "./review/ReviewWrite";
 import {Review} from "./review/Review";
@@ -128,12 +129,7 @@ export const RootRouter = () => {
 			</BrowserRouter>
 		</Provider>
 	</>
-
-
 }
-
-
-
 export const RouteWithLayout = props => {
 	const { layout: Layout, component: Component, ...rest } = props;
 

@@ -11,7 +11,6 @@ export const PageTemplate = ({children}) =>
 	<MainMenu/>
 	{ children }
 	</div>
-
 export const MainMenu = () => <nav className={"main-menu"}>
 	<div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="" className="">
 		<div grid-col="4" grid-pad="1.5"></div>
@@ -19,7 +18,7 @@ export const MainMenu = () => <nav className={"main-menu"}>
 			<NavLink to={"/"}><FaHome/>home</NavLink>&nbsp;
 			<NavLink to={"/about"} activeStyle={selectedStyle}>about</NavLink>&nbsp;
 			<NavLink to={"/breads"} activeStyle={selectedStyle}>breads</NavLink>&nbsp;
-			<Navigation to={"/category"} activeStyle={selectedStyle}>search</Navigation>&nbsp;
+			<Navigation to={"/option"} activeStyle={selectedStyle}>option</Navigation>&nbsp;
 			<NavLink to={"/signin"} activeStyle={selectedStyle}>login</NavLink>&nbsp;
 			<NavLink to={"/signup"} activeStyle={selectedStyle}>join</NavLink>
 		</div>
