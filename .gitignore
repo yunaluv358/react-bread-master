@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/vendor/map/Map.js
-/src/order/OrderRegister.js
+
 
 # testing
 /coverage
@@ -24,3 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 ../react-bread-master/
+
+
+/src/vendor/map/Map.js
+/src/order/OrderRegister.js
