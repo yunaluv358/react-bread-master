@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     },
     font : {
         fontSize : '21px'
+    },
+    thumb : {
+        marginLeft : '8'
     }
 }));
 
@@ -34,10 +37,6 @@ export const ReviewSearch = () => {
     const [category, setCategory] = useState("");
     const [date,setDate]= useState(new Date())
     const classes = useStyles()
-
-    // const [accountDetail] = useState(
-    //     JSON.parse(sessionStorage.getItem("user"))
-    // );
 
     useEffect(() => {
         setReview(JSON.parse(sessionStorage.getItem('reviewData')))
@@ -134,23 +133,23 @@ export const ReviewSearch = () => {
                         </div>
                         <div className={classes.margin}>
                             {user === null &&
-                            <Link to="/review">
-                                <Button variant="primary"  type="button">
+                            <div>
+                                <Button variant="primary"  href={'/review'} >
                                     확인
-                                </Button>{" "}
-                            </Link>
+                                </Button>
+                            </div>
                             }
                             {user &&
-                            <Link to="/reviewInformation">
-                                <Button variant="primary"  type="button">
+                            <div>
+                                <Button variant="primary"  type="button" href={'/review'} className={classes.thumb}>
                                     확인
-                                </Button>{" "}
+                                </Button>
                                 {user.userId === review.userId &&
-                                <Button variant="primary" type="button" >
+                                <Button variant="primary" href={"/reviewWrite"} className={classes.thumb} >
                                     수정하기
                                 </Button>
                                 }
-                            </Link>
+                            </div>
                             }
                         </div>
                     </center>

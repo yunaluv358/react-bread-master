@@ -10,7 +10,6 @@ import  { Pagination, Paginate } from '../common/Pagination';
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(15),
-        boxShadow : "5px 5px 5px 5px gray"
     },
     margin : {
         margin : '5%'
@@ -22,6 +21,11 @@ const useStyles = makeStyles((theme) => ({
     writeButton : {
        textAlign :'center',
         marginBottom : '9'
+    },
+    font : {
+        fontSize : '20px',
+        color : 'black',
+        cursor:'hand'
     }
 
 }));
@@ -34,6 +38,7 @@ export const Review = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [count, setCount] = useState(1)
     const [data,setData] = useState([])
+    const [title,setTitle] = useState('')
     const [userData,setUserData]= useState(JSON.parse(sessionStorage.getItem("user")))
 
     useEffect(() => {
@@ -48,6 +53,18 @@ export const Review = () => {
         setPageSize(6)
         setCurrentPage(1)
     }, [])
+    const titleSearch = e => {
+        axios
+            .get(`http://localhost:8080/review/title/${title}`)
+            .then((res)=>{
+                alert("성공" + res.data)
+                setData(res.data)
+            })
+            .catch((err)=>{
+                alert("실패")
+                throw err;
+            })
+    }
     const handlePageChange = (page) => {
         setCurrentPage(page); // 페이지 수 클릭 시 현재 페이지 변경
     }
@@ -63,7 +80,8 @@ export const Review = () => {
             <PageTemplate>
             <section className={classes.paper}>
                 <h2>리뷰 게시판</h2>
-
+                <input type="text" onChange={e => setTitle(e.target.value)}/>
+                <input type="button" onClick={titleSearch} value={"제목검색"}/>
                 <Table responsive hover>
                     <thead >
                     <tr>
@@ -82,7 +100,7 @@ export const Review = () => {
                             </td>
                             <td> {i.category}</td>
                             <td>
-                                <a onClick={()=>reviewSearch(i)}>
+                                <a rel="history"  className={classes.font} onClick={()=>reviewSearch(i)}>
                                     {i.title}
                                 </a>
                             </td>

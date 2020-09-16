@@ -8,7 +8,8 @@ import {makeStyles} from "@material-ui/styles";
 
 const useStyle = makeStyles(()=>({
     font : {
-        fontSize : '20px'
+        fontSize : '20px',
+        color : 'black'
     }
 }))
 export const BreadList = () => {
@@ -59,11 +60,11 @@ export const BreadList = () => {
                             <span key={index}>
                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
                                     <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
-                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
-                                    <div className={classes.font}>{i.breadName}</div></a>
-                                 <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
-                                    <div className={classes.font}>{i.breadPrice}원</div></a>
-                                 <a lassName={classes.font} rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
+                                 <a rel="history" href="breadItem" className={classes.font} onClick={()=>passDetail(i)}>
+                                    <div>{i.breadName}</div></a>
+                                 <a rel="history" href="breadItem" className={classes.font}  onClick={()=>passDetail(i)}>
+                                    <div>{i.breadPrice}원</div></a>
+                                 <a lassName={classes.font} rel="history" href="breadItem"  onClick={()=>passDetail(i)}>
                                     <div style={{overflow:'hidden',color:'gray'}}>{i.breadDescription}</div></a>
                             </span>
                         ))}
