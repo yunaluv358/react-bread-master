@@ -9,7 +9,29 @@ import {makeStyles} from "@material-ui/styles";
 const useStyle = makeStyles(()=>({
     font : {
         fontSize : '20px',
-        color : 'black'
+        color : 'black',
+    },
+    fontPrice : {
+        fontSize : '20px',
+        color:'brown'
+    },
+    listSize : {
+        width : '400px',
+        height : '400px',
+    },
+    descrip : {
+        width : '120%',
+        whiteSpace:'nowrap',
+        overflow:'hidden',
+        color:'gray',
+        wordBreak:'normal'
+    },
+    description : {
+        fontSize : '10px',
+        color:'gray'
+    },
+    size : {
+        marginTop : '150px'
     }
 }))
 export const BreadList = () => {
@@ -23,13 +45,15 @@ export const BreadList = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
+                    alert('성공')
                     setData(response.data)
                 }
             ).catch((error => {
+                alert("실패")
                 throw (error)
             }
         ))
-        setPageSize(5)
+        setPageSize(8)
         setCurrentPage(1)
     },[])
     const handlePageChange = (page) => {
@@ -38,42 +62,41 @@ export const BreadList = () => {
     const subdata = Paginate(data, currentPage, pageSize);
 
     const passDetail = bread => {
+        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('selectedBread', JSON.stringify(bread))
     }
     return (
         <>
             <Navigation/>
-            <div grid-row="" grid-pad="1.5" grid-gutter="3" grid-responsive="">
-                <div grid-col="4" grid-pad="1.5" className="bread-title"><h1>B r e a d</h1><br/>
-                    <blockquote><i>No eggs, No milk, and No butter.</i><br/>The Bread Blue<br/>using all-natural
-                        ingredients only.</blockquote>
-                    <br/>
-                    <blockquote>The Bread Blue is for everyone;<br/>Locals, Visitors, and those who are Vegan
-                    </blockquote>
-                </div>
-                <div grid-col="8" grid-pad="1.5" className="">
-                    <div className="image-gallery" gid="6">
+                <center>
+                    {/*<div grid-col="8" grid-pad="1.5" >*/}
+                    <div className={classes.size}  >
+                        <div >
+                        <div >
                             {subdata.map((i, index) => (
-                            <span key={index}>
-                                <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
-                                    <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
-                                 <a rel="history" href="breadItem" className={classes.font} onClick={()=>passDetail(i)}>
-                                    <div>{i.breadName}</div></a>
-                                 <a rel="history" href="breadItem" className={classes.font}  onClick={()=>passDetail(i)}>
-                                    <div>{i.breadPrice}원</div></a>
-                                 <a lassName={classes.font} rel="history" href="breadItem"  onClick={()=>passDetail(i)}>
-                                    <div style={{overflow:'hidden',color:'gray'}}>{i.breadDescription}</div></a>
-                            </span>
-                        ))}
-                        <Pagination
-                            pageSize={pageSize}
-                            itemsCount={data.length}
-                            currentPage={currentPage}
-                            onPageChange={handlePageChange}
-                        />
+                                <div key={index} style={{display: "inline-block",}} >
+                                    <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
+                                        <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
+                                    <a rel="history" href="breadItem" className={classes.font}  onClick={()=>passDetail(i)}>
+                                        <div>{i.breadName}</div></a>
+                                    <a rel="history" href="breadItem" className={classes.fontPrice}  onClick={()=>passDetail(i)}>
+                                        <div>{i.breadPrice}원</div></a>
+                                    <a rel="history" href="breadItem" className={classes.description}   onClick={()=>passDetail(i)}>
+                                        <div>{i.breadDescription}</div></a>
+                                </div>
+                            ))}
+                            <Pagination
+                                pageSize={pageSize}
+                                itemsCount={data.length}
+                                currentPage={currentPage}
+                                onPageChange={handlePageChange}
+                            />
+                        </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </center>
+
+            {/*</div>*/}
         </>
     )
 }

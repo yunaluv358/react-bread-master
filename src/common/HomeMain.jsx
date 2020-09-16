@@ -13,7 +13,9 @@ export const HomeMain = () => {
             <Header data={JsonData.Header}/>
             <Features data={JsonData.Features}/>
             <ShopAbout data={JsonData.About}/>
-            <Review/>
+            {/*<Review/>*/}
+            <br/><br/><br/><br/>
+            {/*<ShopMessageRegister data={JsonData.Contact}/>*/}
         </div>
     )
 }
