@@ -6,11 +6,14 @@ import axios from "axios";
 import {makeStyles} from "@material-ui/styles";
 
 const useStyle = makeStyles(()=>({
-    size : {
-        width : '15px',
-        height : '15px'
+    size:{
+        width: 'auto',
+        height: 'auto',
+        maxWidth: 'px',
+        maxHeight: '100px'
     }
 }))
+
 
 export const BotBreadCategoly = () => {
     const [breadAll, setBreadAll] = useState([])
@@ -236,11 +239,12 @@ export const BotBreadCategoly = () => {
                         </p>
                         <center>
                             {select2result.map((i, index) => (
-                                <span key={index} >
-                                <a rel="history" href="SearchBreadItem"  onClick={()=>searchDetail(i)}>
-                                    <img src={i.breadImage} className={classes.size}/></a>
+                                <div key={index} >
+                                <a  href="SearchBreadItem"  onClick={()=>searchDetail(i)}>
+                                    <img src={i.breadImage} className={classes.size}/>
+                                </a>
                                     <h3>{i.breadName}</h3>
-                                </span>
+                                </div>
                             ))}
                         </center>
                     </div>

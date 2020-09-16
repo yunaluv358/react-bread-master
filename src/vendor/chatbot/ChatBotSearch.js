@@ -4,8 +4,10 @@ import {makeStyles} from "@material-ui/styles";
 
 const useStyle = makeStyles(()=>({
     size:{
-        width : "20%",
-        height : "30%"
+        width: 'auto',
+        height: 'auto',
+        maxWidth: '100px',
+        maxHeight: '100px'
     }
 }))
 
