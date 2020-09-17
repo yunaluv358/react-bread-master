@@ -5,6 +5,7 @@ import './bread.css'
 import {Navigation} from "../common/HomeMain";
 import {useHistory} from "react-router-dom";
 import {makeStyles} from "@material-ui/styles";
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyle = makeStyles(()=>({
     font : {
@@ -21,6 +22,12 @@ const useStyle = makeStyles(()=>({
     },
     size : {
         marginTop : '150px'
+    },
+    pagination : {
+        marginBottom : '100px'
+    },
+    footer : {
+        marginBottom : '120px'
     }
 }))
 export const BreadList = () => {
@@ -74,6 +81,7 @@ export const BreadList = () => {
                                         <div>{i.breadDescription}</div></a>
                                 </div>
                             ))}
+                            <div className={classes.pagination}></div>
                             <Pagination
                                 pageSize={pageSize}
                                 itemsCount={data.length}
@@ -84,8 +92,8 @@ export const BreadList = () => {
                     </div>
                 </div>
             </center>
-
-            {/*</div>*/}
+            <div className={classes.footer}></div>
+            <ShopFooter/>
         </>
     )
 }

@@ -4,6 +4,7 @@ import './breadsearch.css'
 import {Navigation} from "../common/HomeMain";
 import $ from 'jquery'
 import axios from "axios";
+import {ShopFooter} from "../shop/ShopFooter";
 
 
 export const BreadOption = () => {
@@ -235,7 +236,8 @@ export const BreadOption = () => {
                     </div>
                 </div>
             </div>
-
+            <div style={{"margin-top": "100px"}}></div>
+        <ShopFooter/>
         </>
 
     )

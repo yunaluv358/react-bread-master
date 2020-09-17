@@ -36,7 +36,7 @@ export const Pagination = props => {
                         <li
                             key={page}
                             className={page === currentPage ? "page-item active" : "page-item"} // Bootstrap을 이용하여 현재 페이지를 시각적으로 표시
-                            style={{ cursor: "pointer" }}
+                            style={{ cursor: "pointer" , color: "brown" }}
                         >
                             <a className="page-link" onClick={() => onPageChange(page)}>{page}</a> {/* 페이지 번호 클릭 이벤트 처리기 지정 */}
                         </li>

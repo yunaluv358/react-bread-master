@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
-import { ShopMessageRegister } from './shop/ShopMessageRegister';
+import { ShopFooter } from './shop/ShopFooter';
 import PropTypes from 'prop-types';
 
 // 빵 상품
@@ -66,7 +66,7 @@ export const RootRouter = () => {
 					<Route exact path="/" component = {Main}/>
 					<Route path="/features" component = {Features} />
 					<Route path="/about" component ={ShopAbout} />
-					<Route path="/shop-message-register" component = {ShopMessageRegister}/>
+					<Route path="/shop-message-register" component = {ShopFooter}/>
 					<Route path="/breadList" component = {BreadList} />
 					<Route path="/option" component={BreadOption}/>
 					<Route path="/review" component={Review}/>

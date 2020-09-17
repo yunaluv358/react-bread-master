@@ -154,6 +154,7 @@ export const ReviewSearch = () => {
                         </div>
                     </center>
             </PageTemplate>
+
         </>
     );
 };

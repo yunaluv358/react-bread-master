@@ -2,6 +2,7 @@ import React,{useState,useCallback,useRef} from "react";
 import { GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
 import './shop-detail.css'
 import "@reach/combobox/styles.css";
+import {ShopFooter} from "./ShopFooter";
 const MAP_KEY ='AIzaSyBXIXkgYyr6JzmxB2MlvZc4R4CL6nSqxn4'
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -86,6 +87,9 @@ export const ShopLocation = () => {
                         :null
                 }
             </GoogleMap>
+
+
         </>
-    );
+
+    )
 };

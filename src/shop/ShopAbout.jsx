@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navigation } from "../common/HomeMain";
+import {ShopFooter} from "./ShopFooter";
 
 
 export const ShopAbout = props => {
@@ -98,6 +99,7 @@ export const AboutDetail = () => {
 					</div>
 				</div>
 			</div>
-		</div></>
+		</div>
+			<ShopFooter/></>
 	)
 }

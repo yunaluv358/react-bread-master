@@ -1,6 +1,7 @@
 import React from "react";
 import { PageTemplate } from "../common/PageTemplate";
 import { ShopLocation } from "./ShopLocation";
+import {ShopFooter} from "./ShopFooter";
 export const ShopDetail = () => <><div style={{marginTop: '50px'}}>
 	<PageTemplate>
 		<section className="signup">
@@ -50,4 +51,6 @@ export const ShopDetail = () => <><div style={{marginTop: '50px'}}>
 		        </div>
 		    </div>
 		</section>
+		<div style={{"margin-top": "100px"}}></div>
+		<ShopFooter/>
 	</PageTemplate></div></>

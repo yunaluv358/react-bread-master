@@ -6,6 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import {PageTemplate} from "../common/PageTemplate";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import  { Pagination, Paginate } from '../common/Pagination';
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -127,6 +128,8 @@ export const Review = () => {
                     </Row>
                 </Container>
             </section>
+                <div style={{"margin-top": "100px"}}></div>
+                <ShopFooter/>
             </PageTemplate>
         </>
     );
