@@ -52,8 +52,8 @@ import {BotBreadCategoly} from "./vendor/chatbot/BotBreadCategoly";
 // 리뷰
 import {ReviewWrite} from "./review/ReviewWrite";
 import {Review} from "./review/Review";
-import {ReviewSearch} from "./review/ReviewSearch";
-import {ReviewInfo} from "./review/ReviewInfo";
+import {ReviewDetail} from "./review/ReviewDetail";
+import {ReviewModify} from "./review/ReviewModify";
 import {ChatBotLogin} from "./vendor/chatbot/ChatBotLogin";
 import {ChatBotSearch} from "./vendor/chatbot/ChatBotSearch";
 
@@ -71,8 +71,8 @@ export const RootRouter = () => {
 					<Route path="/option" component={BreadOption}/>
 					<Route path="/review" component={Review}/>
 					<Route path="/reviewWrite" component={ReviewWrite}/>
-					<Route path="/reviewSearch" component={ReviewSearch}/>
-					<Route path="/reviewInfo" component={ReviewInfo}/>
+					<Route path="/reviewDetail" component={ReviewDetail}/>
+					<Route path="/reviewModify" component={ReviewModify}/>
 					<Route path="/signin" component={UserAccess}/>
 					<Route path="/signup" component={UserRegister}/>
 					<Route path="/findId" component={UserFindID}/>

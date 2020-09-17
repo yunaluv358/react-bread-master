@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Paper from "@material-ui/core/Paper";
 import  { Pagination, Paginate } from '../common/Pagination';
+// import  '../../public/css/style.css'
 
 const UserShipping = () => {
     const [pageSize, setPageSize] = useState(5)
@@ -21,10 +22,19 @@ const UserShipping = () => {
             height:"100%",
             position:"relative",
             top:"70px",
-            overflowX: "auto"
+            overflowX: "auto",
+            marginTop:"3%"
         },
         table: {
-            minWidth: 1080
+            minWidth: 1080,
+
+        },
+        headFont : {
+            fontSize:'30px',
+            fontFamily : "Raleway"
+        },
+        font : {
+            fontSize:'15px'
         }
     })
     useEffect(()=>{
@@ -49,23 +59,23 @@ const UserShipping = () => {
                 <Table className={classes.table}>
                     <TableHead>
                         <TableRow>
-                            <TableCell>주문날짜</TableCell>
-                            <TableCell>주문상품정보</TableCell>
-                            <TableCell>상품이미지</TableCell>
-                            <TableCell>상품금액</TableCell>
-                            <TableCell>주문상태</TableCell>
-                            <TableCell>배송주소</TableCell>
+                            <TableCell className={classes.headFont}>주문날짜</TableCell>
+                            <TableCell className={classes.headFont}>주문상품정보</TableCell>
+                            <TableCell className={classes.headFont}>상품이미지</TableCell>
+                            <TableCell className={classes.headFont}>상품금액</TableCell>
+                            <TableCell className={classes.headFont}>주문상태</TableCell>
+                            <TableCell className={classes.headFont}>배송주소</TableCell>
                         </TableRow>
                     </TableHead>
                         {subdata.map((i,index) => (
                             <TableBody key={index}>
-                            <TableCell>{i.shippingDate}</TableCell>
-                            <TableCell>{i.shippingBreadName}</TableCell>
+                            <TableCell className={classes.font}>{i.shippingDate}</TableCell>
+                            <TableCell className={classes.font}>{i.shippingBreadName}</TableCell>
                             <TableCell>
                             <img src={i.shippingBreadImg} style={{width:"60px",height:"60px"}}  alt="이미지가 없습니다"/></TableCell>
-                            <TableCell>{i.shippingPrice}</TableCell>
-                            <TableCell>{i.shippingStatus}</TableCell>
-                            <TableCell>{i.shippingAddr}</TableCell>
+                            <TableCell className={classes.font}>{i.shippingPrice}</TableCell>
+                            <TableCell className={classes.font}>{i.shippingStatus}</TableCell>
+                            <TableCell className={classes.font}>{i.shippingAddr}</TableCell>
                             </TableBody>
                         ))
                         }

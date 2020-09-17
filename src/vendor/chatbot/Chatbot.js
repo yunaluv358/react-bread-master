@@ -50,23 +50,18 @@ const Chatbot = () => {
                         id: 'result',
                         options: [
                             {label:'검색결과',component: <ChatBotSearch/>},
-                            {label:'처음으로..',trigger: '1'},
                         ]
                     },
                     {
                       id:'breadOption',
                         options:[
                             {label:'빵카테고리 선택',component:<BotBreadCategoly/>},
-                            {label:'처음으로..',trigger: '1'},
                         ]
                     },
                     {
                         id:'shipping',
                         options:[
                             {label:'배송조회를 위해 아이디와 비밀번호를 입력해주세요',component:<ChatBotLogin/>},
-                            {value:1, label:'원하는 빵 이름 검색',trigger: 'breadSearch'},
-                            {value:2, label:'빵 카테고리 선택 분류',trigger:'breadOption'},
-                            {label:'처음으로..',trigger: '1'}
                         ]
                     }
                 ]}

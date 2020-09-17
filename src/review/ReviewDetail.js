@@ -28,9 +28,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const ReviewSearch = () => {
-    const [review,setReview] = useState('')
-    // const [userId, setUserId] = useState("")
+export const ReviewDetail = () => {
+    const [review,setReview] = useState(JSON.parse(sessionStorage.getItem('reviewData')))
     const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")))
     const [contents, setContents] = useState("");
     const [title, setTitle] = useState("");
@@ -38,9 +37,6 @@ export const ReviewSearch = () => {
     const [date,setDate]= useState(new Date())
     const classes = useStyles()
 
-    useEffect(() => {
-        setReview(JSON.parse(sessionStorage.getItem('reviewData')))
-    }, [])
 
     const handleQuill = (value) => {
         setContents(value);
@@ -132,7 +128,7 @@ export const ReviewSearch = () => {
                             </Form>
                         </div>
                         <div className={classes.margin}>
-                            {user === null &&
+                            {!user &&
                             <div>
                                 <Button variant="primary"  href={'/review'} >
                                     확인
@@ -145,7 +141,7 @@ export const ReviewSearch = () => {
                                     확인
                                 </Button>
                                 {user.userId === review.userId &&
-                                <Button variant="primary" href={"/reviewInfo"} className={classes.thumb} >
+                                <Button variant="primary" href={"/reviewModify"} className={classes.thumb} >
                                     수정하기
                                 </Button>
                                 }

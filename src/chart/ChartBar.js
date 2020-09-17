@@ -6,7 +6,6 @@ import {makeStyles} from "@material-ui/styles";
 const useStyle = makeStyles(()=>({
     searchSize : {
         width : '20%',
-
     }
 }))
 const ChartBar = props => {
@@ -33,6 +32,11 @@ const ChartBar = props => {
                 throw err;
             })
     }
+    const onkeypress = (e) => {
+        if (e.key == 'Enter') {
+            chartHandle()
+        }
+    }
 
 
     const chartData = {
@@ -53,12 +57,12 @@ const ChartBar = props => {
     return (
         <div>
             <h2>{chartValue}</h2>
-            <input type="text" className={classes.searchSize} onChange={e => setName(e.target.value)}/>
-            <input type="button" onClick={chartHandle} value={"회원조회"}/>
+            <input type="text" className={classes.searchSize} onChange={e => setName(e.target.value)} autoFocus={true}/>
+            <input type="button" onClick={chartHandle} onKeyPress={onkeypress} value={"회원조회"}/>
             <Bar
                 data={chartData}
                 width={40}
-                height={20}
+                height={17}
             />
         </div>
     );

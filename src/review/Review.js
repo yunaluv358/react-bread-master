@@ -10,7 +10,7 @@ import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(15),
+        marginTop:"7%"
     },
     margin : {
         margin : '5%'
@@ -32,15 +32,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const Review = () => {
     const [category, setCategory] = useState("");
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    const classes = useStyles()
-    const history = useHistory()
     const [pageSize, setPageSize] = useState(5)
     const [currentPage, setCurrentPage] = useState(1)
-    const [count, setCount] = useState(1)
     const [data,setData] = useState([])
     const [title,setTitle] = useState('')
-    const [userData,setUserData]= useState(JSON.parse(sessionStorage.getItem("user")))
+    const classes = useStyles()
+    const history = useHistory()
 
     useEffect(() => {
         axios
@@ -54,13 +51,21 @@ export const Review = () => {
         setPageSize(5)
         setCurrentPage(1)
     }, [])
+
+    function enterKey (){
+        if (window.event.keyCode == 13) {
+            titleSearch()
+        }
+    }
     const titleSearch = e => {
         axios
             .get(`http://localhost:8080/review/title/${title}`)
             .then((res)=>{
                 setData(res.data)
+
             })
             .catch((err)=>{
+                window.location.href = "/review";
                 throw err;
             })
     }
@@ -69,19 +74,19 @@ export const Review = () => {
     }
     const subdata = Paginate(data, currentPage, pageSize);
 
-    const reviewSearch = data => {
-        history.push('/reviewSearch')
+    const reviewDetail = data => {
+        history.push('/reviewDetail')
         sessionStorage.setItem('reviewData', JSON.stringify(data))
     }
     return (
         <>
             <PageTemplate>
             <section className={classes.paper}>
-                <h2>리뷰 게시판</h2>
-                <input type="text" onChange={e => setTitle(e.target.value)}/>
-                <input type="button" onClick={titleSearch} value={"제목검색"}/>
+                <h2 style={{fontFamily : "Raleway"}}>리뷰 게시판</h2>
+                <input type="text" onChange={e => setTitle(e.target.value)} autoFocus={true}/>
+                <input type="button" onkeyup={enterKey} onClick={titleSearch} value={"제목검색"}  />
                 <Table responsive hover>
-                    <thead >
+                    <thead>
                     <tr>
                         <th>번호</th>
                         <th>구분</th>
@@ -98,7 +103,7 @@ export const Review = () => {
                             </td>
                             <td> {i.category}</td>
                             <td>
-                                <a rel="history"  className={classes.font} onClick={()=>reviewSearch(i)}>
+                                <a rel="history"  className={classes.font} onClick={()=>reviewDetail(i)}>
                                     {i.title}
                                 </a>
                             </td>
@@ -112,7 +117,6 @@ export const Review = () => {
                                     currentPage={currentPage}
                                     onPageChange={handlePageChange}
                         />
-
                     </tbody>
                 </Table>
                 <Container fluid>
