@@ -33,11 +33,9 @@ export const BreadList = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8080/bread/findAll`)
             .then((response) => {
-                    alert('성공')
                     setData(response.data)
                 }
             ).catch((error => {
-                alert("실패")
                 throw (error)
             }
         ))
@@ -50,7 +48,6 @@ export const BreadList = () => {
     const subdata = Paginate(data, currentPage, pageSize);
 
     const passDetail = bread => {
-        alert('소비자 선택 후 ...'+bread.breadName)
         localStorage.setItem('selectedBread', JSON.stringify(bread))
     }
     return (
@@ -63,7 +60,7 @@ export const BreadList = () => {
                             {subdata.map((i, index) => (
                                 <div key={index} style={{display: "inline-block"}} >
                                     <a rel="history" href="breadItem" className="image-link" onClick={()=>passDetail(i)}>
-                                        <img src={i.breadImage} style={{width: '330px', height: '330px' }} /></a>
+                                        <img src={i.breadImage} style={{width: '400px', height: '400px' }} /></a>
                                     <a rel="history" href="breadItem"  onClick={()=>passDetail(i)}>
                                         <div className={classes.font} >{i.breadName}</div></a>
                                     <a rel="history" href="breadItem" onClick={()=>passDetail(i)}>

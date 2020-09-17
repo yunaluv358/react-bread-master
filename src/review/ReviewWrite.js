@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
     margin : {
-        margin : '5%',
-        marginTop : '5%'
+        margin : '10%',
+        marginBottom : "2%"
     },
     titleSize : {
         width:'80%'
@@ -38,7 +38,7 @@ export const ReviewWrite = () => {
     };
 
     const homeClick = e =>{
-        history.push("/")
+        history.push("/signin")
     }
 
     const newNotice = (e) => {
@@ -171,7 +171,7 @@ export const ReviewWrite = () => {
             <PageTemplate>
                 <center>
                     <h1 className={classes.margin}>로그인후 이용해주세요</h1>
-                    <input type="button" onClick={homeClick} value={"홈으로.."}/>
+                    <input type="button" onClick={homeClick} value={"로그인"}/>
                 </center>
             </PageTemplate>
             }

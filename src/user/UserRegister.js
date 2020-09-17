@@ -57,6 +57,7 @@ export const UserRegister = () => {
                 }
             ).catch(
             error => {
+                alert('회원가입실패')
                 throw (error)
             }
         );
@@ -71,7 +72,7 @@ export const UserRegister = () => {
                         <center><h2 className={classes.font}>Bread</h2></center>
                         <div className="form-group">
                             <label>아이디</label>
-                            <input type="text" className="form-control" onChange={e => setUserId(e.target.value)} placeholder="Id"/>
+                            <input type="text" className="form-control" onChange={e => setUserId(e.target.value)} placeholder="Id" autoFocus={true}/>
                         </div>
 
                         <div className="form-group">

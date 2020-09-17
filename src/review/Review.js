@@ -9,7 +9,7 @@ import  { Pagination, Paginate } from '../common/Pagination';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(15),
+        marginTop:"7%"
     },
     margin : {
         margin : '5%'
@@ -61,8 +61,10 @@ export const Review = () => {
             .get(`http://localhost:8080/review/title/${title}`)
             .then((res)=>{
                 setData(res.data)
+
             })
             .catch((err)=>{
+                window.location.href = "/review";
                 throw err;
             })
     }
@@ -79,11 +81,11 @@ export const Review = () => {
         <>
             <PageTemplate>
             <section className={classes.paper}>
-                <h2>리뷰 게시판</h2>
-                <input type="text" onChange={e => setTitle(e.target.value)}/>
-                <input type="button" onkeyup={enterKey} onClick={titleSearch} value={"제목검색"}/>
+                <h2 style={{fontFamily : "Raleway"}}>리뷰 게시판</h2>
+                <input type="text" onChange={e => setTitle(e.target.value)} autoFocus={true}/>
+                <input type="button" onkeyup={enterKey} onClick={titleSearch} value={"제목검색"}  />
                 <Table responsive hover>
-                    <thead >
+                    <thead>
                     <tr>
                         <th>번호</th>
                         <th>구분</th>
@@ -114,7 +116,6 @@ export const Review = () => {
                                     currentPage={currentPage}
                                     onPageChange={handlePageChange}
                         />
-
                     </tbody>
                 </Table>
                 <Container fluid>

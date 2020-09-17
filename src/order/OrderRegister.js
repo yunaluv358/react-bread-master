@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 	},
 	find : {
-		margin : 8
+		margin : 10
 	},
 	box : {
 		borderRadius : "1em",
@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
 		margin : "12px 0px"
 	},
 	margin : {
-		marginTop : "20%"
+		marginTop : "20%",
+		marginBottom : "2%"
 	}
 }));
 export const OrderRegister = () => {
@@ -84,7 +85,7 @@ export const OrderRegister = () => {
 		}
 	}
 	const homeClick = e =>{
-		history.push("/")
+		history.push("/signin")
 	}
 	return <>
 		{sessionStorage.user &&
@@ -197,7 +198,7 @@ export const OrderRegister = () => {
 			<Navigation/>
 			<center>
 				<h1 className={classes.margin}>로그인후 이용해주세요</h1>
-				<input type="button" onClick={homeClick} value={"홈으로.."}/>
+				<input type="button" 	 onClick={homeClick} value={"로그인"}/>
 			</center>
 		</div>
 		}

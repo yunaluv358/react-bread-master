@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Doughnut, Polar} from 'react-chartjs-2'
+import {Bar, Doughnut, Polar} from 'react-chartjs-2'
 import axios from "axios";
 import {makeStyles} from "@material-ui/styles";
 
@@ -41,7 +41,7 @@ const ChartPolar = props => {
         labels: totalKey,
         datasets: [
             {
-                label:[1,2,3,5,5,6,7,8,9],
+                labels:['1월','2월','3월','4월','5월','6월','7월','8월'],
                 data: totalValue,
                 backgroundColor: 'rgba(120,29,29,0.3)',
                 borderWidth: 4,
@@ -56,10 +56,12 @@ const ChartPolar = props => {
     return (
         <div>
             <h2>{chartValue}</h2>
-            <input type="text" className={classes.searchSize} onChange={e => setName(e.target.value)}/>
+            <input type="text" className={classes.searchSize} onChange={e => setName(e.target.value)} autoFocus={true}/>
             <input type="button" onkeyup={enterKey} onClick={chartHandle} value={"회원조회"}/>
             <Polar
                 data={chartData}
+                width={40}
+                height={17}
             />
         </div>
     );
