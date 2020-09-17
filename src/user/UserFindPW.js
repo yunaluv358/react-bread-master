@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useHistory, Link } from 'react-router-dom';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Modal} from "react-bootstrap";
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -100,6 +101,8 @@ export const UserFindPW = () => {
                     </p>
                 </form>
             </div>
+            <div style={{"margin-top": "100px"}}></div>
+            <ShopFooter/>
         </PageTemplate>
         }
     </>

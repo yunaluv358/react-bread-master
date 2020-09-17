@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from "react-bootstrap/Modal";
+import {ShopFooter} from "../shop/ShopFooter";
+import {PageTemplate} from "../common/PageTemplate";
 const UserPostcode = ({setAddress}) => {
     const [show,setShow] = useState(false)
 

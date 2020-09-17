@@ -6,6 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import { Modal } from 'react-bootstrap';
 import Container from "@material-ui/core/Container";
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -95,7 +96,8 @@ export const UserFindID = () => {
              </p>
             </form>
             </div>
-
+            <div style={{"margin-top": "100px"}}></div>
+            <ShopFooter/>
         </PageTemplate>
         }
     </>

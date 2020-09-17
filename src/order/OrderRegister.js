@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import {Navigation} from "../common/HomeMain";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -202,5 +203,7 @@ export const OrderRegister = () => {
 			</center>
 		</div>
 		}
+		<div style={{"margin-top": "100px"}}></div>
+		<ShopFooter/>
 	</>
 }

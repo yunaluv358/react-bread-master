@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Paper from "@material-ui/core/Paper";
 import  { Pagination, Paginate } from '../common/Pagination';
+import {ShopFooter} from "../shop/ShopFooter";
 // import  '../../public/css/style.css'
 
 const UserShipping = () => {
@@ -87,7 +88,8 @@ const UserShipping = () => {
                     onPageChange={handlePageChange}
                 />
             </Paper>
-
+            <div style={{"margin-top": "100px"}}></div>
+            <ShopFooter/>
         </>
 
     );

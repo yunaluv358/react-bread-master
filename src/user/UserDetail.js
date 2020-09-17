@@ -5,6 +5,7 @@ import './user-register.css'
 import axios from 'axios'
 import UserPostcode from "./UserPostcode";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import {ShopFooter} from "../shop/ShopFooter";
 
 const useStyle = makeStyles(theme=>({
     paper: {
@@ -107,6 +108,8 @@ export const UserDetail = () => {
                     </form>
                 </div>
             </section>
+            <div style={{"margin-top": "100px"}}></div>
+            <ShopFooter/>
         </PageTemplate>
     </>
 }
