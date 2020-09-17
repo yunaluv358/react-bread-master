@@ -6,6 +6,7 @@ import axios from "axios";
 import 'react-quill/dist/quill.snow.css';
 import {PageTemplate} from "../common/PageTemplate";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import {ShopFooter} from "../shop/ShopFooter";
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(15),
@@ -14,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
     margin : {
-        margin : '5%',
-        marginTop : '14%'
+        // margin : '5%',
+        marginTop : '6%'
     },
     titleSize : {
         width:'80%'
@@ -126,30 +127,32 @@ export const ReviewDetail = () => {
                                     style={{ height: "400px" }}
                                 />
                             </Form>
-                        </div>
-                        <div className={classes.margin}>
-                            {!user &&
-                            <div>
-                                <Button variant="primary"  href={'/review'} >
-                                    확인
-                                </Button>
-                            </div>
-                            }
-                            {user &&
-                            <div>
-                                <Button variant="primary"  type="button" href={'/review'} className={classes.thumb}>
-                                    확인
-                                </Button>
-                                {user.userId === review.userId &&
-                                <Button variant="primary" href={"/reviewModify"} className={classes.thumb} >
-                                    수정하기
-                                </Button>
+                            <div className={classes.margin}>
+                                {!user &&
+                                <div>
+                                    <Button variant="primary"  href={'/review'} >
+                                        확인
+                                    </Button>
+                                </div>
+                                }
+                                {user &&
+                                <div>
+                                    <Button variant="primary"  type="button" href={'/review'} className={classes.thumb}>
+                                        확인
+                                    </Button>
+                                    {user.userId === review.userId &&
+                                    <Button variant="primary" href={"/reviewModify"} className={classes.thumb} >
+                                        수정하기
+                                    </Button>
+                                    }
+                                </div>
                                 }
                             </div>
-                            }
                         </div>
                     </center>
             </PageTemplate>
+            <div style={{"margin-top": "200px"}}></div>
+            <ShopFooter/>
 
         </>
     );
